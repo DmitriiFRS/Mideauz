@@ -1,0 +1,9 @@
+.footer {
+   background: #2585CD;
+   &__bottom {
+      margin: 100px 0 0 0;
+   }
+}
+.footer__top > * {
+   max-width: 280px;
+}

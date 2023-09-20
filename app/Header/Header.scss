@@ -27,9 +27,12 @@
 }
 .header__dropDownBody {
    background: rgba($color: #ffffff, $alpha: 0.2);
+   height: calc(100vh - 175px);
+   top: 175px;
 }
 .header__dropDown {
-   background: #ffffff;
+   background: #c7c7c7;
+   width: 100%;
    transition: 0.5s ease-in-out;
 }
 .header__cart {

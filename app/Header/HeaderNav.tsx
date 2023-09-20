@@ -23,25 +23,32 @@ const nav = [{
    href: '/catalog'
 }]
 function HeaderNav() {
-   const [display, setDisplay] = useState<boolean>(false)
+   const [display, setDisplay] = useState<boolean>(false);
+   const [isDropdownActive, setDropdownActive] = useState<boolean>(false);
    function displayBar() {
-      setDisplay(true)
+      setDisplay(true);
+      setTimeout(() => {
+         setDropdownActive(true);
+      })
    }
    function hideBar() {
-      setDisplay(false)
+      setDropdownActive(false);
+      setDisplay(false);
    }
    return (
       <nav className='flex items-center'>
-         <div onMouseOver={hideBar} className='header__dropDownBody absolute w-screen h-screen left-0 top-0'>
-            <div onMouseOver={(e) => e.stopPropagation()} style={{transform: display ? 'translateY(0%)' : 'translateY(-100%)'}} className='header__dropDown w-full h-2/5 bg-zinc-500'></div>
+         <div style={{visibility: display ? 'visible' : 'hidden'}} onMouseOver={hideBar} className='header__dropDownBody absolute w-full left-0'>
+            <div onMouseOver={(e) => e.stopPropagation()} 
+            style={{height: isDropdownActive ? '50%' : '0%'}} className='header__dropDown'>
+            </div>
          </div>
          <ul className="header__navlist flex content-center text-xl relative z-10">
             {nav.map((el, idx) => {
                return (
                   el.href ? <li className="header__navitem cursor-pointer" key={idx}><Link href={el.href}>{el.title}</Link></li>
-                  :  <li onMouseOver={displayBar} className="header__navitem flex cursor-pointer" key={idx}>
+                  :  <li onMouseEnter={displayBar} className="header__navitem flex cursor-pointer" key={idx}>
                         <span>{el.title}</span>
-                        <Image className="ml-1.5" src={arrow} alt='' width={17} height={17} />
+                        <Image style={{transform: display ? 'rotate(180deg)' : 'rotate(0deg)', transition: '0.3s'}} className="ml-1.5" src={arrow} alt='' width={17} height={17} />
                      </li>
                )
             })}
@@ -50,3 +57,4 @@ function HeaderNav() {
 )
 }
 export default HeaderNav;
+//height 40%
