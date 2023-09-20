@@ -1,0 +1,40 @@
+.test {
+   border: 1px solid #000;
+}
+.header__inputBody {
+   width: 50%;
+   margin: 15px auto 0px auto;
+   border-radius: 5px;
+   overflow: hidden;
+   height: 40px;
+}
+.header__input {
+   background: #c7c7c7;
+   flex: 1 1 95%;
+   padding: 5px 10px;
+}
+.header__inputIcon {
+   background: #2585CD;
+   flex: 0 1 5%;
+   cursor: pointer;
+}
+.header__navitem {
+   margin: 0 0 0 3vw;
+
+   &:first-child {
+      margin: 0;
+   }
+}
+.header__dropDownBody {
+   background: rgba($color: #ffffff, $alpha: 0.2);
+}
+.header__dropDown {
+   background: #ffffff;
+   transition: 0.5s ease-in-out;
+}
+.header__cart {
+   transform: translateX(-100px);
+}
+.header__cartTitle {
+   transform: translateX(-10px);
+}
