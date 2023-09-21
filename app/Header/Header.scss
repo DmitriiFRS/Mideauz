@@ -26,18 +26,28 @@
    }
 }
 .header__dropDownBody {
-   background: rgba($color: #ffffff, $alpha: 0.2);
+   background: rgba($color: #000000, $alpha: 0.4);
    height: calc(100vh - 175px);
    top: 175px;
 }
 .header__dropDown {
-   background: #c7c7c7;
+   background: #ffffff;
    width: 100%;
    transition: 0.5s ease-in-out;
+   border-top: 1px solid #E6E0D9;
 }
 .header__cart {
    transform: translateX(-100px);
 }
 .header__cartTitle {
    transform: translateX(-10px);
+}
+.dropdownList__item {
+   max-width: 200px;
+   list-style: none;
+}
+.dropdownList__title {
+   display: block;
+   flex: 1 1 auto;
+   height: 100%;
 }

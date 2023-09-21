@@ -3,6 +3,7 @@ import Link from 'next/link';
 import arrow from '../../public/icons/nav_arrow.svg';
 import Image from 'next/image';
 import { useState } from 'react';
+import HeaderDropdownList from './HeaderDropdownList';
 const nav = [{
    id: 0,
    title: 'Оборудование'
@@ -39,7 +40,8 @@ function HeaderNav() {
       <nav className='flex items-center'>
          <div style={{visibility: display ? 'visible' : 'hidden'}} onMouseOver={hideBar} className='header__dropDownBody absolute w-full left-0'>
             <div onMouseOver={(e) => e.stopPropagation()} 
-            style={{height: isDropdownActive ? '50%' : '0%'}} className='header__dropDown'>
+            style={{height: isDropdownActive ? '50%' : '0%'}} className='header__dropDown overflow-hidden'>
+               <HeaderDropdownList />
             </div>
          </div>
          <ul className="header__navlist flex content-center text-xl relative z-10">
@@ -57,4 +59,3 @@ function HeaderNav() {
 )
 }
 export default HeaderNav;
-//height 40%

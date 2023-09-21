@@ -10,7 +10,7 @@ import search from '../../public/icons/search.png'
 
 function Header() {
 return (
-   <header className="flex flex-col px-2.5 bg-white">
+   <header className="flex flex-col px-2.5 bg-white relative z-30">
       <div className="header__inputBody flex justify-center z-10">
          <input placeholder="Поиск товара" className="header__input" type="text" />
          <div className="header__inputIcon flex items-center justify-center">
