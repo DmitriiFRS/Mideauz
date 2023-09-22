@@ -29,7 +29,7 @@ const list = [{
    href: '/vrf'
 },
 {
-   title: 'Чиллеры Midea',
+   title: 'Чиллер-фанкоил Midea',
    img: chiller,
    href: '/chiller'
 },]
@@ -39,10 +39,10 @@ function HeaderDropdownList() {
       <div className='container flex justify-between py-10 h-full'>
          {list.map((el, idx) => {
             return (
-               <li key={idx} className='dropdownList__item'>
+               <li key={idx} className='dropdownList__item font text-2xl first-letter font-medium'>
                   <Link className='flex flex-col justify-center items-center h-full' href={el.href}>
                      <h4 className='dropdownList__title'>{el.title}</h4>
-                     <Image src={el.img} alt='item' width={150} height={150} />
+                     <Image className='dropdownList__img' src={el.img} alt='item' width={150} height={150} />
                   </Link>
                </li>
             )

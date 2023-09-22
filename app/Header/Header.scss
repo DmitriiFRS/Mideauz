@@ -20,6 +20,10 @@
 }
 .header__navitem {
    margin: 0 0 0 3vw;
+   transition: 0.2s;
+   &:hover {
+      color: #2585CD;
+   }
 
    &:first-child {
       margin: 0;
@@ -45,9 +49,17 @@
 .dropdownList__item {
    max-width: 200px;
    list-style: none;
+   text-align: center;
+   
+   &:hover .dropdownList__img {
+      transform: scale(1.3);
+   }
 }
 .dropdownList__title {
    display: block;
    flex: 1 1 auto;
    height: 100%;
+}
+.dropdownList__img {
+   transition: 0.3s;
 }
