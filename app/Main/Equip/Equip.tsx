@@ -1,4 +1,4 @@
-
+"use client"
 
 import condition from '../../../public/img/Header/2.png';
 import casette from '../../../public/img/Header/casette.png';
@@ -6,9 +6,10 @@ import column from '../../../public/img/Header/column-condition.png';
 import vrf from '../../../public/img/Header/V8.png';
 import chiller from '../../../public/img/Header/chiller.png';
 import canal from    '../../../public/img/Header/canal.png';
-import Image from 'next/image';
 
 import './Equip.scss'
+import EquipItem from './EquipItem';
+import { useState } from 'react';
 const equip = [{
    title: 'Бытовые кондиционеры настенного типа',
    subtitle: 'Премиум. Во всех отношениях',
@@ -48,22 +49,13 @@ const equip = [{
 ]
 
 function Equip() {
+   
+   
    return (
    <section className="equip my-24 flex flex-col">
       {equip.map((el, idx) => {
          return (
-            <div key={idx} className="equip__body py-5">
-               <div className="container flex justify-around items-center text-center">
-                  <div className="equip__img_container flex items-center justify-center">
-                     <Image src={el.img} alt={el.title} width={idx === 4 ? 450 : 350} height={150} />
-                  </div>
-                  <div className="flex flex-col items-center equip__title_body">
-                     <h3 className='text-6xl'>{el.title}</h3>
-                     <p className='text-2xl mt-7'>{el.subtitle}</p>
-                     <button className='equip__btn mt-7 font-medium'>Подробнее</button>
-                  </div>
-               </div>
-            </div>
+            <EquipItem el={el} idx={idx} />
          )
       })}
    </section>

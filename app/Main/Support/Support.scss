@@ -1,8 +1,10 @@
 .support {
    &__num {
-      border: 1px solid #818181;
       border-radius: 10px;
       padding: 10px;
-      background: #fdfdde;
+      background: linear-gradient(45deg, rgba(104, 104, 104, 0.9) 0%, rgba(223,223,223,0.6) 100%);
+      padding: 15px 25px;
+      border-radius: 9px;
+      color: #292929;
    }
 }

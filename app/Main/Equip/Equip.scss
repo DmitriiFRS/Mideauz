@@ -8,12 +8,16 @@
       height: 350px;
       display: flex;
       align-items: center;
+      transition: 0.7s;
       &:not(:last-child) {
          margin: 0 0 20px 0;
       }
    }
+   &__container {
+      transition: 0.7s;
+   }
    &__btn {
-      background: linear-gradient(45deg, rgba(35,199,197,1) 0%, rgba(223,223,223,0.10127801120448177) 100%);
+      background: linear-gradient(45deg, rgb(104, 104, 104) 0%, rgba(223,223,223,0.10127801120448177) 100%);
       padding: 15px 25px;
       transition: 0.4s;
       position: relative;
