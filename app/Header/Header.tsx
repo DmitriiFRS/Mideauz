@@ -1,33 +1,25 @@
 
 import Image from "next/image";
 import midea from '../../public/logos/MideaLogoBlue.png';
-import welkin from '../../public/logos/Welkin-01.png';
+import welkin from '../../public/logos/Welkin.png';
 import Link from "next/link";
 import './Header.scss'
 import HeaderNav from "./HeaderNav";
 import basket from '../../public/icons/basket.png';
-import search from '../../public/icons/search.png'
+import Search from "./Search";
+
 
 function Header() {
 return (
-   <header className="flex flex-col px-2.5 bg-white relative z-30">
-      <div className="header__inputBody flex justify-center z-10">
-         <input placeholder="Поиск товара" className="header__input" type="text" />
-         <div className="header__inputIcon flex items-center justify-center">
-            <Image src={search} alt="..." width={20} height={20}/>
-         </div>
-      </div>
+   <header className="header flex flex-col px-2.5 bg-white relative z-30">
+      <Search />
+      <Link className="absolute z-10 left-10 top-10" href={'/'}><Image src={midea} alt="midea" width={160} height={80} /></Link>
       <div className="flex justify-between items-center">
-         <Link className="relative z-10" href={'/'}><Image src={midea} alt="midea" width={120} height={80} /></Link>
             <HeaderNav />
             <div className="relative z-10 flex items-center">
-               <div className="header__cart flex items-center cursor-pointer">
-                  <span className="header__cartTitle">0 товаров</span>
-                  <Image src={basket} alt="cart" width={50} height={50} />
-               </div>
-               <Link href={'/'}><Image src={welkin} alt="welkin" width={120} height={80} /></Link>
             </div>
       </div>
+      <Link className='welkin-logo absolute z-10 right-10 top-12' href={'/'}><Image src={welkin} alt="welkin" width={160} height={80} /></Link>
    </header>
 )
 }

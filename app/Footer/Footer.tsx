@@ -2,6 +2,11 @@ import '../globals.css';
 import './Footer.scss';
 import midea from '../../public/logos/midea-footer.png';
 import Image from 'next/image';
+import inst from '../../public/icons/Footer/instagram.svg';
+import tel from '../../public/icons/Footer/telegram.svg';
+import fb from '../../public/icons/Footer/facebook.svg';
+import youtube from '../../public/icons/Footer/youtube.svg';
+import Link from 'next/link';
 
 const footerData = [{
    title: 'Адрес официального шоу рума',
@@ -33,9 +38,16 @@ return (
             )
          })}
       </div>
-      <div className="footer__bottom pb-7">© Midea - Официальный представитель в Узбекистане 2022</div>
+      <div className="flex justify-between items-center text-center mt-20 py-6">
+         <div className="footer__bottom">© Midea - Официальный представитель в Узбекистане 2023</div>
+         <div className="footer__iconsBody flex">
+            <Link className='flex items-center' href='https://t.me/midea_welkin_climat'> <Image src={tel} width={50} height={50} alt='tel'/> </Link>
+            <Link className='flex items-center' href='https://t.me/midea_welkin_climat'> <Image src={inst} width={50} height={50} alt='inst'/> </Link>
+            <Link className='flex items-center' href='https://t.me/midea_welkin_climat'> <Image src={fb} width={50} height={50} alt='fb'/> </Link>
+            <Link className='flex items-center' href='https://t.me/midea_welkin_climat'> <Image src={youtube} width={50} height={50} alt='youtube'/> </Link>
+         </div>
+      </div>
    </div>
-   
 </footer>
 )
 }

@@ -1,7 +1,9 @@
 .footer {
    background: #2585CD;
-   &__bottom {
-      margin: 100px 0 0 0;
+   &__iconsBody > * {
+      &:not(:first-child) {
+         margin: 0 0 0 20px;
+      }
    }
 }
 .footer__top > * {
