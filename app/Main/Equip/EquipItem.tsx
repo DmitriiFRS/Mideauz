@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 type equipItemProps = {
@@ -36,7 +37,7 @@ function EquipItem({el, idx} : equipItemProps) {
             <div className="flex flex-col items-center equip__title_body">
                <h3 className='text-6xl'>{el.title}</h3>
                <p className='text-2xl mt-7'>{el.subtitle}</p>
-               <button className='equip__btn mt-7 font-semibold'>Подробнее</button>
+               <Link href={el.href} className='equip__btn mt-7 font-semibold'>Подробнее</Link>
             </div>
          </div>
       </div>

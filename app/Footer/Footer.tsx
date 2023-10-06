@@ -41,10 +41,10 @@ return (
       <div className="flex justify-between items-center text-center mt-20 py-6">
          <div className="footer__bottom">© Midea - Официальный представитель в Узбекистане 2023</div>
          <div className="footer__iconsBody flex">
-            <Link className='flex items-center' href='https://t.me/midea_welkin_climat'> <Image src={tel} width={50} height={50} alt='tel'/> </Link>
-            <Link className='flex items-center' href='https://t.me/midea_welkin_climat'> <Image src={inst} width={50} height={50} alt='inst'/> </Link>
-            <Link className='flex items-center' href='https://t.me/midea_welkin_climat'> <Image src={fb} width={50} height={50} alt='fb'/> </Link>
-            <Link className='flex items-center' href='https://t.me/midea_welkin_climat'> <Image src={youtube} width={50} height={50} alt='youtube'/> </Link>
+            <Link className='flex items-center' href='https://t.me/midea_welkin_climat'> <Image className='footer__icon1' src={tel} width={50} height={50} alt='tel'/> </Link>
+            <Link className='flex items-center' href='https://t.me/midea_welkin_climat'> <Image className='footer__icon2' src={inst} width={50} height={50} alt='inst'/> </Link>
+            <Link className='flex items-center' href='https://t.me/midea_welkin_climat'> <Image className='footer__icon3' src={fb} width={50} height={50} alt='fb'/> </Link>
+            <Link className='flex items-center' href='https://t.me/midea_welkin_climat'> <Image className='footer__icon4' src={youtube} width={50} height={50} alt='youtube'/> </Link>
          </div>
       </div>
    </div>

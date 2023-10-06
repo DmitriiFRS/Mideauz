@@ -12,22 +12,22 @@ import './Header.scss'
 const list = [{
    title: 'Бытовые кондиционеры настенного типа',
    img: condition,
-   href: '/rac'
+   href: '/air-conditioners'
 },
 {
    title: 'Бытовые кондиционеры колонного типа',
    img: column,
-   href: '/rac2'
+   href: '/column-conditioners'
 },
 {
    title: 'Полупромышленные кондиционеры кассетного типа',
    img: casette,
-   href: '/light-cac'
+   href: '/casette-conditioners'
 },
 {
    title: 'Полупромышленные кондиционеры канального типа',
    img: canal,
-   href: '/light-cac2'
+   href: '/ducted-conditioners'
 },
 {
    title: 'VRF системы',
@@ -37,7 +37,7 @@ const list = [{
 {
    title: 'Чиллер-фанкоил Midea',
    img: chiller,
-   href: '/chiller'
+   href: '/chillers'
 },]
 
 function HeaderDropdownList() {

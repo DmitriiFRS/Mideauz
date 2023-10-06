@@ -5,7 +5,6 @@ import welkin from '../../public/logos/Welkin.png';
 import Link from "next/link";
 import './Header.scss'
 import HeaderNav from "./HeaderNav";
-import basket from '../../public/icons/basket.png';
 import Search from "./Search";
 
 
