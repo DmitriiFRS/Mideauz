@@ -14,7 +14,7 @@ import apollon from '../../public/img/Equip/AirConditioners/Welkin/Apollon.jpg';
 import ataman from '../../public/img/Equip/AirConditioners/Welkin/Ataman.jpg';
 import epic from '../../public/img/Equip/AirConditioners/Welkin/Epic.png';
 import epicG from '../../public/img/Equip/AirConditioners/Welkin/Epic-Gold.png';
-import nuar from '../../public/img/Equip/AirConditioners/Welkin/nuar.png';
+import nuar from '../../public/img/Equip/AirConditioners/Welkin/Nuar.png';
 import sirius from '../../public/img/Equip/AirConditioners/Welkin/Sirius.jpg';
 import vavilon from '../../public/img/Equip/AirConditioners/Welkin/Vavilon.jpg';
 import zizoo from '../../public/img/Equip/AirConditioners/Welkin/Zizoo.jpg';
