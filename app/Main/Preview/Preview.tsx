@@ -5,7 +5,7 @@ import bg from '../../../public/img/Preview-bg.jpeg'
 function Preview() {
 return (
    <section className="py-56 w-full h-full">
-      <div className="preview__bg absolute left-0 top-0 w-full h-full object-cover z-0">
+      <div className="preview__bg absolute left-0 top-0 w-full object-cover z-0">
          <Image src={bg} alt='bg' fill={true} />
       </div>
       <div className="container flex flex-col items-center justify-center h-full relative z-10 text-white">

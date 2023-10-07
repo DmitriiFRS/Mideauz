@@ -56,19 +56,9 @@ export const mideaConditionersData = [{
    img: alba
 },
 {
-   name: 'Vertu plus',
-   subname: 'Inverter',
-   img: vertu
-},
-{
    name: 'All Easy Pro',
    subname: 'Inverter',
    img: aep
-},
-{
-   name: 'Mirror',
-   subname: 'Low voltage',
-   img: mirror
 },]
 
 export const welkinConditionersData = [{

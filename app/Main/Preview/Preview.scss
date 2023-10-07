@@ -30,6 +30,10 @@
    }
    &__bg {
       filter: brightness(60%);
+      min-height: 1080px;
+      @media(min-width: 3500px) {
+         min-height: 2500px;
+      }
    }
 }
 
