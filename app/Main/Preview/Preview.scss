@@ -3,6 +3,27 @@
       font-size: 70px;
       font-weight: 700;
       line-height: 160%;
+      @media(max-width: 900px) {
+         font-size: 50px;
+      }
+      @media(max-width: 630px) {
+         font-size: 40px;
+      }
+      @media(max-width: 504px) {
+         font-size: 30px;
+      }
+   }
+   &__subtitle {
+      @media(max-width: 504px) {
+         font-size: 18px;
+      }
+   }
+   &__phones-container {
+      width: 100%;
+      @media(max-width: 630px) {
+         flex-direction: column;
+         width: auto;
+      }  
       
    }
    &__phones {
@@ -13,6 +34,9 @@
       position: relative;
       z-index: 1;
       overflow: hidden;
+      @media(max-width: 630px) {
+         padding: 10px 15px;
+      }
       &::after {
          content: '';
          position: absolute;
@@ -31,9 +55,6 @@
    &__bg {
       filter: brightness(60%);
       min-height: 1080px;
-      @media(min-width: 3500px) {
-         min-height: 2500px;
-      }
    }
 }
 

@@ -47,7 +47,6 @@ const equip = [{
 
 function Equip() {
    
-   
    return (
    <section className="equip my-24 flex flex-col">
       {equip.map((el, idx) => {

@@ -35,8 +35,8 @@ function EquipItem({el, idx} : equipItemProps) {
                <Image src={el.img} alt={el.title} width={idx === 4 ? 450 : 350} height={150} />
             </div>
             <div className="flex flex-col items-center equip__title_body">
-               <h3 className='text-6xl'>{el.title}</h3>
-               <p className='text-2xl mt-7'>{el.subtitle}</p>
+               <h3 className='equip__title text-6xl'>{el.title}</h3>
+               <p className='equip__subtitle text-2xl mt-7'>{el.subtitle}</p>
                <Link href={el.href} className='equip__btn mt-7 font-semibold'>Подробнее</Link>
             </div>
          </div>

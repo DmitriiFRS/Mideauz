@@ -1,5 +1,32 @@
 .banner {
    margin: 175px 0 0 0;
+   @media(max-width: 1290px) {
+      margin: 50px 0 0 0;
+   }
+   @media(max-width: 900px) {
+      margin: 150px 0 0 0;
+   }
+   @media(max-width: 880px) {
+      margin: 120px 0 0 0;
+   }
+   @media(max-width: 650px) {
+      margin: 80px 0 0 0;
+   }
+   @media(max-width: 630px) {
+      margin: 20px 0 0 0;
+   }
+   @media(max-width: 508px) {
+      margin: 0px 0 0 0;
+   }
+   @media(max-width: 504px) {
+      margin: 100px 0 0 0;
+   }
+   @media(max-width: 503px) {
+      margin: 65px 0 0 0;
+   }
+   @media(max-width: 375px) {
+      margin: 20px 0 0 0;
+   }
    &__container {
       position: relative;
       z-index: 120;

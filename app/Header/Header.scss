@@ -1,6 +1,26 @@
 .header {
    padding: 10px 0 30px 0;
 }
+.midea-logo {
+   top: 40px;
+   left: 40px;
+   @media(max-width: 1100px) {
+      top: 10px;
+   }
+   @media(max-width: 850px) {
+      left: 10px;
+   }
+}
+.welkin-logo {
+   top: 48px;
+   right: 40px;
+   @media(max-width: 1100px) {
+      top: 16px;
+   }
+   @media(max-width: 850px) {
+      right: 10px;
+   }
+}
 .header__inputBody {
    width: 50%;
    margin: 15px auto 0px auto;
