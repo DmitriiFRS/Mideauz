@@ -27,7 +27,7 @@ function GuaranteeColumns() {
    <div className="grid grid-cols-3 gap-9 text-center mt-12">
       {columns.map((el, idx) => {
          return (
-            <div className="column flex flex-col justify-center items-center">
+            <div  key={idx} className="column flex flex-col justify-center items-center">
                <Image src={el.img} alt={el.imgAlt} width={100} height={100} />
                <h3 className='mt-7 text-4xl'>{el.title}</h3>
                <p className='mt-7 text-xl flex-auto'>{el.subtitle}</p>

@@ -52,7 +52,7 @@ function Equip() {
    <section className="equip my-24 flex flex-col">
       {equip.map((el, idx) => {
          return (
-            <EquipItem el={el} idx={idx} />
+            <EquipItem key={idx} el={el} idx={idx} />
          )
       })}
    </section>

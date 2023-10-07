@@ -20,7 +20,7 @@ return (
       <ul className="grid grid-cols-2 gap-12 mt-14">
          {data.map((el, index) => {
             return (
-               <li className="flex flex-col justify-center text-center items-center">
+               <li key={index} className="flex flex-col justify-center text-center items-center">
                   <div className={`${title === 'Кондиционеры Welkin' ? 'col-conditioners__img-container-welkin' : 'col-conditioners__img-container'} relative flex items-center justify-center z-0`}>
                      <Image src={el.img} alt={el.name} fill={true} />
                   </div>

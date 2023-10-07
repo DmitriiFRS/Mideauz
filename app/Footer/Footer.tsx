@@ -30,7 +30,7 @@ return (
          <Image src={midea} alt='midea' width={204} height={80} />
          {footerData.map((el, idx) => {
             return (
-               <div className=''>
+               <div key={idx}>
                   <h4 className='text-xl'>{el.title}</h4>
                   <p className='mt-4 text-lg'>{el.el1}</p>
                  {el.el2 ? <p className='text-lg'>{el.el2}</p> : ''}
