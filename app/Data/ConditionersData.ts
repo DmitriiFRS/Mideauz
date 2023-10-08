@@ -4,9 +4,7 @@ import lotusG from '../../public/img/Equip/AirConditioners/Midea/Lotus-gold.png'
 import gaia from '../../public/img/Equip/AirConditioners/Midea/Gaia.png';
 import brezeless from '../../public/img/Equip/AirConditioners/Midea/Brezeless.png';
 import alba from '../../public/img/Equip/AirConditioners/Midea/Alba.png';
-import vertu from '../../public/img/Equip/AirConditioners/Midea/Vertu-plus.png';
 import aep from '../../public/img/Equip/AirConditioners/Midea/AEP.png';
-import mirror from '../../public/img/Equip/AirConditioners/Midea/Mirror.png';
 
 import novus from '../../public/img/Equip/AirConditioners/Welkin/Novus.jpg';
 import general from '../../public/img/Equip/AirConditioners/Welkin/General.jpg';
@@ -21,93 +19,150 @@ import zizoo from '../../public/img/Equip/AirConditioners/Welkin/Zizoo.jpg';
 
 
 export const mideaConditionersData = [{
-   name: 'Ultraviolet',
-   subname: 'Inverter',
-   img: ultraviolet
+   main: {
+      name: 'Ultraviolet',
+      subname: 'Inverter',
+      img: ultraviolet,
+      id: '1'
+   },
+   
 },
-{
-   name: 'Naomi',
-   subname: 'Inverter Low voltage 135V-265V',
-   img: naomi
+{  
+   main: {
+      name: 'Naomi',
+      subname: 'Inverter Low voltage 135V-265V',
+      img: naomi,
+      id: '2'
+   },
+   
 },
-{
-   name: 'Lotus Silver',
-   subname: 'Inverter',
-   img: lotusG
+{  main: {
+      name: 'Lotus Silver',
+      subname: 'Inverter',
+      img: lotusG,
+      id: '3'
+   },
+   
 },
-{
-   name: 'Lotus Gold',
-   subname: 'Inverter',
-   img: lotusG
+{  main: {
+      name: 'Lotus Gold',
+      subname: 'Inverter',
+      img: lotusG,
+      id: '4'
+   },
+   
 },
-{
-   name: 'Gaia',
-   subname: 'Inverter',
-   img: gaia
+{  main: {
+      name: 'Gaia',
+      subname: 'Inverter',
+      img: gaia,
+      id: '5'
+   },
+   
 },
-{
-   name: 'Brezeless',
-   subname: 'Inverter',
-   img: brezeless
+{  main: {
+      name: 'Brezeless',
+      subname: 'Inverter',
+      img: brezeless,
+      id: '6'
+   },
+   
 },
-{
-   name: 'Alba',
-   subname: 'Inverter',
-   img: alba
+{   main: {
+      name: 'Alba',
+      subname: 'Inverter',
+      img: alba,
+      id: '7'
+   },
+   
 },
-{
-   name: 'All Easy Pro',
-   subname: 'Inverter',
-   img: aep
+{  main: {
+      name: 'All Easy Pro',
+      subname: 'Inverter',
+      img: aep,
+      id: '8'
+   },
+   
 },]
 
 export const welkinConditionersData = [{
-   name: 'Apollon',
-   subname: 'Inverter',
-   img: apollon
+   main: {
+      name: 'Apollon',
+      subname: 'Inverter',
+      img: apollon,
+      id: '9'
+   },
+   
 },
-{
-   name: 'Ataman',
-   subname: 'Full DC Inverter',
-   img: ataman
+{  main: {
+      name: 'Ataman',
+      subname: 'Full DC Inverter',
+      img: ataman,
+      id: '10'
+   },
+   
 },
-{
-   name: 'Epic',
-   subname: 'Inverter',
-   img: epic
+{  main: {
+      name: 'Epic',
+      subname: 'Inverter',
+      img: epic,
+      id: '11'
+   },
+   
 },
-{
-   name: 'Epic Gold',
-   subname: 'Inverter',
-   img: epicG
+{  main: {
+      name: 'Epic Gold',
+      subname: 'Inverter',
+      img: epicG,
+      id: '12'
+   },
+   
 },
-{
-   name: 'General',
-   subname: 'Full DC Inverter',
-   img: general
+{  main: {
+      name: 'General',
+      subname: 'Full DC Inverter',
+      img: general,
+      id: '13'
+   },
+   
 },
-{
-   name: 'Novus',
-   subname: 'Full DC Inverter',
-   img: novus
+{  main: {
+      name: 'Novus',
+      subname: 'Full DC Inverter',
+      img: novus,
+      id: '14'
+   },
+   
 },
-{
-   name: 'Nuar',
-   subname: 'Inverter',
-   img: nuar
+{  main: {
+      name: 'Nuar',
+      subname: 'Inverter',
+      img: nuar,
+      id: '15'
+   },
+   
 },
-{
-   name: 'Sirius',
-   subname: 'Full DC Inverter',
-   img: sirius
+{  main: {
+      name: 'Sirius',
+      subname: 'Full DC Inverter',
+      img: sirius,
+      id: '16'
+   },
+   
 },
-{
-   name: 'Vavilon',
-   subname: 'Inverter',
-   img: vavilon
+{  main: {
+      name: 'Vavilon',
+      subname: 'Inverter',
+      img: vavilon,
+      id: '17'
+   },
+   
 },
-{
-   name: 'Zizoo',
-   subname: 'Inverter',
-   img: zizoo
+{  main: {
+      name: 'Zizoo',
+      subname: 'Inverter',
+      img: zizoo,
+      id: '18'
+   },
+   
 },]

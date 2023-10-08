@@ -1,7 +1,7 @@
 import {mideaConditionersData} from '../Data/ConditionersData';
 import {welkinConditionersData} from '../Data/ConditionersData';
 
-import Conditioners from "./Conditioners";
+import Conditioners from "./index";
 const data = [{
    title: 'Кондиционеры Midea',
 },
