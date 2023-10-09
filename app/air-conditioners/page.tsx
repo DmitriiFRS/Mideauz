@@ -1,5 +1,5 @@
-import {mideaConditionersData} from '../Data/ConditionersData';
-import {welkinConditionersData} from '../Data/ConditionersData';
+import {mideaConditionersData} from '../Data/Conditioners.data';
+import {welkinConditionersData} from '../Data/Conditioners.data';
 
 import Conditioners from "./index";
 const data = [{
