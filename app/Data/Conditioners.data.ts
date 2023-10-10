@@ -22,7 +22,7 @@ export const mideaConditionersData = [{
    main: {
       name: 'Ultraviolet',
       subname: 'Inverter',
-      img: ultraviolet,
+      img: 'ultraviolet',
       id: '1'
    },
    details: {
@@ -66,7 +66,7 @@ export const mideaConditionersData = [{
    main: {
       name: 'Naomi',
       subname: 'Inverter Low voltage 135V-265V',
-      img: naomi,
+      img: 'naomi',
       id: '2'
    },
    
@@ -74,7 +74,7 @@ export const mideaConditionersData = [{
 {  main: {
       name: 'Lotus Silver',
       subname: 'Inverter',
-      img: lotusG,
+      img: 'lotusG',
       id: '3'
    },
    
@@ -82,7 +82,7 @@ export const mideaConditionersData = [{
 {  main: {
       name: 'Lotus Gold',
       subname: 'Inverter',
-      img: lotusG,
+      img: 'lotusG',
       id: '4'
    },
    
@@ -90,7 +90,7 @@ export const mideaConditionersData = [{
 {  main: {
       name: 'Gaia',
       subname: 'Inverter',
-      img: gaia,
+      img: 'gaia',
       id: '5'
    },
    
@@ -98,7 +98,7 @@ export const mideaConditionersData = [{
 {  main: {
       name: 'Brezeless',
       subname: 'Inverter',
-      img: brezeless,
+      img: 'brezeless',
       id: '6'
    },
    
@@ -106,7 +106,7 @@ export const mideaConditionersData = [{
 {   main: {
       name: 'Alba',
       subname: 'Inverter',
-      img: alba,
+      img: 'alba',
       id: '7'
    },
    
@@ -114,7 +114,7 @@ export const mideaConditionersData = [{
 {  main: {
       name: 'All Easy Pro',
       subname: 'Inverter',
-      img: aep,
+      img: 'aep',
       id: '8'
    },
    
@@ -124,7 +124,7 @@ export const welkinConditionersData = [{
    main: {
       name: 'Apollon',
       subname: 'Inverter',
-      img: apollon,
+      img: 'apollon',
       id: '9'
    },
    
@@ -132,7 +132,7 @@ export const welkinConditionersData = [{
 {  main: {
       name: 'Ataman',
       subname: 'Full DC Inverter',
-      img: ataman,
+      img: 'ataman',
       id: '10'
    },
    
@@ -140,7 +140,7 @@ export const welkinConditionersData = [{
 {  main: {
       name: 'Epic',
       subname: 'Inverter',
-      img: epic,
+      img: 'epic',
       id: '11'
    },
    

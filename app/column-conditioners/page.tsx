@@ -1,5 +1,5 @@
-import {mideaConditionersData} from '../Data/ColumnConditionersData';
-import {welkinConditionersData} from '../Data/ColumnConditionersData';
+import {mideaConditionersData} from '../Data/ColumnConditioners.data';
+import {welkinConditionersData} from '../Data/ColumnConditioners.data';
 import Conditioners from './Conditioners';
 
 function ColumnConditioners() {
