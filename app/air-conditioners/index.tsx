@@ -16,10 +16,13 @@ type dataType = {
 }
 
 type ConditionersProps = {
-   title: string
+   brands: Array<string>
    data: Array<dataType>
 }
-function Conditioners({title, data}: ConditionersProps) {
+function ConditionersList({brands, data}: ConditionersProps) {
+   useEffect(() => {
+      console.log(data)
+   }, [])
    const [isView, setIsView] = useState(false);
    const {ref, inView} = useInView({
       threshold: 0.1,
@@ -27,11 +30,10 @@ function Conditioners({title, data}: ConditionersProps) {
    })
    useEffect(() => {
       setIsView(inView)
-      console.log(data)
    }, [inView])
    return (
    <div className="conditioners container">
-      <h2 className="text-center font-bold text-6xl text-slate-600">{title}</h2>
+      <h2 className="text-center font-bold text-6xl text-slate-600">{brands}</h2>
       <ul ref={ref} className="conditioners__list grid grid-cols-3 gap-12 mt-14">
          {data.map((el, index) => {
             return (
@@ -54,4 +56,4 @@ function Conditioners({title, data}: ConditionersProps) {
    </div>
    )
 }
-export default Conditioners;
+export default ConditionersList;

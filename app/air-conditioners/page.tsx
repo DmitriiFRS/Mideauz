@@ -1,19 +1,24 @@
 import {mideaConditionersData} from '../Data/Conditioners.data';
 import {welkinConditionersData} from '../Data/Conditioners.data';
+import ConditionersList from './index';
 
 import Conditioners from "./index";
-const data = [{
-   title: 'Кондиционеры Midea',
-},
-{
-   title: 'Кондиционеры Welkin',
-}]
+const brands = ['Кондиционеры Midea', 'Кондиционеры Welkin'];
 
-function AirConditiones() {
+async function getConditionsData() {
+   const res = await fetch('http://localhost:4000/airConditioners');
+   if (!res.ok) {
+      console.log('error')
+   }
+   return res.json();
+}
+
+async function AirConditiones() {
+   const data = await getConditionsData();
+   console.log(data)
    return (
    <section className='flex-auto'>
-            <Conditioners title={data[0].title} data={mideaConditionersData}/>
-            <Conditioners title={data[1].title} data={welkinConditionersData}/>
+      <ConditionersList brands={brands} data={data} />
    </section>
    )
 }
