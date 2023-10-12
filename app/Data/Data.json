@@ -5,7 +5,7 @@
             "main": {
                "name": "Ultraviolet",
                "subname": "Inverter",
-               "img": "ultraviolet",
+               "img": "./img/Equip/AirConditioners/Midea/Ultraviolet.jpg",
                "id": "1"
             },
             "details": {
