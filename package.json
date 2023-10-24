@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "server": "json-server -w app/Data/Data.json -p 4000"
+    "server": "json-server -w app/Data/Data2.json -p 4000"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -17,9 +17,11 @@
     "autoprefixer": "10.4.15",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
+    "firebase": "^10.5.0",
     "next": "13.4.19",
     "postcss": "8.4.29",
     "react": "18.2.0",
+    "react-content-loader": "^6.2.1",
     "react-dom": "18.2.0",
     "react-intersection-observer": "^9.5.2",
     "react-redux": "^8.1.2",

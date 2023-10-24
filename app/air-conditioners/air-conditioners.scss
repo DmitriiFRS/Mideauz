@@ -1,47 +1,56 @@
 .conditioners {
-   padding: 50px 0;
-   &__item {
-      transition: 0.5s ease-in-out;
-      opacity: 0;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      cursor: pointer;
-      &:hover .conditioners__img {
-         transform: scale(1.2);
-      }
-      &__active {
-         opacity: 1;
-      }
-   }
-   &__img-container {
-      width: 350px;
-      height: 350px;
-   }
-   &__img {
-      transition: 0.4s;
-   }
+  padding: 50px 0;
+  &__item {
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    &:hover .conditioners__img {
+      transform: scale(1.2);
+    }
+    &__active {
+      opacity: 1;
+    }
+  }
+  &__img-container {
+    width: 350px;
+    height: 350px;
+  }
+  &__img {
+    transition: 0.4s;
+  }
 
-   &__btn {
-      background: linear-gradient(45deg, rgb(104, 104, 104) 0%, rgba(223,223,223,0.10127801120448177) 100%);
-      padding: 15px 25px;
-      transition: 0.4s;
-      position: relative;
-      z-index: 2;
+  &__btn {
+    background: linear-gradient(
+      45deg,
+      rgb(104, 104, 104) 0%,
+      rgba(223, 223, 223, 0.10127801120448177) 100%
+    );
+    padding: 15px 25px;
+    transition: 0.4s;
+    position: relative;
+    z-index: 2;
+    border-radius: 9px;
+    &:before {
       border-radius: 9px;
-      &:before {
-         border-radius: 9px;
-         position: absolute;
-         left: 0;
-         top: 0;
-         width: 0%;
-         height: 100%;
-         content: '';
-         background: #2585CD;
-         transition: 0.2s ease-in-out;
-         z-index: -1;
-         color: #fff;
-      }
-      &:hover::before {
-         width: 100%;
-      }
-   }
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0%;
+      height: 100%;
+      content: "";
+      background: #2585cd;
+      transition: 0.2s ease-in-out;
+      z-index: -1;
+      color: #fff;
+    }
+    &:hover::before {
+      width: 100%;
+    }
+  }
+}
+.skeleton__container {
+  max-width: 1556px;
+  margin: 0 auto;
+  padding: 0 10px;
 }
