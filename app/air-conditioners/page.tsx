@@ -65,4 +65,3 @@ function AirConditiones() {
   );
 }
 export default AirConditiones;
-// 484w 600h

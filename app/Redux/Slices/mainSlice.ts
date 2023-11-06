@@ -23,7 +23,7 @@ type ConditionerList = {
 };
 
 export const conditionerListData = createAsyncThunk<ConditionerList, undefined>(
-  "main/conditionerListFetch",
+  "main/conditionerListFirestore",
   async function getData() {
     const dataRef = await getDoc(
       doc(db, "кондиционеры", "9aSgSZhM0mZM021Euag3")
