@@ -29,6 +29,7 @@ const nav = [
     id: 4,
     title: "0 товаров",
     img: cart,
+    link: "/cart",
   },
 ];
 function HeaderNav() {
@@ -66,16 +67,18 @@ function HeaderNav() {
               <Link href={el.href}>{el.title}</Link>
             </li>
           ) : el.img ? (
-            <li key={idx} className="header__navitem flex items-center">
-              <span>{el.title}</span>
-              <Image
-                className="ml-3"
-                src={cart}
-                alt="cart"
-                width={50}
-                height={50}
-              />
-            </li>
+            <Link href={el.link}>
+              <li key={idx} className="header__navitem flex items-center">
+                <span>{el.title}</span>
+                <Image
+                  className="ml-3"
+                  src={el.img}
+                  alt="cart"
+                  width={50}
+                  height={50}
+                />
+              </li>
+            </Link>
           ) : (
             <li
               onMouseEnter={displayBar}
