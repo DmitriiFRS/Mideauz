@@ -13,6 +13,7 @@ type ConditionerModels = {
   models: Array<ConditionersPower>;
   company: string;
   name: string;
+  img: string;
 };
 
 type ConditionerItems = {

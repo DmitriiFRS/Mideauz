@@ -54,3 +54,59 @@
   margin: 0 auto;
   padding: 0 10px;
 }
+.conditionerCard {
+  padding: 0 50px;
+  &__mainBody {
+    gap: 100px;
+  }
+  &__img {
+    flex: 1 1 50%;
+    max-width: 350px;
+    max-height: 350px;
+    height: 350px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  &__main {
+    flex: 0 1 auto;
+  }
+  &__select {
+    max-width: 120px;
+    border: 1px solid #838383;
+    padding: 10px 10px 10px 15px;
+    text-align: center;
+    border-radius: 8px;
+  }
+  &__inputbtnContainer {
+    display: flex;
+    align-items: center;
+  }
+  &__input {
+    border: 2px solid #838383;
+    border-radius: 8px;
+    max-width: 120px;
+    padding: 10px 5px 10px 15px;
+    max-height: 50px;
+    height: 100%;
+    &:focus {
+      border: 2px solid rgb(1, 166, 243);
+      box-shadow: 0px 0px 5px 0px rgb(1, 166, 243);
+    }
+  }
+  &__submit {
+    border-radius: 8px;
+    background: #5f5f5f;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 20px;
+    height: 49px;
+    color: #fff;
+  }
+  &__desc {
+    flex: 1 1 auto;
+  }
+  &__descList {
+    & > *:not(:last-child) {
+      margin: 0 0 20px 0;
+    }
+  }
+}
