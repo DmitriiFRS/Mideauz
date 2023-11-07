@@ -12,11 +12,11 @@ import { currencyValueData } from "../Redux/Slices/main.slice";
 function ConditionersList({ conditionerList, brands }: any) {
    const dispatch = useDispatch<AppDispatch>();
    const [isView, setIsView] = useState(false);
-   const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
    const { ref, inView } = useInView({
       threshold: 0.1,
       triggerOnce: true,
    });
+   const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
    useEffect(() => {
       dispatch(currencyValueData());
    }, [dispatch]);

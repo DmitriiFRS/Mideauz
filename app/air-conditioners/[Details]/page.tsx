@@ -11,6 +11,7 @@ import SelectPowerInput from "./SelectPowerInput";
 import CountInput from "./CountInput";
 import AddToCart from "./AddToCart";
 import Description from "./Description";
+import { currencyValueData } from "@/app/Redux/Slices/main.slice";
 
 export type ModelsType = {
    details: Array<string>;
@@ -35,6 +36,10 @@ function Details() {
    const selectRef = useRef<HTMLSelectElement>(null);
    const dispatch = useDispatch<AppDispatch>();
    const goods = useSelector((state: RootState) => state.itemReducer.itemsList);
+   const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
+   useEffect(() => {
+      dispatch(currencyValueData());
+   }, [dispatch]);
 
    useEffect(() => {
       dispatch(getConditionerItems());
@@ -46,7 +51,6 @@ function Details() {
             return el.name === params.Details;
          });
          setModel(newModel[0]);
-         console.log(model);
       }
    }, [goods]);
    useEffect(() => {
@@ -73,9 +77,14 @@ function Details() {
                   <SelectPowerInput selectRef={selectRef} getValue={getValue} model={model} />
                   <CountInput count={count} setCount={setCount} />
                </div>
-               <div className="conditionerCard__price mt-10 text-2xl text-center">
-                  {model.models[optionValue].price + " UZS"}
-               </div>
+               {currencyValue ? (
+                  <div className="conditionerCard__price mt-10 text-2xl text-center">
+                     {(model.models[optionValue].price * currencyValue).toLocaleString() + " UZS"}
+                  </div>
+               ) : (
+                  ""
+               )}
+
                <AddToCart />
             </div>
             <Description selectRef={selectRef} itemParams={itemParams} itemOtherParams={itemOtherParams} />
