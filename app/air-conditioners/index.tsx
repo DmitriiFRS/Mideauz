@@ -43,7 +43,9 @@ function ConditionersList({ conditionerList, brands }: any) {
                            <p className="text-5xl font-medium relative z-10">{el.name}</p>
                            <span className="text-2xl mt-5 inline-block">{el.sub}</span>
                            {currencyValue ? (
-                              <span className="text-xl mt-5 inline-block">от {el.price * currencyValue} UZS</span>
+                              <span className="text-xl mt-5 inline-block">
+                                 от {(el.price * currencyValue).toLocaleString()} UZS
+                              </span>
                            ) : (
                               ""
                            )}
