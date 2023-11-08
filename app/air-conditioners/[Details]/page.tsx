@@ -85,7 +85,7 @@ function Details() {
                   ""
                )}
 
-               <AddToCart />
+               <AddToCart model={model} optionValue={optionValue} count={count} />
             </div>
             <Description selectRef={selectRef} itemParams={itemParams} itemOtherParams={itemOtherParams} />
          </div>
