@@ -2,5 +2,23 @@
    &__clear {
       padding: 10px 15px;
       border: 1px solid #000;
+      color: #a2a2a2;
+   }
+   &__bodyContainer {
+      grid-template-columns: 75% 25%;
+      gap: 30px;
+      &__wfull {
+         grid-template-columns: 100% 0%;
+         background: #e4e4e4;
+      }
+   }
+   &__main {
+      min-height: 315px;
+      background: #e4e4e4;
+   }
+   &__additional {
+      &__disable {
+         display: none;
+      }
    }
 }
