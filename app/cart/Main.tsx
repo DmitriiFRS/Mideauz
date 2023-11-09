@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
+import ultraviolet from "../../public/img/Equip/AirConditioners/Midea/Ultraviolet.jpg";
+import Image from "next/image";
 type CartItemType = {
    model: string;
    power: string;
@@ -19,26 +20,47 @@ function Main({ value }: { value: Array<CartItemType> }) {
             <div className={`cart__bodyContainer grid ${!value.length ? "cart__bodyContainer__wfull" : ""}`}>
                <div className="container cart__main">
                   {!value.length ? (
-                     <h2 className="text-center">Корзина пуста</h2>
+                     <div className="flex flex-col items-center h-full justify-center">
+                        <h2 className="text-4xl">Ваша корзина пуста</h2>
+                        <Link className="mt-14 cart__btn" href={"/"}>
+                           <button className="cart__homeBtn text-xl">Вернуться на главную</button>
+                        </Link>
+                     </div>
                   ) : (
-                     <ul className="">
+                     <ul className="py-3 px-10">
                         {value.map((el: CartItemType, index: number) => {
                            return (
-                              <li key={index} className="cart__item mt-8">
+                              <li key={index} className="cart__item flex justify-between items-center">
                                  <Link href={"/"}>
-                                    <p>
-                                       Модель: {el.model} {el.power} BTU
-                                    </p>
-                                    <p>Количество: {el.count}</p>
-                                    <p>Стоимость: {el.price * el.count} UZS</p>
+                                    <Image src={ultraviolet} alt="condishn" width={200} height={200} />
                                  </Link>
+                                 <p className="text-2xl">
+                                    Модель: {el.model} {el.power} BTU
+                                 </p>
+                                 <p className="text-2xl">Количество: {el.count}</p>
+                                 <p className="text-2xl">Стоимость: {el.price * el.count} UZS</p>
                               </li>
                            );
                         })}
                      </ul>
                   )}
                </div>
-               <div className={`cart__additional ${!value.length ? "cart__additional__disable" : ""}`}>fd</div>
+               <div className={`cart__additional mr-7 p-3 ${!value.length ? "cart__additional__disable" : ""}`}>
+                  <h3 className="text-lg">Оформите заявку, и специалист свяжется с вами в ближайшее время</h3>
+                  <div className="mt-10">
+                     <input className="py-3 px-5 w-full" type="text" placeholder="Как к вам обращаться?" />
+                  </div>
+                  <div className="mt-10">
+                     <input className="py-3 px-5 w-full" type="number" placeholder="Ваш номер телефона" />
+                  </div>
+                  <div className="cart__separator"></div>
+                  <div className="flex items-center justify-center cart__btn">
+                     <button className="relative z-10">Оставить заявку</button>
+                  </div>
+                  <div className="mt-10 text-2xl font-semibold">
+                     Итоговая стоимость: <span>{100_000 + " UZS"}</span>
+                  </div>
+               </div>
             </div>
          </div>
       )
