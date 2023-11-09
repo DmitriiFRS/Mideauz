@@ -7,6 +7,7 @@ type AddToCartPropsType = {
    model: ModelType;
    optionValue: number;
    count: number;
+   currencyValue: number | undefined;
 };
 
 type NewItem = {
@@ -16,7 +17,7 @@ type NewItem = {
    count: number;
 };
 
-function AddToCart({ model, optionValue, count }: AddToCartPropsType) {
+function AddToCart({ model, optionValue, count, currencyValue }: AddToCartPropsType) {
    const [value, setValue] = useLocalStorage<any>("item", []);
    function addItemToCart() {
       let flag = false;

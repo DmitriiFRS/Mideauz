@@ -2,6 +2,9 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import ultraviolet from "../../public/img/Equip/AirConditioners/Midea/Ultraviolet.jpg";
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../Redux/store";
+import { currencyValueData } from "../Redux/Slices/main.slice";
 type CartItemType = {
    model: string;
    power: string;
@@ -11,9 +14,22 @@ type CartItemType = {
 
 function Main({ value }: { value: Array<CartItemType> }) {
    const [clientValue, setClientValue] = useState<Array<CartItemType> | null>(null);
+   const dispatch = useDispatch<AppDispatch>();
+   const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
+   const [total, setTotal] = useState(0);
    useEffect(() => {
       setClientValue(value);
    }, [value]);
+   useEffect(() => {
+      dispatch(currencyValueData());
+      let totalVal = 0;
+      clientValue?.forEach((el) => {
+         totalVal += +el.price * el.count;
+      });
+      if (currencyValue) {
+         setTotal(totalVal * currencyValue);
+      }
+   }, [dispatch, clientValue, currencyValue]);
    return (
       clientValue && (
          <div className="cart__body mt-10 mx-6">
@@ -38,7 +54,11 @@ function Main({ value }: { value: Array<CartItemType> }) {
                                     Модель: {el.model} {el.power} BTU
                                  </p>
                                  <p className="text-2xl">Количество: {el.count}</p>
-                                 <p className="text-2xl">Стоимость: {el.price * el.count} UZS</p>
+                                 {currencyValue && (
+                                    <p className="text-2xl">
+                                       Стоимость: {(el.price * el.count * currencyValue).toLocaleString()} UZS
+                                    </p>
+                                 )}
                               </li>
                            );
                         })}
@@ -58,7 +78,7 @@ function Main({ value }: { value: Array<CartItemType> }) {
                      <button className="relative z-10">Оставить заявку</button>
                   </div>
                   <div className="mt-10 text-2xl font-semibold">
-                     Итоговая стоимость: <span>{100_000 + " UZS"}</span>
+                     Итоговая стоимость: <span>{total.toLocaleString() + " UZS"}</span>
                   </div>
                </div>
             </div>
