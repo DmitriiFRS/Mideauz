@@ -43,26 +43,40 @@ function Main({ value }: { value: Array<CartItemType> }) {
                         </Link>
                      </div>
                   ) : (
-                     <ul className="py-3 px-10">
-                        {value.map((el: CartItemType, index: number) => {
-                           return (
-                              <li key={index} className="cart__item flex justify-between items-center">
-                                 <Link href={"/"}>
-                                    <Image src={ultraviolet} alt="condishn" width={200} height={200} />
-                                 </Link>
-                                 <p className="text-2xl">
-                                    Модель: {el.model} {el.power} BTU
-                                 </p>
-                                 <p className="text-2xl">Количество: {el.count}</p>
-                                 {currencyValue && (
-                                    <p className="text-2xl">
-                                       Стоимость: {(el.price * el.count * currencyValue).toLocaleString()} UZS
-                                    </p>
-                                 )}
-                              </li>
-                           );
-                        })}
-                     </ul>
+                     <>
+                        <ul className="py-3 px-10">
+                           {value.map((el: CartItemType, index: number) => {
+                              return (
+                                 <li key={index} className="cart__item flex items-center justify-between">
+                                    <Link href={"/"}>
+                                       <Image src={ultraviolet} alt="condishn" width={200} height={200} />
+                                    </Link>
+                                    <div className="cart__desc flex justify-between items-center">
+                                       <h3 className="cart__desc__model text-4xl">{`Кондиционер Midea ${el.model} ${el.power} BTU`}</h3>
+                                       <div className="flex flex-col items-center">
+                                          <span className="text-2xl">Количество</span>
+                                          <span className="text-3xl mt-4">{el.count}</span>
+                                       </div>
+                                       <div className="flex flex-col items-center">
+                                          <span className="text-2xl">Общая стоимость</span>
+                                          {currencyValue && (
+                                             <span className="text-3xl mt-4">
+                                                {(el.price * currencyValue * el.count).toLocaleString()} UZS
+                                             </span>
+                                          )}
+                                       </div>
+                                    </div>
+                                 </li>
+                              );
+                           })}
+                        </ul>
+                        <div className="my-10 mx-9 text-xl  flex flex-col items-end">
+                           Итоговая стоимость:{" "}
+                           <span className="flex items-end text-3xl font-semibold mt-4">
+                              {total.toLocaleString() + " UZS"}
+                           </span>
+                        </div>
+                     </>
                   )}
                </div>
                <div className={`cart__additional mr-7 p-3 ${!value.length ? "cart__additional__disable" : ""}`}>
@@ -74,11 +88,8 @@ function Main({ value }: { value: Array<CartItemType> }) {
                      <input className="py-3 px-5 w-full" type="number" placeholder="Ваш номер телефона" />
                   </div>
                   <div className="cart__separator"></div>
-                  <div className="flex items-center justify-center cart__btn">
-                     <button className="relative z-10">Оставить заявку</button>
-                  </div>
-                  <div className="mt-10 text-2xl font-semibold">
-                     Итоговая стоимость: <span>{total.toLocaleString() + " UZS"}</span>
+                  <div className="flex items-center justify-center cart__btn cursor-pointer">
+                     <button className="relative z-10 w-full h-full">Оставить заявку</button>
                   </div>
                </div>
             </div>

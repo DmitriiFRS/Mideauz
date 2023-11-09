@@ -12,7 +12,7 @@ function Cart() {
    return (
       <div className="cart mt-14 flex-auto">
          <div className="cart__header container flex items-center">
-            <h2 className="text-4xl flex-auto">Корзина товаров</h2>
+            <h2 className="text-4xl font-medium flex-auto">Корзина товаров</h2>
             <button className="cart__btn">
                <span>Вернуться к покупкам</span>
             </button>
