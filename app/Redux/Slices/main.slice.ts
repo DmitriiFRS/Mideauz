@@ -26,6 +26,10 @@ type ConditionerList = {
 type CurrencyValueType = {
    value: number;
 };
+type RequestDataType = {
+   name: string;
+   number: number;
+};
 
 export const conditionerListData = createAsyncThunk<ConditionerList, undefined>(
    "main/conditionerListFirestore",
@@ -52,6 +56,20 @@ export const currencyValueData = createAsyncThunk<CurrencyValueType, undefined>(
          }
       });
       return dataRef as CurrencyValueType;
+   }
+);
+
+export const requestsData = createAsyncThunk<Array<RequestDataType>, undefined>(
+   "main/requestDataFirestore",
+   async function getData() {
+      const dataRef = await getDoc(doc(db, "заявки", "2gtV71ouF5nxoPcxcwkl")).then((snap) => {
+         if (snap.exists()) {
+            return snap.data();
+         } else {
+            console.error("error");
+         }
+      });
+      return dataRef as Array<RequestDataType>;
    }
 );
 
