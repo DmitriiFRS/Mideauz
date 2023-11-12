@@ -19,6 +19,7 @@ function Main({ value }: { value: Array<CartItemType> }) {
    const dispatch = useDispatch<AppDispatch>();
    const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
    const [total, setTotal] = useState(0);
+   const [totalUSD, setTotalUSD] = useState(0);
    useEffect(() => {
       setClientValue(value);
    }, [value]);
@@ -30,6 +31,7 @@ function Main({ value }: { value: Array<CartItemType> }) {
       });
       if (currencyValue) {
          setTotal(totalVal * currencyValue);
+         setTotalUSD(totalVal);
       }
    }, [dispatch, clientValue, currencyValue]);
 
@@ -40,8 +42,8 @@ function Main({ value }: { value: Array<CartItemType> }) {
                {!value.length ? (
                   <div className="flex flex-col items-center h-full justify-center">
                      <h2 className="text-4xl">Ваша корзина пуста</h2>
-                     <Link className="mt-14 cart__btn" href={"/"}>
-                        <button className="cart__homeBtn text-xl">Вернуться на главную</button>
+                     <Link className="mt-14 cart__btnBody" href={"/"}>
+                        <button className="cart__btn text-xl relative z-10">Вернуться на главную</button>
                      </Link>
                   </div>
                ) : (
@@ -81,7 +83,7 @@ function Main({ value }: { value: Array<CartItemType> }) {
                   </>
                )}
             </div>
-            <SendDataForm value={value} />
+            <SendDataForm clientValue={clientValue} currencyValue={currencyValue} total={total} totalUSD={totalUSD} />
          </div>
       </div>
    ) : (

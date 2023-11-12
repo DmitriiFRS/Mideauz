@@ -5,10 +5,12 @@ import { getDoc, doc } from "firebase/firestore";
 type initialStateType = {
    conditioners: ConditionerList | null;
    currencyValue: CurrencyValueType | null;
+   requestData: Array<RequestDataType> | null;
 };
 const initialState: initialStateType = {
    conditioners: null,
    currencyValue: null,
+   requestData: null,
 };
 type AirConditioner = {
    name: string;
@@ -83,6 +85,9 @@ const mainSlice = createSlice({
       });
       builder.addCase(currencyValueData.fulfilled, (state, action) => {
          state.currencyValue = action.payload;
+      });
+      builder.addCase(requestsData.fulfilled, (state, action) => {
+         state.requestData = action.payload;
       });
    },
 });
