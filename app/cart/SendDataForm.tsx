@@ -12,14 +12,18 @@ type GoodsListType = {
 
 function SendDataForm({
    clientValue,
+   setValue,
    currencyValue,
    total,
    totalUSD,
+   setAcceptModalStatus,
 }: {
    clientValue: Array<CartItemType>;
+   setValue: Function;
    currencyValue: number | undefined;
    total: number;
    totalUSD: number;
+   setAcceptModalStatus: (value: boolean) => void;
 }) {
    const [name, setName] = useState<string>("");
    const [phone, setPhone] = useState<string>("");
@@ -67,6 +71,8 @@ function SendDataForm({
       });
       setPhone("");
       setName("");
+      setAcceptModalStatus(true);
+      setValue([]);
    }
    //validation ---------------
    function resetValid(e: React.FocusEvent<HTMLInputElement>) {

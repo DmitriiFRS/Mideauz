@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Main from "./Main";
@@ -8,15 +7,16 @@ import { useRouter } from "next/navigation";
 
 function Cart() {
    const [value, setValue] = useLocalStorage("item", []);
-   const [isModalOpen, setModalStatus] = useState<boolean>(false);
+   const [isClearModalOpen, setClearModalStatus] = useState<boolean>(false);
+   const [isAcceptModalOpen, setAcceptModalStatus] = useState<boolean>(false);
    const router = useRouter();
    function clearCart() {
       setValue([]);
-      setModalStatus(false);
+      setClearModalStatus(false);
    }
    function clearModalOpen() {
       if (!value.length) return false;
-      setModalStatus(true);
+      setClearModalStatus(true);
    }
    function back() {
       router.back();
@@ -35,8 +35,10 @@ function Cart() {
          <Main
             value={value}
             setValue={setValue}
-            isModalOpen={isModalOpen}
-            setModalStatus={setModalStatus}
+            isClearModalOpen={isClearModalOpen}
+            setClearModalStatus={setClearModalStatus}
+            isAcceptModalOpen={isAcceptModalOpen}
+            setAcceptModalStatus={setAcceptModalStatus}
             clearCart={clearCart}
          />
       </div>

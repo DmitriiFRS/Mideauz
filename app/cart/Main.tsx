@@ -9,6 +9,8 @@ import CartSkeleton from "../Utilities/CartSkeleton";
 import SendDataForm from "./SendDataForm";
 import CartModal from "./CartModal";
 import { PiTrashBold } from "react-icons/pi";
+import { BsQuestionCircle } from "react-icons/bs";
+import { MdDone } from "react-icons/md";
 export type CartItemType = {
    model: string;
    power: string;
@@ -19,14 +21,18 @@ export type CartItemType = {
 
 function Main({
    value,
-   isModalOpen,
-   setModalStatus,
+   isClearModalOpen,
+   setClearModalStatus,
+   isAcceptModalOpen,
+   setAcceptModalStatus,
    clearCart,
    setValue,
 }: {
    value: Array<CartItemType>;
-   isModalOpen: boolean;
-   setModalStatus: (value: boolean) => void;
+   isClearModalOpen: boolean;
+   setClearModalStatus: (value: boolean) => void;
+   isAcceptModalOpen: boolean;
+   setAcceptModalStatus: (value: boolean) => void;
    clearCart: () => void;
    setValue: Function;
 }) {
@@ -57,6 +63,10 @@ function Main({
             return el.id.toString() !== e.currentTarget.id;
          })
       );
+   }
+   function closeModal() {
+      setClearModalStatus(false);
+      setAcceptModalStatus(false);
    }
    return clientValue ? (
       <div className="cart__body mt-10 mx-6">
@@ -114,9 +124,38 @@ function Main({
                      </div>
                   </>
                )}
-               <CartModal isModalOpen={isModalOpen} setModalStatus={setModalStatus} clearCart={clearCart} />
+               <CartModal isModalOpen={isClearModalOpen} closeModal={closeModal}>
+                  <BsQuestionCircle style={{ color: "rgb(82 82 91)" }} size={60} />
+                  <h3 className="text-2xl text-center font-medium mt-14 text-zinc-600">
+                     Вы действительно хотите удалить все товары из корзины?
+                  </h3>
+                  <div className="cart__modal__btns flex justify-around w-full mt-14">
+                     <button onClick={clearCart} className="cart__modal__btn">
+                        Да
+                     </button>
+                     <button onClick={closeModal} className="cart__modal__btn">
+                        Нет
+                     </button>
+                  </div>
+               </CartModal>
+               <CartModal isModalOpen={isAcceptModalOpen} closeModal={closeModal}>
+                  <MdDone style={{ color: "rgb(82 82 91)" }} size={60} />
+                  <h3 className="text-2xl text-center font-medium mt-10 text-zinc-600">
+                     Ваша заявка принята. Ожидайте, специалист с вами свяжется в ближайшее время
+                  </h3>
+                  <Link className="cart__modal__btn cart__modal__btnAccept mt-10 text-center" href={"/"}>
+                     <button>Вернуться на главную</button>
+                  </Link>
+               </CartModal>
             </div>
-            <SendDataForm clientValue={clientValue} currencyValue={currencyValue} total={total} totalUSD={totalUSD} />
+            <SendDataForm
+               clientValue={clientValue}
+               setValue={setValue}
+               currencyValue={currencyValue}
+               total={total}
+               totalUSD={totalUSD}
+               setAcceptModalStatus={setAcceptModalStatus}
+            />
          </div>
       </div>
    ) : (

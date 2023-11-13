@@ -148,6 +148,9 @@
             background-color: #5391f5;
          }
       }
+      &__btnAccept {
+         max-width: 240px;
+      }
    }
    &__modalStatus {
       display: none;
