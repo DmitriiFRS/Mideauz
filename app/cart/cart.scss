@@ -84,7 +84,15 @@
       }
       &__trash {
          padding: 10px;
-         opacity: 0.5;
+         margin: 0 0 0 10px;
+         opacity: 0.7;
+         border-radius: 10px;
+         transition: 0.2s;
+         color: #000;
+         &:hover {
+            background: #b6b6b6;
+            color: #0c63f0;
+         }
       }
    }
    &__input {
@@ -156,7 +164,9 @@
 input[type="number"] {
    -moz-appearance: textfield;
 }
-
+.icon {
+   color: red;
+}
 @keyframes fade-in-modal {
    0% {
       transform: translateY(-300%);
