@@ -1,10 +1,7 @@
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { db } from "../firebase/firebaseConfig";
 import { CartItemType } from "./Main";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../Redux/store";
-import { requestsData } from "../Redux/Slices/main.slice";
 
 type GoodsListType = {
    модель: string;
@@ -24,15 +21,11 @@ function SendDataForm({
    total: number;
    totalUSD: number;
 }) {
-   const dispatch = useDispatch<AppDispatch>();
    const [name, setName] = useState<string>("");
    const [phone, setPhone] = useState<string>("");
    const [isNameDirty, setNameDirty] = useState<boolean>(false);
    const [isPhoneDirty, setPhoneDirty] = useState<boolean>(false);
    const [isUncorrectForm, setUncorrectForm] = useState<boolean>(false);
-   useEffect(() => {
-      dispatch(requestsData());
-   }, [dispatch]);
    function submitForm(e: React.MouseEvent<HTMLButtonElement>) {
       e.preventDefault();
       if (name.length < 2) {
@@ -59,7 +52,6 @@ function SendDataForm({
             });
          });
       }
-
       const data = {
          имя: name,
          телефон: phone,
@@ -76,6 +68,7 @@ function SendDataForm({
       setPhone("");
       setName("");
    }
+   //validation ---------------
    function resetValid(e: React.FocusEvent<HTMLInputElement>) {
       setNameDirty(false);
       setPhoneDirty(false);
@@ -87,7 +80,7 @@ function SendDataForm({
       setPhone(e.target.value);
    }
    function checkNameInput(e: React.ChangeEvent<HTMLInputElement>) {
-      if (!/^[a-zA-Z\s]*$/.test(e.target.value)) return;
+      if (!/^[a-zA-Zа-яА-Я\s]*$/.test(e.target.value)) return;
       if (e.target.value.length > 30) return;
       setName(e.target.value);
    }

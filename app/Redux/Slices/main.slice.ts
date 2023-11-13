@@ -61,20 +61,6 @@ export const currencyValueData = createAsyncThunk<CurrencyValueType, undefined>(
    }
 );
 
-export const requestsData = createAsyncThunk<Array<RequestDataType>, undefined>(
-   "main/requestDataFirestore",
-   async function getData() {
-      const dataRef = await getDoc(doc(db, "заявки", "2gtV71ouF5nxoPcxcwkl")).then((snap) => {
-         if (snap.exists()) {
-            return snap.data();
-         } else {
-            console.error("error");
-         }
-      });
-      return dataRef as Array<RequestDataType>;
-   }
-);
-
 const mainSlice = createSlice({
    name: "main",
    initialState,
@@ -85,9 +71,6 @@ const mainSlice = createSlice({
       });
       builder.addCase(currencyValueData.fulfilled, (state, action) => {
          state.currencyValue = action.payload;
-      });
-      builder.addCase(requestsData.fulfilled, (state, action) => {
-         state.requestData = action.payload;
       });
    },
 });

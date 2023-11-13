@@ -7,6 +7,8 @@ import { AppDispatch, RootState } from "../Redux/store";
 import { currencyValueData } from "../Redux/Slices/main.slice";
 import CartSkeleton from "../Utilities/CartSkeleton";
 import SendDataForm from "./SendDataForm";
+import CartModal from "./CartModal";
+import { PiTrashBold } from "react-icons/pi";
 export type CartItemType = {
    model: string;
    power: string;
@@ -14,7 +16,17 @@ export type CartItemType = {
    count: number;
 };
 
-function Main({ value }: { value: Array<CartItemType> }) {
+function Main({
+   value,
+   isModalOpen,
+   setModalStatus,
+   clearCart,
+}: {
+   value: Array<CartItemType>;
+   isModalOpen: boolean;
+   setModalStatus: (value: boolean) => void;
+   clearCart: () => void;
+}) {
    const [clientValue, setClientValue] = useState<Array<CartItemType> | null>(null);
    const dispatch = useDispatch<AppDispatch>();
    const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
@@ -34,6 +46,13 @@ function Main({ value }: { value: Array<CartItemType> }) {
          setTotalUSD(totalVal);
       }
    }, [dispatch, clientValue, currencyValue]);
+   const trashStyled = {
+      cursor: "pointer",
+      padding: "15px",
+      gridArea: "trash",
+      margin: "0 0 0 10px",
+      opacity: 0.6,
+   };
 
    return clientValue ? (
       <div className="cart__body mt-10 mx-6">
@@ -61,13 +80,14 @@ function Main({ value }: { value: Array<CartItemType> }) {
                                        <span className="text-2xl">Количество</span>
                                        <span className="text-3xl mt-4">{el.count}</span>
                                     </div>
-                                    <div className="flex flex-col items-center">
-                                       <span className="text-2xl">Общая стоимость</span>
+                                    <div className="cart__desc__price grid items-center">
+                                       <span className="cart__desc__title text-2xl">Общая стоимость</span>
                                        {currencyValue && (
-                                          <span className="text-3xl mt-4">
+                                          <span className="cart__desc__price text-3xl mt-4">
                                              {(el.price * currencyValue * el.count).toLocaleString()} UZS
                                           </span>
                                        )}
+                                       <PiTrashBold style={trashStyled} size={60} />
                                     </div>
                                  </div>
                               </li>
@@ -82,6 +102,7 @@ function Main({ value }: { value: Array<CartItemType> }) {
                      </div>
                   </>
                )}
+               <CartModal isModalOpen={isModalOpen} setModalStatus={setModalStatus} clearCart={clearCart} />
             </div>
             <SendDataForm clientValue={clientValue} currencyValue={currencyValue} total={total} totalUSD={totalUSD} />
          </div>
