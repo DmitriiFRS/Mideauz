@@ -15,6 +15,7 @@ type NewItem = {
    power: string;
    price: string;
    count: number;
+   id: number;
 };
 
 function AddToCart({ model, optionValue, count, currencyValue }: AddToCartPropsType) {
@@ -27,6 +28,7 @@ function AddToCart({ model, optionValue, count, currencyValue }: AddToCartPropsT
          power: model.models[optionValue].power,
          price: model.models[optionValue].price,
          count: count,
+         id: model.models[optionValue].id,
       };
       value.forEach((el: NewItem, index: number) => {
          if (el.model === newItem.model && el.power === newItem.power) {
@@ -35,10 +37,8 @@ function AddToCart({ model, optionValue, count, currencyValue }: AddToCartPropsT
          }
       });
       if (flag) {
-         console.log("if", flag);
          setValue([...newValue]);
       } else {
-         console.log("else", flag);
          setValue([...newValue, newItem]);
       }
    }

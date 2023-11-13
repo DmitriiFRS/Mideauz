@@ -18,6 +18,7 @@ export type ModelsType = {
    params: Array<string>;
    power: string;
    price: string;
+   id: number;
 };
 export type ModelType = {
    company: string;

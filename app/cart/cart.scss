@@ -82,16 +82,9 @@
          max-width: 500px;
          line-height: 140%;
       }
-      &__price {
-         grid-template-areas:
-            "title trash"
-            "price trash";
-      }
-      &__title {
-         grid-area: "title";
-      }
-      &__price {
-         grid-area: "price";
+      &__trash {
+         padding: 10px;
+         opacity: 0.5;
       }
    }
    &__input {

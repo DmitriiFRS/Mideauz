@@ -5,6 +5,7 @@ import { getDoc, doc } from "firebase/firestore";
 type ConditionersPower = {
    power: string;
    price: string;
+   id: number;
    params: Array<string>;
    details: Array<string>;
 };

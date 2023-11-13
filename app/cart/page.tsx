@@ -27,7 +27,13 @@ function Cart() {
                <span className="cart__btn relative z-10">Очистить корзину</span>
             </button>
          </div>
-         <Main value={value} isModalOpen={isModalOpen} setModalStatus={setModalStatus} clearCart={clearCart} />
+         <Main
+            value={value}
+            setValue={setValue}
+            isModalOpen={isModalOpen}
+            setModalStatus={setModalStatus}
+            clearCart={clearCart}
+         />
       </div>
    );
 }

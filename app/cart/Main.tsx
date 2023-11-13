@@ -14,6 +14,7 @@ export type CartItemType = {
    power: string;
    price: number;
    count: number;
+   id: number;
 };
 
 function Main({
@@ -21,11 +22,13 @@ function Main({
    isModalOpen,
    setModalStatus,
    clearCart,
+   setValue,
 }: {
    value: Array<CartItemType>;
    isModalOpen: boolean;
    setModalStatus: (value: boolean) => void;
    clearCart: () => void;
+   setValue: Function;
 }) {
    const [clientValue, setClientValue] = useState<Array<CartItemType> | null>(null);
    const dispatch = useDispatch<AppDispatch>();
@@ -46,14 +49,15 @@ function Main({
          setTotalUSD(totalVal);
       }
    }, [dispatch, clientValue, currencyValue]);
-   const trashStyled = {
-      cursor: "pointer",
-      padding: "15px",
-      gridArea: "trash",
-      margin: "0 0 0 10px",
-      opacity: 0.6,
-   };
-
+   function deleteItem(e: any) {
+      console.log(e.currentTarget.id);
+      value.forEach((el) => console.log(el.id));
+      setValue(
+         value.filter((el) => {
+            return el.id.toString() !== e.currentTarget.id;
+         })
+      );
+   }
    return clientValue ? (
       <div className="cart__body mt-10 mx-6">
          <div className={`cart__bodyContainer grid ${!value.length ? "cart__bodyContainer__wfull" : ""}`}>
@@ -80,14 +84,22 @@ function Main({
                                        <span className="text-2xl">Количество</span>
                                        <span className="text-3xl mt-4">{el.count}</span>
                                     </div>
-                                    <div className="cart__desc__price grid items-center">
-                                       <span className="cart__desc__title text-2xl">Общая стоимость</span>
-                                       {currencyValue && (
-                                          <span className="cart__desc__price text-3xl mt-4">
-                                             {(el.price * currencyValue * el.count).toLocaleString()} UZS
-                                          </span>
-                                       )}
-                                       <PiTrashBold style={trashStyled} size={60} />
+                                    <div className="cart__desc__priceBody flex">
+                                       <div className="flex flex-col">
+                                          <span className="cart__desc__title text-2xl">Общая стоимость</span>
+                                          {currencyValue && (
+                                             <span className="cart__desc__price text-3xl mt-4">
+                                                {(el.price * currencyValue * el.count).toLocaleString()} UZS
+                                             </span>
+                                          )}
+                                       </div>
+                                       <button
+                                          id={el.id.toString()}
+                                          onClick={(e) => deleteItem(e)}
+                                          className="cart__desc__trash"
+                                       >
+                                          <PiTrashBold size={40} />
+                                       </button>
                                     </div>
                                  </div>
                               </li>
