@@ -98,7 +98,7 @@ function SendDataForm({
                value={name}
                onFocus={(e) => resetValid(e)}
                onChange={(e) => checkNameInput(e)}
-               className={`cart__input ${isNameDirty ? "cart__input__invalid" : ""} py-3 px-5 w-full`}
+               className={`cart__input text-xl ${isNameDirty ? "cart__input__invalid" : ""} py-2 px-5 w-full`}
                type="text"
                placeholder="Как к вам обращаться?"
             />
@@ -108,7 +108,7 @@ function SendDataForm({
                value={phone}
                onFocus={(e) => resetValid(e)}
                onChange={(e) => checkPhoneInput(e)}
-               className={`cart__input ${isPhoneDirty ? "cart__input__invalid" : ""} py-3 px-5 w-full`}
+               className={`cart__input text-xl ${isPhoneDirty ? "cart__input__invalid" : ""} py-2 px-5 w-full`}
                type="tel"
                placeholder="Ваш номер телефона"
             />

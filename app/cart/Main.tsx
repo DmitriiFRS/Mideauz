@@ -68,12 +68,12 @@ function Main({
       setClearModalStatus(false);
       setAcceptModalStatus(false);
    }
-   return clientValue ? (
+   return clientValue && currencyValue ? (
       <div className="cart__body mt-10 mx-6">
          <div className={`cart__bodyContainer grid ${!value.length ? "cart__bodyContainer__wfull" : ""}`}>
             <div className="container cart__main">
                {!value.length ? (
-                  <div className="flex flex-col items-center h-full justify-center">
+                  <div style={{ animation: "fade-in 1s" }} className="flex flex-col items-center h-full justify-center">
                      <h2 className="text-4xl">Ваша корзина пуста</h2>
                      <Link className="mt-14 cart__btnBody" href={"/"}>
                         <button className="cart__btn text-xl relative z-10">Вернуться на главную</button>

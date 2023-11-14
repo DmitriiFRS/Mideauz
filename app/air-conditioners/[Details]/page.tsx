@@ -38,6 +38,7 @@ function Details() {
    const dispatch = useDispatch<AppDispatch>();
    const goods = useSelector((state: RootState) => state.itemReducer.itemsList);
    const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
+   const error = useSelector((state: RootState) => state.itemReducer.error);
    useEffect(() => {
       dispatch(currencyValueData());
    }, [dispatch]);
@@ -63,6 +64,7 @@ function Details() {
    function getValue(e: ChangeEvent<HTMLSelectElement>) {
       setValue(parseInt(e.target.value));
    }
+
    return model ? (
       <div className="conditionerCard container">
          <div className="conditionerCard__mainBody flex mt-20">

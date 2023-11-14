@@ -28,20 +28,22 @@ type ConditionerItems = {
 
 type initialStateType = {
    itemsList: null | ConditionerItems;
+   error: null | string;
 };
 
 const initialState: initialStateType = {
    itemsList: null,
+   error: null,
 };
 
 export const getConditionerItems = createAsyncThunk<ConditionerItems, undefined>(
    "items/conditionersItemsFirestore",
-   async function getData() {
+   async function getData(_, { rejectWithValue }) {
       const dataRef = await getDoc(doc(db, "подробнее", "3zRA7wzmLHRykHmYus8S")).then((snap) => {
          if (snap.exists()) {
             return snap.data();
          } else {
-            console.error("error");
+            return rejectWithValue("error");
          }
       });
       return dataRef as ConditionerItems;
@@ -55,6 +57,9 @@ const itemSlice = createSlice({
    extraReducers: (builder) => {
       builder.addCase(getConditionerItems.fulfilled, (state, action) => {
          state.itemsList = action.payload;
+      });
+      builder.addCase(getConditionerItems.rejected, (state, action: any) => {
+         state.error = action.payload;
       });
    },
 });
