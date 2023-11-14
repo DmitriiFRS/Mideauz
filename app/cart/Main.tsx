@@ -4,7 +4,7 @@ import ultraviolet from "../../public/img/Equip/AirConditioners/Midea/Ultraviole
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../Redux/store";
-import { currencyValueData } from "../Redux/Slices/main.slice";
+import { currencyValueData, setClientValData } from "../Redux/Slices/main.slice";
 import CartSkeleton from "../Utilities/CartSkeleton";
 import SendDataForm from "./SendDataForm";
 import CartModal from "./CartModal";
@@ -43,7 +43,8 @@ function Main({
    const [totalUSD, setTotalUSD] = useState(0);
    useEffect(() => {
       setClientValue(value);
-   }, [value]);
+      dispatch(setClientValData(value));
+   }, [value, dispatch]);
    useEffect(() => {
       dispatch(currencyValueData());
       let totalVal = 0;
@@ -81,7 +82,7 @@ function Main({
                   </div>
                ) : (
                   <>
-                     <ul className="py-3 px-10">
+                     <ul className="cart__list py-3 px-10">
                         {value.map((el: CartItemType, index: number) => {
                            return (
                               <li key={index} className="cart__item flex items-center justify-between">

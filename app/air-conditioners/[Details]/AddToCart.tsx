@@ -3,6 +3,9 @@
 import useLocalStorage from "@/app/hooks/useLocalStorage";
 import { ModelType } from "./page";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/app/Redux/store";
+import { setCartCount } from "@/app/Redux/Slices/main.slice";
 type AddToCartPropsType = {
    model: ModelType;
    optionValue: number;
@@ -19,6 +22,7 @@ type NewItem = {
 };
 
 function AddToCart({ model, optionValue, count, currencyValue }: AddToCartPropsType) {
+   const dispatch = useDispatch<AppDispatch>();
    const [value, setValue] = useLocalStorage<any>("item", []);
    function addItemToCart() {
       let flag = false;
@@ -42,7 +46,9 @@ function AddToCart({ model, optionValue, count, currencyValue }: AddToCartPropsT
          setValue([...newValue, newItem]);
       }
    }
-   console.log(model);
+   useEffect(() => {
+      dispatch(setCartCount(value.length));
+   }, [value]);
    return (
       <div className="conditionerCard__btnContainer mt-10">
          <button onClick={addItemToCart} className="conditionerCard__submit text-2x1 ml-5">

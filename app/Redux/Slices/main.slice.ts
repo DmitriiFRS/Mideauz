@@ -1,3 +1,4 @@
+import { CartItemType } from "@/app/cart/Main";
 import { db } from "@/app/firebase/firebaseConfig";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getDoc, doc } from "firebase/firestore";
@@ -6,11 +7,15 @@ type initialStateType = {
    conditioners: ConditionerList | null;
    currencyValue: CurrencyValueType | null;
    requestData: Array<RequestDataType> | null;
+   clientVal: null | Array<CartItemType>;
+   cartCount: null | number;
 };
 const initialState: initialStateType = {
    conditioners: null,
    currencyValue: null,
    requestData: null,
+   clientVal: null,
+   cartCount: null,
 };
 type AirConditioner = {
    name: string;
@@ -64,7 +69,14 @@ export const currencyValueData = createAsyncThunk<CurrencyValueType, undefined>(
 const mainSlice = createSlice({
    name: "main",
    initialState,
-   reducers: {},
+   reducers: {
+      setClientValData: (state, action) => {
+         state.clientVal = action.payload;
+      },
+      setCartCount: (state, action) => {
+         state.cartCount = action.payload;
+      },
+   },
    extraReducers: (builder) => {
       builder.addCase(conditionerListData.fulfilled, (state, action) => {
          state.conditioners = action.payload;
@@ -74,5 +86,5 @@ const mainSlice = createSlice({
       });
    },
 });
-export const {} = mainSlice.actions;
+export const { setClientValData, setCartCount } = mainSlice.actions;
 export default mainSlice.reducer;

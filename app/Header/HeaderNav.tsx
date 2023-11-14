@@ -4,7 +4,6 @@ import arrow from "../../public/icons/nav_arrow.svg";
 import Image from "next/image";
 import { useState } from "react";
 import HeaderDropdownList from "./HeaderDropdownList";
-import cart from "../../public/icons/basket.png";
 const nav = [
    {
       id: 0,
@@ -25,12 +24,6 @@ const nav = [
       title: "Каталоги",
       href: "/catalog",
    },
-   {
-      id: 4,
-      title: "0 товаров",
-      img: cart,
-      link: "/cart",
-   },
 ];
 function HeaderNav() {
    const [display, setDisplay] = useState<boolean>(false);
@@ -46,35 +39,38 @@ function HeaderNav() {
       setDisplay(false);
    }
    return (
-      <nav className="header__nav flex items-center justify-center mt-6">
+      <nav className="header__nav flex items-center justify-center mt-6 w-full">
          <div
-            style={{ visibility: display ? "visible" : "hidden" }}
-            onMouseOver={hideBar}
+            style={{ visibility: display ? "visible" : "hidden", opacity: isDropdownActive ? 1 : 0 }}
+            onMouseEnter={hideBar}
             className="header__dropDownBody absolute w-full left-0"
          >
             <div
                onMouseOver={(e) => e.stopPropagation()}
-               style={{ height: isDropdownActive ? "50%" : "0%" }}
+               onMouseEnter={displayBar}
+               onMouseLeave={hideBar}
+               style={{
+                  height: isDropdownActive ? "21%" : "0%",
+                  transition: isDropdownActive ? "0.5s ease-in-out" : "0.3s ease-in-out",
+               }}
                className="header__dropDown overflow-hidden"
             >
-               <HeaderDropdownList />
+               <HeaderDropdownList isDropDownActive={isDropdownActive} />
             </div>
          </div>
          <ul className="header__navlist flex content-center items-center text-xl relative z-10">
             {nav.map((el, idx) => {
                return el.href ? (
-                  <li className="header__navitem cursor-pointer" key={idx}>
+                  <li className="header__navItem cursor-pointer" key={idx}>
                      <Link href={el.href}>{el.title}</Link>
                   </li>
-               ) : el.img ? (
-                  <Link key={idx} href={el.link}>
-                     <li className="header__navitem flex items-center">
-                        <span>{el.title}</span>
-                        <Image className="ml-3" src={el.img} alt="cart" width={50} height={50} />
-                     </li>
-                  </Link>
                ) : (
-                  <li onMouseEnter={displayBar} className="header__navitem flex cursor-pointer" key={idx}>
+                  <li
+                     onMouseEnter={displayBar}
+                     onMouseLeave={hideBar}
+                     className="header__navItem flex cursor-pointer"
+                     key={idx}
+                  >
                      <span>{el.title}</span>
                      <Image
                         style={{

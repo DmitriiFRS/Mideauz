@@ -66,6 +66,11 @@
       position: relative;
       z-index: 2;
    }
+   &__list {
+      @media (max-width: 1420px) {
+         padding: 8px 10px;
+      }
+   }
    &__item {
       box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
       padding: 10px;
@@ -85,6 +90,24 @@
       &__model {
          max-width: 500px;
          line-height: 140%;
+         margin: 0 0 0 5px;
+         @media (max-width: 1650px) {
+            font-size: 25px;
+            max-width: 350px;
+         }
+         @media (max-width: 1500px) {
+            max-width: 300px;
+         }
+      }
+      &__title {
+         @media (max-width: 1420px) {
+            font-size: 20px;
+         }
+      }
+      &__price {
+         @media (max-width: 1420px) {
+            font-size: 20px;
+         }
       }
       &__trash {
          padding: 10px;
