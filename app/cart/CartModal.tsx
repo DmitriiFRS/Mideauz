@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { GrClose } from "react-icons/gr";
 
 function CartModal({
@@ -17,6 +18,16 @@ function CartModal({
       opacity: 0.5,
       cursor: "pointer",
    };
+   useEffect(() => {
+      const scrollBarWidth = window.innerWidth - document.body.clientWidth;
+      if (isModalOpen) {
+         document.body.style.overflow = "hidden";
+         document.body.style.paddingRight = `${scrollBarWidth}px`;
+      } else {
+         document.body.style.overflow = "auto";
+         document.body.style.paddingRight = "0px";
+      }
+   }, [isModalOpen]);
    return (
       <div onClick={closeModal} className={`${!isModalOpen ? "cart__modalStatus" : ""} cart__modal`}>
          <div
