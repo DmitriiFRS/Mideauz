@@ -1,0 +1,23 @@
+.about {
+   &__logoContainer {
+      width: 300px;
+      height: 120px;
+   }
+   &__company {
+      flex: 0 1 50%;
+   }
+   &__line {
+      height: 3px;
+      width: 100%;
+      background: radial-gradient(circle, rgba(60, 60, 60, 1) 0%, rgba(255, 255, 255, 1) 100%);
+   }
+   &__titles {
+      line-height: 140%;
+   }
+   &__titles > *:not(:first-child) {
+      margin: 30px 0 0 0;
+   }
+}
+.border {
+   border: 1px solid #000;
+}
