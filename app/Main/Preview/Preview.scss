@@ -3,42 +3,41 @@
       font-size: 70px;
       font-weight: 700;
       line-height: 160%;
-      @media(max-width: 900px) {
+      @media (max-width: 900px) {
          font-size: 50px;
       }
-      @media(max-width: 630px) {
+      @media (max-width: 630px) {
          font-size: 40px;
       }
-      @media(max-width: 504px) {
+      @media (max-width: 504px) {
          font-size: 30px;
       }
    }
    &__subtitle {
-      @media(max-width: 504px) {
+      @media (max-width: 504px) {
          font-size: 18px;
       }
    }
    &__phones-container {
       width: 100%;
-      @media(max-width: 630px) {
+      @media (max-width: 630px) {
          flex-direction: column;
          width: auto;
-      }  
-      
+      }
    }
    &__phones {
       margin: 70px 0 0 0;
-      background: linear-gradient(45deg, rgba(104, 104, 104, 0.9) 0%, rgba(223,223,223,0.6) 100%);
+      background: linear-gradient(45deg, rgba(104, 104, 104, 0.9) 0%, rgba(223, 223, 223, 0.6) 100%);
       padding: 15px 25px;
       border-radius: 9px;
       position: relative;
       z-index: 1;
       overflow: hidden;
-      @media(max-width: 630px) {
+      @media (max-width: 630px) {
          padding: 10px 15px;
       }
       &::after {
-         content: '';
+         content: "";
          position: absolute;
          left: -20%;
          top: -20%;
@@ -53,8 +52,10 @@
       }
    }
    &__bg {
+      margin: 8px 0 0 0;
       filter: brightness(60%);
-      min-height: 1080px;
+      overflow: hidden;
+      height: 980px !important;
    }
 }
 
