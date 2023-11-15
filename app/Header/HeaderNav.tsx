@@ -50,7 +50,7 @@ function HeaderNav() {
                onMouseEnter={displayBar}
                onMouseLeave={hideBar}
                style={{
-                  height: isDropdownActive ? "21%" : "0%",
+                  height: isDropdownActive ? "400px" : "0%",
                   transition: isDropdownActive ? "0.5s ease-in-out" : "0.3s ease-in-out",
                }}
                className="header__dropDown overflow-hidden"

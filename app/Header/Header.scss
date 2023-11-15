@@ -22,8 +22,13 @@
          width: 120px;
       }
    }
+   &__cartCount__disabled {
+      display: none;
+   }
 }
-
+.header__cartCount__disabled {
+   display: none;
+}
 .midea-logo {
    top: 40px;
    left: 40px;

@@ -1,15 +1,14 @@
-
 .equip {
-   @media(max-width: 650px) {
+   @media (max-width: 650px) {
       margin: 45px 0 0 0;
    }
    &__body {
-      background: linear-gradient(90deg, rgb(145, 145, 145) 0%, rgba(235,235,235,0.10127801120448177) 100%);
+      background: linear-gradient(90deg, rgb(145, 145, 145) 0%, rgba(235, 235, 235, 0.10127801120448177) 100%);
       height: 350px;
       display: flex;
       align-items: center;
       transition: 0.7s;
-      @media(max-width: 440px) {
+      @media (max-width: 440px) {
          height: 300px;
       }
       &:not(:last-child) {
@@ -17,65 +16,67 @@
       }
    }
    &__title {
-      @media(max-width: 865px) {
+      @media (max-width: 865px) {
          font-size: 40px;
       }
-      @media(max-width: 665px) {
+      @media (max-width: 665px) {
          font-size: 30px;
       }
-      @media(max-width: 600px) {
+      @media (max-width: 600px) {
          font-size: 25px;
       }
-      @media(max-width: 500px) {
+      @media (max-width: 500px) {
          font-size: 5vw;
       }
    }
    &__subtitle {
-      @media(max-width: 665px) {
+      @media (max-width: 665px) {
          font-size: 18px;
       }
-      @media(max-width: 500px) {
+      @media (max-width: 500px) {
          font-size: 3.5vw;
       }
    }
    &__container {
       transition: 0.7s;
-      @media(max-width: 700px) {
+      @media (max-width: 700px) {
          gap: 10px;
          padding: 0 5px;
       }
    }
    &__btn {
-      background: linear-gradient(45deg, rgb(104, 104, 104) 0%, rgba(223,223,223,0.10127801120448177) 100%);
+      background: linear-gradient(45deg, rgb(104, 104, 104) 0%, rgba(223, 223, 223, 0.10127801120448177) 100%);
       padding: 15px 25px;
       transition: 0.4s;
       position: relative;
       z-index: 2;
       border-radius: 9px;
-      @media(max-width: 440px) {
+      overflow: hidden;
+      @media (max-width: 440px) {
          padding: 10px 20px;
          font-size: 12px;
       }
       &:before {
          border-radius: 9px;
          position: absolute;
-         left: 0;
+         left: -50px;
          top: 0;
          width: 0%;
          height: 100%;
-         content: '';
-         background: #2585CD;
-         transition: 0.2s ease-in-out;
+         content: "";
+         background: #2585cd;
+         transition: 0.3s ease-in-out;
          z-index: -1;
          color: #fff;
+         transform: skew(135deg);
       }
       &:hover::before {
-         width: 100%;
+         width: 160%;
       }
    }
    &__title_body {
       flex: 0 1 50%;
-      @media(max-width: 630px) {
+      @media (max-width: 630px) {
          max-width: 50%;
          flex: 0 1 auto;
       }

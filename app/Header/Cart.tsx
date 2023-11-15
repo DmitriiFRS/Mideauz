@@ -25,7 +25,11 @@ function Cart() {
       <Link href={"/cart"} className="header__cart flex items-center p-3">
          <span className="header__cart__title text-xl font-medium">Корзина</span>
          <div className="relative">
-            <div className="absolute -right-2 -top-1 w-6 h-6 rounded-full bg-amber-200 flex items-center justify-center font-semibold text">
+            <div
+               className={`${
+                  !cartCount ? "hidden" : ""
+               } absolute -right-2 -top-1 w-6 h-6 rounded-full bg-amber-200 flex items-center justify-center font-semibold text`}
+            >
                <span>{cartCount}</span>
             </div>
             <FaShoppingCart size="30px" />
