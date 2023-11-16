@@ -38,7 +38,6 @@ function Details() {
    const dispatch = useDispatch<AppDispatch>();
    const goods = useSelector((state: RootState) => state.itemReducer.itemsList);
    const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
-   const error = useSelector((state: RootState) => state.itemReducer.error);
    useEffect(() => {
       dispatch(currencyValueData());
    }, [dispatch]);

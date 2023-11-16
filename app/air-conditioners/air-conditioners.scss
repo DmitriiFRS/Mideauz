@@ -1,112 +1,110 @@
 .conditioners {
-  padding: 50px 0;
-  &__item {
-    transition: 0.5s ease-in-out;
-    opacity: 0;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    cursor: pointer;
-    &:hover .conditioners__img {
-      transform: scale(1.2);
-    }
-    &__active {
-      opacity: 1;
-    }
-  }
-  &__img-container {
-    width: 350px;
-    height: 350px;
-  }
-  &__img {
-    transition: 0.4s;
-  }
+   padding: 50px 0;
+   &__item {
+      transition: 0.5s ease-in-out;
+      opacity: 0;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      cursor: pointer;
+      &:hover .conditioners__img {
+         transform: scale(1.2);
+      }
+      &__active {
+         opacity: 1;
+      }
+   }
+   &__img-container {
+      width: 350px;
+      height: 350px;
+   }
+   &__img {
+      transition: 0.4s;
+   }
 
-  &__btn {
-    background: linear-gradient(
-      45deg,
-      rgb(104, 104, 104) 0%,
-      rgba(223, 223, 223, 0.10127801120448177) 100%
-    );
-    padding: 15px 25px;
-    transition: 0.4s;
-    position: relative;
-    z-index: 2;
-    border-radius: 9px;
-    &:before {
+   &__btn {
+      background: linear-gradient(45deg, rgb(104, 104, 104) 0%, rgba(223, 223, 223, 0.10127801120448177) 100%);
+      overflow: hidden;
+      padding: 15px 25px;
+      transition: 0.4s;
+      position: relative;
+      z-index: 2;
       border-radius: 9px;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 0%;
-      height: 100%;
-      content: "";
-      background: #2585cd;
-      transition: 0.2s ease-in-out;
-      z-index: -1;
-      color: #fff;
-    }
-    &:hover::before {
-      width: 100%;
-    }
-  }
+      &:before {
+         border-radius: 9px;
+         position: absolute;
+         left: -19px;
+         top: 0;
+         width: 0%;
+         height: 100%;
+         content: "";
+         background: #2585cd;
+         transition: 0.2s ease-in-out;
+         z-index: -1;
+         color: #fff;
+         transform: skew(45deg);
+      }
+      &:hover::before {
+         width: 122%;
+      }
+   }
 }
 .skeleton__container {
-  max-width: 1556px;
-  margin: 0 auto;
-  padding: 0 10px;
+   max-width: 1556px;
+   margin: 0 auto;
+   padding: 0 10px;
 }
 .conditionerCard {
-  padding: 0 50px;
-  &__mainBody {
-    gap: 100px;
-  }
-  &__img {
-    flex: 1 1 50%;
-    max-width: 350px;
-    max-height: 350px;
-    height: 350px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  &__main {
-    flex: 0 1 auto;
-  }
-  &__select {
-    max-width: 120px;
-    border: 1px solid #838383;
-    padding: 10px 10px 10px 15px;
-    text-align: center;
-    border-radius: 8px;
-  }
-  &__inputbtnContainer {
-    display: flex;
-    align-items: center;
-  }
-  &__input {
-    border: 2px solid #838383;
-    border-radius: 8px;
-    max-width: 120px;
-    padding: 10px 5px 10px 15px;
-    max-height: 50px;
-    height: 100%;
-    &:focus {
-      border: 2px solid rgb(1, 166, 243);
-      box-shadow: 0px 0px 5px 0px rgb(1, 166, 243);
-    }
-  }
-  &__submit {
-    border-radius: 8px;
-    background: #5f5f5f;
-    border-radius: 8px;
-    padding: 10px 15px;
-    font-size: 20px;
-    height: 49px;
-    color: #fff;
-  }
-  &__desc {
-    flex: 1 1 auto;
-  }
-  &__descList {
-    & > *:not(:last-child) {
-      margin: 0 0 20px 0;
-    }
-  }
+   padding: 0 50px;
+   &__mainBody {
+      gap: 100px;
+   }
+   &__img {
+      flex: 1 1 50%;
+      max-width: 350px;
+      max-height: 350px;
+      height: 350px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   }
+   &__main {
+      flex: 0 1 auto;
+   }
+   &__select {
+      max-width: 120px;
+      border: 1px solid #838383;
+      padding: 10px 10px 10px 15px;
+      text-align: center;
+      border-radius: 8px;
+   }
+   &__inputbtnContainer {
+      display: flex;
+      align-items: center;
+   }
+   &__input {
+      border: 2px solid #838383;
+      border-radius: 8px;
+      max-width: 120px;
+      padding: 10px 5px 10px 15px;
+      max-height: 50px;
+      height: 100%;
+      &:focus {
+         border: 2px solid rgb(1, 166, 243);
+         box-shadow: 0px 0px 5px 0px rgb(1, 166, 243);
+      }
+   }
+   &__submit {
+      border-radius: 8px;
+      background: #5f5f5f;
+      border-radius: 8px;
+      padding: 10px 15px;
+      font-size: 20px;
+      height: 49px;
+      color: #fff;
+   }
+   &__desc {
+      flex: 1 1 auto;
+   }
+   &__descList {
+      & > *:not(:last-child) {
+         margin: 0 0 20px 0;
+      }
+   }
 }
