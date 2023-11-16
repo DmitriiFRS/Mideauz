@@ -18,7 +18,7 @@ function YandexMap() {
             </div>
          )}
          <div className="w-full h-full">
-            <YMaps query={{ apikey: "295abdd2-9957-4f77-aaf0-443df34be66d" }}>
+            <YMaps query={{ apikey: process.env.REACT_APP_YMAPS_KEY }}>
                <Map
                   defaultState={{ center: [41.285448, 69.227032], zoom: 18 }}
                   style={{ width: "100%", height: "100%" }}
