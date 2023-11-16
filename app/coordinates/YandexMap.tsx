@@ -1,6 +1,6 @@
 "use client";
 
-import { YMaps, Map, Placemark } from "react-yandex-maps";
+import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
 import { useState } from "react";
 
 function YandexMap() {
@@ -17,17 +17,19 @@ function YandexMap() {
                </div>
             </div>
          )}
-         <YMaps query={{ apikey: "295abdd2-9957-4f77-aaf0-443df34be66d" }} className="h-full w-full">
-            <Map
-               defaultState={{ center: [41.285448, 69.227032], zoom: 18 }}
-               style={{ width: "100%", height: "100%" }}
-               onLoad={() => setLoading(false)}
-               onError={() => alert("Ошибка при загрузке карты")}
-               className={"flex items-center justify-center"}
-            >
-               <Placemark geometry={[41.285448, 69.227032]} options={{ iconColor: "#ff0000" }} />
-            </Map>
-         </YMaps>
+         <div className="w-full h-full">
+            <YMaps query={{ apikey: "295abdd2-9957-4f77-aaf0-443df34be66d" }}>
+               <Map
+                  defaultState={{ center: [41.285448, 69.227032], zoom: 18 }}
+                  style={{ width: "100%", height: "100%" }}
+                  onLoad={() => setLoading(false)}
+                  onError={() => alert("Ошибка при загрузке карты")}
+                  className={"flex items-center justify-center"}
+               >
+                  <Placemark geometry={[41.285448, 69.227032]} options={{ iconColor: "#ff0000" }} />
+               </Map>
+            </YMaps>
+         </div>
       </div>
    );
 }

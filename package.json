@@ -10,6 +10,7 @@
     "server": "json-server -w app/Data/Data2.json -p 4000"
   },
   "dependencies": {
+    "@pbe/react-yandex-maps": "^1.2.5",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.6.2",
     "@types/react": "18.2.22",
@@ -27,7 +28,6 @@
     "react-icons": "^4.11.0",
     "react-intersection-observer": "^9.5.2",
     "react-redux": "^8.1.2",
-    "react-yandex-maps": "^4.6.0",
     "sass": "^1.67.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2",
