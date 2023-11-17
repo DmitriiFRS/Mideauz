@@ -29,7 +29,7 @@ function ConditionersList({ conditionerList, brands }: any) {
          <ul ref={ref} className="conditioners__list grid grid-cols-3 gap-12 mt-14">
             {conditionerList.map((el: any, index: number) => {
                return (
-                  <Link key={index} href={`/air-conditioners/${el.name}`}>
+                  <Link key={index} href={`/air-conditioners/${el.name.replace(" ", "-")}`}>
                      <li
                         style={{ transitionDelay: index / 6 + "s" }}
                         className={`conditioners__item ${

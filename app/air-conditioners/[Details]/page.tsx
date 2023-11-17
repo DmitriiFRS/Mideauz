@@ -47,9 +47,10 @@ function Details() {
    }, [dispatch]);
 
    useEffect(() => {
+      console.log(params.Details);
       if (goods) {
          const newModel = goods.кондиционеры.filter((el) => {
-            return el.name === params.Details;
+            return el.name.replace(" ", "-") === params.Details;
          });
          setModel(newModel[0]);
       }
