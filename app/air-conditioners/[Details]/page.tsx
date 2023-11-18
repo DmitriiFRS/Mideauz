@@ -50,7 +50,7 @@ function Details() {
       console.log(params.Details);
       if (goods) {
          const newModel = goods.кондиционеры.filter((el) => {
-            return el.name.replace(" ", "-") === params.Details;
+            return el.name.replace(/\s/g, "-") === params.Details;
          });
          setModel(newModel[0]);
       }
