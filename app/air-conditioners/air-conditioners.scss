@@ -2,10 +2,10 @@
    padding: 50px 0;
    &__list {
       overflow: hidden;
-      transition: 0.3s;
+      transition: 0.4s;
+      max-height: 1982px;
       &__unactive {
-         height: 0px;
-         transition: 0.3s;
+         max-height: 0;
       }
    }
    &__item {
