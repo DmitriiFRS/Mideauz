@@ -1,6 +1,6 @@
 import Image from "next/image";
-import midea from "../../public/logos/MideaLogoBlue.png";
-import welkin from "../../public/logos/Welkin.png";
+import midea from "../../public/logos/midea.svg";
+import welkin from "../../public/logos/welkin.svg";
 import Link from "next/link";
 import "./Header.scss";
 import HeaderNav from "./HeaderNav";
