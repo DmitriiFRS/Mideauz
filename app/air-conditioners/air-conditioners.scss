@@ -55,17 +55,21 @@
 .conditionerCard {
    padding: 0 50px;
    &__mainBody {
-      gap: 100px;
+      gap: 40px;
+      grid-template-columns: 30% 35% 35%;
+      grid-template-areas:
+         "img options params"
+         "video video params";
    }
    &__img {
-      flex: 1 1 50%;
       max-width: 350px;
       max-height: 350px;
       height: 350px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      grid-area: img;
    }
    &__main {
-      flex: 0 1 auto;
+      grid-area: options;
    }
    &__select {
       max-width: 120px;
@@ -100,11 +104,22 @@
       color: #fff;
    }
    &__desc {
-      flex: 1 1 auto;
+      grid-area: params;
    }
    &__descList {
       & > *:not(:last-child) {
          margin: 0 0 20px 0;
+      }
+   }
+   &__video {
+      height: 500px;
+      grid-area: video;
+      width: 100%;
+      margin: 0 0 30px 0;
+      &__inner {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
       }
    }
 }

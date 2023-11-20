@@ -12,6 +12,7 @@ import CountInput from "./CountInput";
 import AddToCart from "./AddToCart";
 import Description from "./Description";
 import { currencyValueData } from "@/app/Redux/Slices/main.slice";
+import Video from "./Video";
 
 export type ModelsType = {
    details: Array<string>;
@@ -67,13 +68,13 @@ function Details() {
 
    return model ? (
       <div className="conditionerCard container">
-         <div className="conditionerCard__mainBody flex mt-20">
+         <div className="conditionerCard__mainBody grid mt-20">
             <div className="conditionerCard__img relative">
                <Image src={model.img} alt={model.name} fill={true} />
             </div>
             <div className="conditionerCard__main flex flex-col mt-10 py-5">
-               <h2 className="text-5xl text-center">{model.name}</h2>
-               <h4 className="mt-10 text-2xl text-center">
+               <h2 className="text-5xl">{model.name}</h2>
+               <h4 className="mt-10 text-2xl">
                   {model.models[0].price + "UZS"} -{model.models[model.models.length - 1].price + "UZS"}
                </h4>
                <div className="flex mt-10">
@@ -81,7 +82,7 @@ function Details() {
                   <CountInput count={count} setCount={setCount} />
                </div>
                {currencyValue ? (
-                  <div className="conditionerCard__price mt-10 text-2xl text-center">
+                  <div className="conditionerCard__price mt-10 text-2xl">
                      {(model.models[optionValue].price * currencyValue).toLocaleString() + " UZS"}
                   </div>
                ) : (
@@ -91,6 +92,7 @@ function Details() {
                <AddToCart model={model} optionValue={optionValue} count={count} currencyValue={currencyValue} />
             </div>
             <Description selectRef={selectRef} itemParams={itemParams} itemOtherParams={itemOtherParams} />
+            <Video />
          </div>
       </div>
    ) : (

@@ -51,8 +51,8 @@ function AddToCart({ model, optionValue, count, currencyValue }: AddToCartPropsT
    }, [value]);
    return (
       <div className="conditionerCard__btnContainer mt-10">
-         <button onClick={addItemToCart} className="conditionerCard__submit text-2x1 ml-5">
-            Добавить в корзину
+         <button onClick={addItemToCart} className="btn-blue text-2x1">
+            <span className="btn-blue-inner">Добавить в корзину</span>
          </button>
       </div>
    );
