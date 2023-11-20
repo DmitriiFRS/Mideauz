@@ -16,6 +16,7 @@ import Video from "./Video";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import Link from "next/link";
+import CartSkeleton from "@/app/Utilities/CartSkeleton";
 
 export type ModelsType = {
    details: Array<string>;
@@ -123,7 +124,7 @@ function Details() {
          </div>
       </div>
    ) : (
-      <div>skeleton</div>
+      <CartSkeleton />
    );
 }
 export default Details;

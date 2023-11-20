@@ -1,8 +1,13 @@
 .conditioners {
    padding: 50px 0;
+   &__list {
+      overflow: hidden;
+      &__unactive {
+         height: 0%;
+      }
+   }
    &__item {
       transition: 0.5s ease-in-out;
-      opacity: 0;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       cursor: pointer;
       &:hover .conditioners__img {
@@ -45,6 +50,12 @@
       &:hover::before {
          width: 122%;
       }
+   }
+   &__hideBtn {
+      transition: 0.2s;
+   }
+   &__hide {
+      transform: rotate(180deg);
    }
 }
 .skeleton__container {

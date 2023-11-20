@@ -37,7 +37,6 @@ function AirConditiones() {
    useEffect(() => {
       dispatch(conditionerListData());
    }, [dispatch]);
-   console.log(conditionerList);
    return !conditionerList ? (
       <div className="skeleton__container grid grid-cols-3 grid-rows-2">
          {skeletonSections.map((el, index) => {
