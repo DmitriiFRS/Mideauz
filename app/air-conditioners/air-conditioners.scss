@@ -54,6 +54,8 @@
 }
 .conditionerCard {
    padding: 0 50px;
+   animation-name: fade-in;
+   animation-duration: 1s;
    &__order {
       background: #2585cd;
       opacity: 0;
@@ -131,8 +133,12 @@
    }
    &__desc {
       grid-area: params;
+      &__hide {
+         opacity: 0;
+      }
    }
    &__descList {
+      transition: 0.2s;
       & > *:not(:last-child) {
          margin: 0 0 10px 0;
       }
@@ -147,5 +153,13 @@
          height: 100%;
          object-fit: cover;
       }
+   }
+}
+@keyframes fade-in {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
    }
 }

@@ -43,6 +43,7 @@ function Details() {
    const goods = useSelector((state: RootState) => state.itemReducer.itemsList);
    const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
    const [isInProgress, setProgress] = useState<boolean>(false);
+   const [isFadeOut, setFadeEffect] = useState<boolean>(false);
    useEffect(() => {
       dispatch(currencyValueData());
    }, [dispatch]);
@@ -67,7 +68,11 @@ function Details() {
    }, [optionValue, itemParams, model]);
    function getValue(e: ChangeEvent<HTMLSelectElement>) {
       setProgress(false);
-      setValue(parseInt(e.target.value));
+      setFadeEffect(true);
+      setTimeout(() => {
+         setValue(parseInt(e.target.value));
+         setFadeEffect(false);
+      }, 200);
    }
 
    return model ? (
@@ -113,7 +118,7 @@ function Details() {
 
                <AddToCart setProgress={setProgress} model={model} optionValue={optionValue} count={count} />
             </div>
-            <Description selectRef={selectRef} itemParams={itemParams} itemOtherParams={itemOtherParams} />
+            <Description isFadeOut={isFadeOut} itemParams={itemParams} itemOtherParams={itemOtherParams} />
             <Video />
          </div>
       </div>

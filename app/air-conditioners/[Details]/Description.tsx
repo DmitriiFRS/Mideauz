@@ -1,16 +1,16 @@
-import { LegacyRef } from "react";
+import { useEffect, useState } from "react";
 
 type ParamsPropsType = {
-   selectRef: LegacyRef<HTMLSelectElement>;
    itemParams: Array<string>;
    itemOtherParams: Array<string>;
+   isFadeOut: boolean;
 };
 
-function Description({ selectRef, itemParams, itemOtherParams }: ParamsPropsType) {
+function Description({ itemParams, itemOtherParams, isFadeOut }: ParamsPropsType) {
    return (
-      <div className="conditionerCard__desc mt-10 py-5 flex flex-col">
+      <div className="conditionerCard__desc">
          <h2 className="text-4xl">Характеристики</h2>
-         <ul className="conditionerCard__descList mt-10">
+         <ul className={`${isFadeOut ? "conditionerCard__desc__hide" : ""} conditionerCard__descList mt-10`}>
             {itemParams.map((el, index) => {
                return (
                   <li key={index} className="conditionerCard__descItem text-xl">
@@ -21,7 +21,7 @@ function Description({ selectRef, itemParams, itemOtherParams }: ParamsPropsType
          </ul>
          <div className="conditionerCard__other mt-10">
             <h2 className="text-4xl">Подробнее</h2>
-            <ul className="conditionerCard__descList mt-10">
+            <ul className={`${isFadeOut ? "conditionerCard__desc__hide" : ""} conditionerCard__descList mt-10`}>
                {itemOtherParams.map((el, index) => {
                   return <li key={index} className="conditionerCard__descItem text-xl">{`${el}`}</li>;
                })}
