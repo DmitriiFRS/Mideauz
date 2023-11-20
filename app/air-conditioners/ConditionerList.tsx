@@ -10,7 +10,7 @@ type ConditionerListProps = {
 function ConditionerList({ conditionerList, currencyValue, isHide }: any) {
    return (
       <ul
-         className={`${!isHide ? "conditioners__list__unactive" : ""} conditioners__list grid grid-cols-3 gap-12 mt-14`}
+         className={`${isHide ? "conditioners__list__unactive" : ""} conditioners__list grid grid-cols-3 gap-12 mt-14`}
       >
          {conditionerList.map((el: any, index: number) => {
             return (
