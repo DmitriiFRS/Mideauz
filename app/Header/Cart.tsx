@@ -32,7 +32,7 @@ function Cart() {
             >
                <span>{cartCount}</span>
             </div>
-            <FaShoppingCart size="30px" />
+            <FaShoppingCart size="30px" style={{ color: "#2585cd" }} />
          </div>
       </Link>
    );

@@ -4,6 +4,10 @@
 
    &__cart {
       margin: 0 48px 0 0;
+      transition: 0.2s;
+      &:hover {
+         color: #2585cd;
+      }
       @media (max-width: 1180px) {
          margin: 0;
       }

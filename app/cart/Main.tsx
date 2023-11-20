@@ -57,8 +57,6 @@ function Main({
       }
    }, [dispatch, clientValue, currencyValue]);
    function deleteItem(e: any) {
-      console.log(e.currentTarget.id);
-      value.forEach((el) => console.log(el.id));
       setValue(
          value.filter((el) => {
             return el.id.toString() !== e.currentTarget.id;

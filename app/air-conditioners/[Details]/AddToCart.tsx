@@ -10,7 +10,7 @@ type AddToCartPropsType = {
    model: ModelType;
    optionValue: number;
    count: number;
-   currencyValue: number | undefined;
+   setProgress: Function;
 };
 
 type NewItem = {
@@ -21,10 +21,11 @@ type NewItem = {
    id: number;
 };
 
-function AddToCart({ model, optionValue, count, currencyValue }: AddToCartPropsType) {
+function AddToCart({ model, optionValue, count, setProgress }: AddToCartPropsType) {
    const dispatch = useDispatch<AppDispatch>();
    const [value, setValue] = useLocalStorage<any>("item", []);
    function addItemToCart() {
+      setProgress(true);
       let flag = false;
       const newValue = value;
       const newItem: NewItem = {

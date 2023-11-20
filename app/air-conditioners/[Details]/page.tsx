@@ -13,6 +13,9 @@ import AddToCart from "./AddToCart";
 import Description from "./Description";
 import { currencyValueData } from "@/app/Redux/Slices/main.slice";
 import Video from "./Video";
+import { FaCheckCircle } from "react-icons/fa";
+import { FaLongArrowAltRight } from "react-icons/fa";
+import Link from "next/link";
 
 export type ModelsType = {
    details: Array<string>;
@@ -39,6 +42,7 @@ function Details() {
    const dispatch = useDispatch<AppDispatch>();
    const goods = useSelector((state: RootState) => state.itemReducer.itemsList);
    const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
+   const [isInProgress, setProgress] = useState<boolean>(false);
    useEffect(() => {
       dispatch(currencyValueData());
    }, [dispatch]);
@@ -48,7 +52,6 @@ function Details() {
    }, [dispatch]);
 
    useEffect(() => {
-      console.log(params.Details);
       if (goods) {
          const newModel = goods.кондиционеры.filter((el) => {
             return el.name.replace(/\s/g, "-") === params.Details;
@@ -63,19 +66,38 @@ function Details() {
       }
    }, [optionValue, itemParams, model]);
    function getValue(e: ChangeEvent<HTMLSelectElement>) {
+      setProgress(false);
       setValue(parseInt(e.target.value));
    }
 
    return model ? (
       <div className="conditionerCard container">
-         <div className="conditionerCard__mainBody grid mt-20">
+         <div
+            className={`conditionerCard__order ${
+               isInProgress ? "conditionerCard__order__active" : ""
+            } w-full h-20 mt-20 flex items-center justify-between text-2xl px-10 font-medium`}
+         >
+            <FaCheckCircle style={{ height: "40px", width: "40px", color: "#08eb00" }} />
+            <h4 className="ml-16 text-slate-800">Товар добавлен в корзину</h4>
+            <Link href={"/cart"} className="conditionerCard__goToCart flex items-center h-full">
+               <p className="mr-3">Перейти в корзину</p>
+               <FaLongArrowAltRight
+                  className="conditionerCard__goToCart__arrow"
+                  style={{ height: "30px", width: "30px", color: "#343E4E" }}
+               />
+            </Link>
+         </div>
+         <div className="conditionerCard__mainBody grid mt-10">
             <div className="conditionerCard__img relative">
                <Image src={model.img} alt={model.name} fill={true} />
             </div>
             <div className="conditionerCard__main flex flex-col mt-10 py-5">
                <h2 className="text-5xl">{model.name}</h2>
                <h4 className="mt-10 text-2xl">
-                  {model.models[0].price + "UZS"} -{model.models[model.models.length - 1].price + "UZS"}
+                  {(currencyValue && model.models[0].price * currencyValue)?.toLocaleString() + " UZS"}
+                  {" - "}
+                  {(currencyValue && model.models[model.models.length - 1].price * currencyValue)?.toLocaleString() +
+                     " UZS"}
                </h4>
                <div className="flex mt-10">
                   <SelectPowerInput selectRef={selectRef} getValue={getValue} model={model} />
@@ -89,7 +111,7 @@ function Details() {
                   ""
                )}
 
-               <AddToCart model={model} optionValue={optionValue} count={count} currencyValue={currencyValue} />
+               <AddToCart setProgress={setProgress} model={model} optionValue={optionValue} count={count} />
             </div>
             <Description selectRef={selectRef} itemParams={itemParams} itemOtherParams={itemOtherParams} />
             <Video />
