@@ -1,9 +1,6 @@
 "use client";
 
 import "./air-conditioners.scss";
-import Link from "next/link";
-import Image from "next/image";
-import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../Redux/store";

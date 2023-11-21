@@ -19,12 +19,13 @@ const initialState: initialStateType = {
    clientVal: null,
    cartCount: null,
 };
-type AirConditioner = {
+export type AirConditioner = {
    name: string;
    price: number;
    sub: string;
    img: string;
    title?: string;
+   href?: string;
 };
 type BrandList = {
    midea: Array<AirConditioner>;
