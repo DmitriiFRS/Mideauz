@@ -1,4 +1,4 @@
 function Details() {
-   return <div></div>;
+   return <div>парпрп</div>;
 }
 export default Details;
