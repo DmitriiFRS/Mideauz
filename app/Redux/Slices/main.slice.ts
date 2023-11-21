@@ -5,6 +5,7 @@ import { getDoc, doc } from "firebase/firestore";
 
 type initialStateType = {
    conditioners: ConditionerList | null;
+   colConditioners: ConditionerList | null;
    currencyValue: CurrencyValueType | null;
    requestData: Array<RequestDataType> | null;
    clientVal: null | Array<CartItemType>;
@@ -12,6 +13,7 @@ type initialStateType = {
 };
 const initialState: initialStateType = {
    conditioners: null,
+   colConditioners: null,
    currencyValue: null,
    requestData: null,
    clientVal: null,
@@ -22,6 +24,7 @@ type AirConditioner = {
    price: number;
    sub: string;
    img: string;
+   title?: string;
 };
 type BrandList = {
    midea: Array<AirConditioner>;
@@ -45,7 +48,21 @@ export const conditionerListData = createAsyncThunk<ConditionerList, undefined>(
          if (snap.exists()) {
             return snap.data();
          } else {
-            console.error("error");
+            console.error("Ошибка загрузки данных");
+         }
+      });
+      return dataRef as ConditionerList;
+   }
+);
+
+export const colConditioneListData = createAsyncThunk<ConditionerList>(
+   "main/colConditionerListFirestore",
+   async function getData() {
+      const dataRef = await getDoc(doc(db, "колонники", "GpFsxfyXXsIP12F904c9")).then((snap) => {
+         if (snap.exists()) {
+            return snap.data();
+         } else {
+            console.error("Ошибка загрузки данных");
          }
       });
       return dataRef as ConditionerList;
@@ -80,6 +97,9 @@ const mainSlice = createSlice({
    extraReducers: (builder) => {
       builder.addCase(conditionerListData.fulfilled, (state, action) => {
          state.conditioners = action.payload;
+      });
+      builder.addCase(colConditioneListData.fulfilled, (state, action) => {
+         state.colConditioners = action.payload;
       });
       builder.addCase(currencyValueData.fulfilled, (state, action) => {
          state.currencyValue = action.payload;

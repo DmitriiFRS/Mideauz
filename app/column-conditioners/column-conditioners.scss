@@ -1,4 +1,10 @@
 .col-conditioners {
+   & > *:not(:last-child) {
+      margin: 100px 0 0 0;
+   }
+   & > *:last-child {
+      margin: 0 0 50px 0;
+   }
    &__img-container {
       height: 732px;
       width: 501px;
@@ -8,27 +14,29 @@
       width: 280px;
    }
    &__btn {
-      background: linear-gradient(45deg, rgb(104, 104, 104) 0%, rgba(223,223,223,0.10127801120448177) 100%);
+      background: linear-gradient(45deg, rgb(104, 104, 104) 0%, rgba(223, 223, 223, 0.10127801120448177) 100%);
       padding: 15px 25px;
       transition: 0.4s;
       position: relative;
       z-index: 2;
       border-radius: 9px;
+      overflow: hidden;
       &:before {
          border-radius: 9px;
          position: absolute;
-         left: 0;
+         left: -19px;
          top: 0;
          width: 0%;
          height: 100%;
-         content: '';
-         background: #2585CD;
+         content: "";
+         background: #2585cd;
          transition: 0.2s ease-in-out;
          z-index: -1;
          color: #fff;
+         transform: skew(45deg);
       }
       &:hover::before {
-         width: 100%;
+         width: 122%;
       }
    }
 }

@@ -13,7 +13,6 @@ import ConditionerList from "./ConditionerList";
 
 function ConditionersList({ conditionerList, brands }: any) {
    const dispatch = useDispatch<AppDispatch>();
-   const [isView, setIsView] = useState<boolean>(false);
    const [isHide, setHide] = useState<boolean>(false);
    const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
    useEffect(() => {
@@ -27,7 +26,11 @@ function ConditionersList({ conditionerList, brands }: any) {
          <div className="flex items-center justify-center">
             <h2 className="text-center font-bold text-6xl text-slate-600">{brands}</h2>
             <button onClick={toggleBlock} className={` conditioners__hideBtn ${isHide ? "conditioners__hide" : ""}`}>
-               <MdOutlineArrowDropDown className={`${"conditioners__ArrowDropDownActive"}`} size="80px" />
+               <MdOutlineArrowDropDown
+                  className={`${"conditioners__ArrowDropDownActive"}`}
+                  size="80px"
+                  style={{ color: "#475569" }}
+               />
             </button>
          </div>
          <ConditionerList conditionerList={conditionerList} isHide={isHide} currencyValue={currencyValue} />

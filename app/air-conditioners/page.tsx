@@ -3,7 +3,7 @@
 import ConditionersList from "./index";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../Redux/store";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { conditionerListData } from "../Redux/Slices/main.slice";
 import Skeleton from "../Utilities/Skeleton";
 const brands = ["Кондиционеры Midea", "Кондиционеры Welkin"];
