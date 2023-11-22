@@ -9,6 +9,11 @@ type ConditionersPower = {
    params: Array<string>;
    details: Array<string>;
 };
+type ColConditionersPower = {
+   id: number;
+   power: string;
+   price: string;
+};
 
 type ConditionerModels = {
    models: Array<ConditionersPower>;
@@ -16,12 +21,20 @@ type ConditionerModels = {
    name: string;
    img: string;
 };
+type ColConditionerModels = {
+   company: string;
+   desc: string;
+   img: string;
+   name: string;
+   params: Array<string>;
+   models: Array<ColConditionersPower>;
+};
 
 type ConditionerItems = {
    врф: any;
    канальники: any;
    кассеты: any;
-   колонники: any;
+   колонники: Array<ColConditionerModels>;
    кондиционеры: Array<ConditionerModels>;
    чиллеры: any;
 };
