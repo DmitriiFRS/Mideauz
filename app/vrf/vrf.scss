@@ -1,0 +1,16 @@
+.vrf {
+   &__title {
+      color: #64748b;
+   }
+   &__content1 {
+      &__imgBody {
+         max-width: 500px;
+         width: 100%;
+         aspect-ratio: 3/3;
+      }
+      &__sub {
+         max-width: 750px;
+         line-height: 160%;
+      }
+   }
+}

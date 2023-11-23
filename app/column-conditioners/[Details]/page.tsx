@@ -30,12 +30,12 @@ function Details() {
       }
    }, [goods]);
    return model ? (
-      <div className="colConditionerCard container flex flex-col">
+      <div className="colConditionerCard container flex flex-col flex-auto">
          <div className="flex">
             <div className="colConditionerCard__img">
-               <Image src={""} alt=""></Image>
+               <Image src={model.img} alt={model.name} fill></Image>
             </div>
-            <div className="colConditionerCard__options"></div>
+            <div className="colConditionerCard__options">ffff</div>
          </div>
          <div className="flex">
             <div className="colConditionerCard__desc"></div>
@@ -43,7 +43,7 @@ function Details() {
          </div>
       </div>
    ) : (
-      ""
+      "null"
    );
 }
 export default Details;
