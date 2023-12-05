@@ -3,6 +3,7 @@
       color: #64748b;
    }
    &__content1 {
+      border-radius: 10px;
       &__imgBody {
          max-width: 500px;
          width: 100%;
@@ -12,5 +13,9 @@
          max-width: 750px;
          line-height: 160%;
       }
+   }
+   &__btns {
+      max-width: 150px;
+      width: 100%;
    }
 }
