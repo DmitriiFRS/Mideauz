@@ -1,4 +1,6 @@
 .vrf {
+   animation-name: fade-in;
+   animation-duration: 1.5s;
    margin: 0 auto 40px auto;
    &__title {
       color: #64748b;
@@ -8,7 +10,7 @@
       &__imgBody {
          max-width: 500px;
          width: 100%;
-         aspect-ratio: 3/3;
+         aspect-ratio: 3/2.5;
       }
       &__sub {
          max-width: 750px;
@@ -46,5 +48,16 @@
    &__itemActive {
       opacity: 1;
       transform: translateY(0px);
+   }
+   &__atom {
+      aspect-ratio: 2.5/2;
+   }
+}
+@keyframes fade-in {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
    }
 }

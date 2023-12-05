@@ -1,32 +1,36 @@
 import "./vrf.scss";
-import V8Main from "../../public/img/Equip/vrf/V8-main.png";
+import V8Main from "../../public/img/Equip/vrf/v8.png";
 import Image from "next/image";
 import Link from "next/link";
 import ContentBlock from "./ContentBlock";
-import miniVRF from "../../public/img/Equip/vrf/vrf-mini.png";
+import miniVRF from "../../public/img/Equip/vrf/atom.png";
 import V4 from "../../public/img/Equip/vrf/vrf-v4.png";
 import V5 from "../../public/img/Equip/vrf/vrf-5.png";
-import V6 from "../../public/img/Equip/vrf/v6-side.png";
+import V6 from "../../public/img/Equip/vrf/vrf-6.png";
+import V8 from "../../public/img/Equip/vrf/V8-main.png";
 
 const vrfs = [
    {
-      title: "Mini-VRF",
+      title: "VRF-система серии V8",
       list: [
-         "Один наружный блок управляет до 9 внутренними блоками",
-         "Более высокая энергоэффективность",
-         "Меньшая площадь, более низкие профили и более тихая работа",
+         "Степень защиты IP55 от влаги, соли, пыли и насекомых.",
+         "Устойчивость к электромагнитным помехам от радиосвязи, высокого напряжения, другого оборудования.",
+         "19 датчиков в холодильном контуре для анализа состояния в режиме реального времени.",
+         "Система микроканального охлаждения электронных компонентов хладагентом.",
       ],
-      img: miniVRF,
+      img: V8,
+      className: "vrf-content__v8",
    },
    {
-      title: "VRF-система серии V4 Plus",
+      title: "VRF-система серии V6",
       list: [
-         "Компрессоры и вентиляторы с инверторным управлением",
-         "Режимы одновременного нагрева и охлаждения",
-         "Непрерывный нагрев во время размораживания",
-         "Инновационный блок переключения режимов",
+         "Широкий диапазон производительности и рабочий диапазон",
+         "EMS максимизирует комфорт и энергоэффективность",
+         "EVI увеличивает мощность нагрева и охлаждения в экстремальных условиях",
+         "Возможность конфигурирования до 3-х блоков в единую систему упрощают монтаж и эксплуатацию оборудования",
       ],
-      img: V4,
+      img: V6,
+      className: "vrf-content__v6",
    },
    {
       title: "VRF-система серии V5 X",
@@ -38,16 +42,28 @@ const vrfs = [
          "5 ступеней контроля масла",
       ],
       img: V5,
+      className: "vrf-content__v5",
    },
    {
-      title: "VRF-система серии V6",
+      title: "VRF-система серии V4 Plus",
       list: [
-         "Широкий диапазон производительности и рабочий диапазон",
-         "EMS максимизирует комфорт и энергоэффективность",
-         "EVI увеличивает мощность нагрева и охлаждения в экстремальных условиях",
-         "Возможность конфигурирования до 3-х блоков в единую систему упрощают монтаж и эксплуатацию оборудования",
+         "Компрессоры и вентиляторы с инверторным управлением",
+         "Режимы одновременного нагрева и охлаждения",
+         "Непрерывный нагрев во время размораживания",
+         "Инновационный блок переключения режимов",
       ],
-      img: V6,
+      img: V4,
+      className: "vrf-content__v4",
+   },
+   {
+      title: "Atom VRF",
+      list: [
+         "Один наружный блок управляет до 9 внутренними блоками",
+         "Более высокая энергоэффективность",
+         "Меньшая площадь, более низкие профили и более тихая работа",
+      ],
+      img: miniVRF,
+      className: "vrf-content__atom",
    },
 ];
 
@@ -55,7 +71,7 @@ function Vrf() {
    return (
       <section className="vrf flex-auto container">
          <h2 className="vrf__title mt-20 text-center font-semibold text-7xl">VRF Система</h2>
-         <div className="vrf__content1 bg-slate-100 p-5 mt-5 py-10">
+         <div className="vrf__content1 bg-slate-100 p-16 mt-10">
             <div className="flex gap-11 justify-between mt-16 text-5xl items-center font-medium">
                <div className="">
                   <p className="vrf__content1__sub text-slate-500">

@@ -22,13 +22,13 @@ function ContentBlockClient({ content }: { content: ContentBlockProps }) {
          <ul className="vrf-content__list flex flex-col justify-center">
             {content.list.map((el, index) => {
                return (
-                  <li key={index} className="text-lg vrf-content__item text-slate-600">
+                  <li key={index} className="text-xl vrf-content__item text-slate-600">
                      {el}
                   </li>
                );
             })}
          </ul>
-         <div className="vrf-content__imgBody relative">
+         <div className={`vrf-content__imgBody relative ${content.className}`}>
             <Image src={content.img} alt="vrf" fill />
          </div>
       </div>

@@ -6,6 +6,7 @@ export type ContentBlockProps = {
    title: string;
    list: Array<string>;
    img: any;
+   className: string;
 };
 
 function ContentBlock({ content }: { content: ContentBlockProps }) {
