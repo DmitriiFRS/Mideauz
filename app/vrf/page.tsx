@@ -3,11 +3,10 @@ import V8Main from "../../public/img/Equip/vrf/v8.png";
 import Image from "next/image";
 import Link from "next/link";
 import ContentBlock from "./ContentBlock";
-import miniVRF from "../../public/img/Equip/vrf/atom.png";
-import V4 from "../../public/img/Equip/vrf/vrf-v4.png";
-import V5 from "../../public/img/Equip/vrf/vrf-5.png";
+import atom from "../../public/img/Equip/vrf/atom.png";
 import V6 from "../../public/img/Equip/vrf/vrf-6.png";
 import V8 from "../../public/img/Equip/vrf/V8-main.png";
+import miniVRF from "../../public/img/Equip/vrf/mini-vrf.png";
 
 const vrfs = [
    {
@@ -33,36 +32,24 @@ const vrfs = [
       className: "vrf-content__v6",
    },
    {
-      title: "VRF-система серии V5 X",
-      list: [
-         "Компрессоры и вентиляторы с инверторным управлением",
-         "Высокоэффективный теплообменник",
-         "Широкий диапазон производительности и рабочий диапазон",
-         "Увеличенная длина труб",
-         "5 ступеней контроля масла",
-      ],
-      img: V5,
-      className: "vrf-content__v5",
-   },
-   {
-      title: "VRF-система серии V4 Plus",
-      list: [
-         "Компрессоры и вентиляторы с инверторным управлением",
-         "Режимы одновременного нагрева и охлаждения",
-         "Непрерывный нагрев во время размораживания",
-         "Инновационный блок переключения режимов",
-      ],
-      img: V4,
-      className: "vrf-content__v4",
-   },
-   {
-      title: "Atom VRF",
+      title: "Mini-VRF",
       list: [
          "Один наружный блок управляет до 9 внутренними блоками",
          "Более высокая энергоэффективность",
          "Меньшая площадь, более низкие профили и более тихая работа",
       ],
       img: miniVRF,
+      className: "vrf-content__miniVRF",
+   },
+   {
+      title: "Atom VRF",
+      list: [
+         "Идеально подходят для небольших и средних помещений.",
+         "Высокоэффективный теплообменник наружного блока",
+         "Автоматическая адресация внутренних блоков",
+         "Возможность интеграции в систему диспетчеризации IMM Pro",
+      ],
+      img: atom,
       className: "vrf-content__atom",
    },
 ];

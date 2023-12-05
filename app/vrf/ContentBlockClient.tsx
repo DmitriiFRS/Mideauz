@@ -22,7 +22,7 @@ function ContentBlockClient({ content }: { content: ContentBlockProps }) {
          <ul className="vrf-content__list flex flex-col justify-center">
             {content.list.map((el, index) => {
                return (
-                  <li key={index} className="text-xl vrf-content__item text-slate-600">
+                  <li key={index} className="text-xl vrf-content__item text-slate-800">
                      {el}
                   </li>
                );
