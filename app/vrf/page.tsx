@@ -58,7 +58,7 @@ function Vrf() {
          <div className="vrf__content1 bg-slate-100 p-5 mt-5 py-10">
             <div className="flex gap-11 justify-between mt-16 text-5xl items-center font-medium">
                <div className="">
-                  <p className="vrf__content1__sub">
+                  <p className="vrf__content1__sub text-slate-500">
                      Идеальное решение для частных домов, больших офисов, бизнес-центров
                   </p>
                   <div className="vrf__content1__contects flex justify-center gap-10 mt-12">
@@ -79,7 +79,7 @@ function Vrf() {
             <h2 className="text-center text-6xl font-medium tracking-wide text-blue-950">
                Помещений много — система одна
             </h2>
-            <p className="mt-10 text-center text-3xl leading-8 text-slate-500">
+            <p className="mt-10 text-center text-3xl leading-10 text-slate-500">
                Системы VRF — это центральные интеллектуальные системы, предназначенные для кондиционирования большого
                количества помещений. Название «VRF» переводится как «переменный расход хладагента», тем самым отражая
                принцип работы этой системы с использованием инверторной технологии. К одному наружному инверторному
@@ -88,7 +88,7 @@ function Vrf() {
             </p>
          </div>
          <div className="">
-            <h2 className="text-center mt-28 text-6xl font-medium text-blue-950">Виды VRF систем Midea</h2>
+            <h2 className="text-center mt-36 text-6xl font-medium text-blue-950">Виды VRF систем Midea</h2>
             {vrfs.map((el, index) => {
                return <ContentBlock key={index} content={el} />;
             })}
