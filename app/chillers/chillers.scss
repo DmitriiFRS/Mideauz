@@ -1,0 +1,59 @@
+.chiller {
+   animation-name: fade-in;
+   animation-duration: 1.5s;
+   margin: 0 auto 40px auto;
+   &__title {
+      color: #64748b;
+   }
+   &__content1 {
+      border-radius: 10px;
+      &__imgBody {
+         max-width: 500px;
+         width: 100%;
+         aspect-ratio: 3/1.8;
+      }
+      &__sub {
+         max-width: 750px;
+         line-height: 160%;
+      }
+   }
+   &__btns {
+      max-width: 150px;
+      width: 100%;
+   }
+}
+.chiller-content {
+   padding: 30px 20px;
+   background: #f1f5f9;
+   &__imgBody {
+      max-width: 300px;
+      width: 100%;
+      aspect-ratio: 2/2;
+   }
+   &__list {
+      max-width: 500px;
+      list-style: initial;
+   }
+   &__item {
+      &:not(:last-child) {
+         margin: 0 0 15px 0;
+      }
+   }
+   &__body {
+      opacity: 0;
+      transform: translateY(100px);
+      transition: 0.6s;
+   }
+   &__itemActive {
+      opacity: 1;
+      transform: translateY(0px);
+   }
+}
+@keyframes fade-in {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
+}
