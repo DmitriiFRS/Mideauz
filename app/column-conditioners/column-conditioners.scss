@@ -40,3 +40,10 @@
       }
    }
 }
+.colConditionerCard {
+   &__imgBody {
+      max-width: 400px;
+      width: 100%;
+      aspect-ratio: 5/2;
+   }
+}
