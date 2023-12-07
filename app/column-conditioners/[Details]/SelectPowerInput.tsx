@@ -27,12 +27,19 @@ function SelectPowerInput({ model }: PropsType) {
       setSecondInput(secondInputArr);
    }, []);
    return (
-      <div className="">
+      <div className="colConditionerCard__selectBody mt-8">
          {model.mode ? (
             <>
-               <div className="">
-                  <label htmlFor="columnParam"></label>
-                  <select onChange={(e) => getValue(e)} name="paramSelect" id="columnParam">
+               <div className="flex items-center gap-8">
+                  <label htmlFor="columnParam" className="colConditionerCard__inputLabel text-xl font-medium">
+                     Режим
+                  </label>
+                  <select
+                     onChange={(e) => getValue(e)}
+                     name="paramSelect"
+                     id="columnParam"
+                     className="colConditionerCard__count text-xl"
+                  >
                      {model.mode.map((el, index) => {
                         return (
                            <option key={index} value={el}>
@@ -42,9 +49,11 @@ function SelectPowerInput({ model }: PropsType) {
                      })}
                   </select>
                </div>
-               <div className="">
-                  <label htmlFor="columnPower"></label>
-                  <select name="powerSelect" id="columnPower">
+               <div className="flex items-center gap-8">
+                  <label htmlFor="columnPower" className="colConditionerCard__inputLabel text-xl font-medium">
+                     Мощность
+                  </label>
+                  <select name="powerSelect" id="columnPower" className="colConditionerCard__count text-xl">
                      {secondInput.map((el, index) => {
                         return (
                            <option key={index} value={el}>
@@ -53,6 +62,17 @@ function SelectPowerInput({ model }: PropsType) {
                         );
                      })}
                   </select>
+               </div>
+               <div className="colConditionerCard__inputLineBody flex items-center gap-8">
+                  <label htmlFor="columnCount" className="colConditionerCard__inputLabel text-xl font-medium">
+                     Количество
+                  </label>
+                  <input id="columnCount" type="number" className="colConditionerCard__count text-xl" />
+               </div>
+               <div className="colConditionerCard__priceBody text-2xl font-medium">
+                  <p>
+                     Стоимость за единицу: <span>99999999</span> UZS
+                  </p>
                </div>
             </>
          ) : (

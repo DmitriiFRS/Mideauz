@@ -29,7 +29,7 @@ export type ModelType = {
 };
 
 function Details() {
-   const [model, setModel] = useState<any>(null);
+   const [model, setModel] = useState<null | ModelType>(null);
    const params = useParams();
    const dispatch = useDispatch<AppDispatch>();
    const goods = useSelector((state: RootState) => state.itemReducer.itemsList);
@@ -45,7 +45,7 @@ function Details() {
          const newModel = goods.колонники.filter((el) => {
             return el.name.replace(/\s/g, "-") === params.Details;
          });
-         setModel(newModel[0]);
+         setModel(newModel[0] as ModelType);
       }
    }, [goods]);
    return model ? (
@@ -54,12 +54,28 @@ function Details() {
             <div className="colConditionerCard__imgBody relative">
                <Image src={model.img} alt={model.name} fill></Image>
             </div>
-            <p>{model.name}</p>
-            <SelectPowerInput model={model} />
+            <div className="flex flex-col justify-center">
+               <p className="text-4xl font-semibold text-center">{model.name}</p>
+               <SelectPowerInput model={model} />
+            </div>
          </div>
-         <div className="flex">
-            <div className="colConditionerCard__desc"></div>
-            <div className="colConditionerCard__advantages"></div>
+         <div className="colConditionerCard__descBody grid mt-28">
+            <div className="text-slate-600">
+               <h4 className="text-center text-2xl font-semibold">Описание</h4>
+               <p className="colConditionerCard__desc mt-10">{model.desc}</p>
+            </div>
+            <div className="text-slate-600">
+               <h4 className="text-2xl font-semibold">Параметры</h4>
+               <ul className="colConditionerCard__advantages mt-10 ">
+                  {model.params.map((el, index) => {
+                     return (
+                        <li key={index} className="list-disc">
+                           {el}
+                        </li>
+                     );
+                  })}
+               </ul>
+            </div>
          </div>
          <Video />
       </div>

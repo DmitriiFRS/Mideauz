@@ -1,8 +1,8 @@
 function Video() {
    return (
-      <div className="conditionerCard__video">
+      <div className="colConditionerCard__video flex justify-center my-14">
          <iframe
-            className="conditionerCard__video__inner"
+            className="colConditionerCard__video__inner h-full"
             src="https://www.youtube.com/embed/DV7lnHjpfB0?si=NPkMdH_cbXCcGGXX"
             title="YouTube video player"
             frameBorder="0"
