@@ -41,12 +41,12 @@ const list = [
    },
 ];
 
-function HeaderDropdownList({ isDropDownActive }: { isDropDownActive: boolean }) {
+function HeaderDropdownList({ hideBar }: { hideBar: () => void }) {
    return (
       <div className="container flex justify-between py-10">
          {list.map((el, idx) => {
             return (
-               <li key={idx} className="dropdownList__item font text-2xl first-letter font-medium">
+               <li onClick={hideBar} key={idx} className="dropdownList__item font text-2xl first-letter font-medium">
                   <Link className="flex flex-col justify-center items-center h-full" href={el.href}>
                      <h4 className="dropdownList__title">{el.title}</h4>
                      <Image

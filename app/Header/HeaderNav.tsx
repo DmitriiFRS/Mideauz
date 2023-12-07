@@ -55,7 +55,7 @@ function HeaderNav() {
                }}
                className="header__dropDown overflow-hidden"
             >
-               <HeaderDropdownList isDropDownActive={isDropdownActive} />
+               <HeaderDropdownList hideBar={hideBar} />
             </div>
          </div>
          <ul className="header__navlist flex content-center items-center text-xl relative z-10">
