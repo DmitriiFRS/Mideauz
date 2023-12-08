@@ -22,6 +22,9 @@ type NewItem = {
 };
 
 function AddToCart({ setProgress, colModel, firstInput, subInputRef, countValue }: PropsType) {
+   useEffect(() => {
+      console.log(colModel.mode);
+   }, []);
    const dispatch = useDispatch<AppDispatch>();
    const [value, setValue] = useLocalStorage<any>("item", []);
    function addItemToCart() {
@@ -38,18 +41,19 @@ function AddToCart({ setProgress, colModel, firstInput, subInputRef, countValue 
       if (modelType) {
          const newItem: NewItem = {
             model: `Колонный кондиционер ${colModel.name}`,
-            type: firstInput === "Inverter" ? "Инверторный" : "",
             power: modelType.power,
             price: modelType.price,
             id: modelType.id,
             count: countValue,
          };
-         value.forEach((el: NewItem, index: number) => {
-            if (el.model === newItem.model && el.power === newItem.power) {
-               flag = true;
-               newValue[index].count += countValue;
-            }
-         });
+         if (colModel.mode)
+            (newItem.type = firstInput === "Inverter" ? "Инверторный" : ""),
+               value.forEach((el: NewItem, index: number) => {
+                  if (el.model === newItem.model && el.power === newItem.power) {
+                     flag = true;
+                     newValue[index].count += countValue;
+                  }
+               });
          if (flag) {
             setValue([...newValue]);
          } else {
