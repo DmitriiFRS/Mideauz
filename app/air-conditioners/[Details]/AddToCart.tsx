@@ -2,7 +2,7 @@
 
 import useLocalStorage from "@/app/hooks/useLocalStorage";
 import { ModelType } from "./page";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/app/Redux/store";
 import { setCartCount } from "@/app/Redux/Slices/main.slice";
@@ -29,7 +29,7 @@ function AddToCart({ model, optionValue, count, setProgress }: AddToCartPropsTyp
       let flag = false;
       const newValue = value;
       const newItem: NewItem = {
-         model: model.name,
+         model: `Кондиционер ${model.name}`,
          power: model.models[optionValue].power,
          price: model.models[optionValue].price,
          count: count,
