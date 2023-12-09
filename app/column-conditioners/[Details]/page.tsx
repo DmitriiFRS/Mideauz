@@ -33,7 +33,6 @@ function Details() {
    const params = useParams();
    const dispatch = useDispatch<AppDispatch>();
    const goods = useSelector((state: RootState) => state.itemReducer.itemsList);
-   const [isInProgress, setProgress] = useState<boolean>(false);
    useEffect(() => {
       dispatch(currencyValueData());
    }, [dispatch]);
@@ -56,7 +55,7 @@ function Details() {
             </div>
             <div className="flex flex-col justify-center">
                <p className="text-4xl font-semibold text-center">{model.name}</p>
-               <SelectPowerInput model={model} setProgress={setProgress} />
+               <SelectPowerInput model={model} />
             </div>
          </div>
          <div className="colConditionerCard__descBody grid mt-28">

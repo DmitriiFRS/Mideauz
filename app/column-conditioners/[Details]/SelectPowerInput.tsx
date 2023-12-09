@@ -10,15 +10,16 @@ import PriceField from "./PriceField";
 
 type PropsType = {
    model: ModelType;
-   setProgress: Function;
 };
-function SelectPowerInput({ model, setProgress }: PropsType) {
+function SelectPowerInput({ model }: PropsType) {
    const [firstInput, setFirstInput] = useState<string>("Inverter");
    const [secondInput, setSecondInput] = useState<Array<string>>([]);
    const [itemPrice, setItemPrice] = useState<number | null>(null);
    const [countValue, setCount] = useState<number>(1);
    const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
    const subInputRef = useRef<HTMLSelectElement>(null);
+
+   /* функция, которая меняет значения второго инпута на основании значения в первом инпуте */
    function getValue(e: ChangeEvent<HTMLSelectElement>) {
       setFirstInput(e.target.value);
       const secondInputArr: Array<string> = [];
@@ -29,6 +30,8 @@ function SelectPowerInput({ model, setProgress }: PropsType) {
       });
       setSecondInput(secondInputArr);
    }
+
+   /* функция для расчета стоимости товара при изменении инпута мощности */
    function changeSecondInput(e: ChangeEvent<HTMLSelectElement>) {
       if (subInputRef) {
          model.models.find((el) => {
@@ -38,6 +41,8 @@ function SelectPowerInput({ model, setProgress }: PropsType) {
          });
       }
    }
+
+   /* Инициализация второго инпута если есть первый или если его нет */
    useEffect(() => {
       const secondInputArr: Array<string> = [];
       if (model.mode) {
@@ -54,6 +59,8 @@ function SelectPowerInput({ model, setProgress }: PropsType) {
          setSecondInput(secondInputArr);
       }
    }, []);
+
+   /* расчет стоимости товара */
    useEffect(() => {
       if (subInputRef) {
          model.models.find((el) => {
@@ -63,10 +70,14 @@ function SelectPowerInput({ model, setProgress }: PropsType) {
          });
       }
    }, [secondInput]);
+
+   /* функция, которая ререндерит количество товаров в корзине */
    function addCount(e: ChangeEvent<HTMLInputElement>) {
       if (e.target.value === "0") return 1;
       setCount(parseInt(e.target.value));
    }
+
+   /* рендер компонента в котором есть инпут с типом или в котором есть только один инпут с мощностью */
    return (
       <div className="colConditionerCard__selectBody mt-8 text-slate-600">
          {model.mode ? (
@@ -75,26 +86,14 @@ function SelectPowerInput({ model, setProgress }: PropsType) {
                <PowerInput subInputRef={subInputRef} secondInput={secondInput} changeSecondInput={changeSecondInput} />
                <CountInput countValue={countValue} addCount={addCount} />
                <PriceField itemPrice={itemPrice} currencyValue={currencyValue} />
-               <AddToCart
-                  setProgress={setProgress}
-                  colModel={model}
-                  firstInput={firstInput}
-                  subInputRef={subInputRef}
-                  countValue={countValue}
-               />
+               <AddToCart colModel={model} firstInput={firstInput} subInputRef={subInputRef} countValue={countValue} />
             </>
          ) : (
             <>
                <PowerInput subInputRef={subInputRef} secondInput={secondInput} changeSecondInput={changeSecondInput} />
                <CountInput countValue={countValue} addCount={addCount} />
                <PriceField itemPrice={itemPrice} currencyValue={currencyValue} />
-               <AddToCart
-                  setProgress={setProgress}
-                  colModel={model}
-                  firstInput={firstInput}
-                  subInputRef={subInputRef}
-                  countValue={countValue}
-               />
+               <AddToCart colModel={model} firstInput={firstInput} subInputRef={subInputRef} countValue={countValue} />
             </>
          )}
       </div>

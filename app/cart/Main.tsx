@@ -17,6 +17,7 @@ export type CartItemType = {
    price: number;
    count: number;
    id: number;
+   type?: string;
 };
 
 function Main({
@@ -88,7 +89,9 @@ function Main({
                                     <Image src={ultraviolet} alt="condishn" width={200} height={200} />
                                  </Link>
                                  <div className="cart__desc flex justify-between items-center">
-                                    <h3 className="cart__desc__model text-4xl">{`Midea ${el.model} ${el.power} BTU`}</h3>
+                                    <h3 className="cart__desc__model text-4xl">{`Midea ${el.model} ${el.power} BTU ${
+                                       el.type ? el.type : ""
+                                    }`}</h3>
                                     <div className="flex flex-col items-center">
                                        <span className="text-2xl">Количество</span>
                                        <span className="text-3xl mt-4">{el.count}</span>

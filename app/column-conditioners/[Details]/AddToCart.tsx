@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import { setCartCount } from "@/app/Redux/Slices/main.slice";
 
 type PropsType = {
-   setProgress: Function;
    colModel: ModelType;
    firstInput: string;
    subInputRef: React.RefObject<HTMLSelectElement>;
@@ -21,10 +20,7 @@ type NewItem = {
    count: number;
 };
 
-function AddToCart({ setProgress, colModel, firstInput, subInputRef, countValue }: PropsType) {
-   useEffect(() => {
-      console.log(colModel.mode);
-   }, []);
+function AddToCart({ colModel, firstInput, subInputRef, countValue }: PropsType) {
    const dispatch = useDispatch<AppDispatch>();
    const [value, setValue] = useLocalStorage<any>("item", []);
    function addItemToCart() {
@@ -47,7 +43,7 @@ function AddToCart({ setProgress, colModel, firstInput, subInputRef, countValue 
             count: countValue,
          };
          if (colModel.mode)
-            (newItem.type = firstInput === "Inverter" ? "Инверторный" : ""),
+            (newItem.type = firstInput === "Inverter" ? "Инверторный" : "On/Off"),
                value.forEach((el: NewItem, index: number) => {
                   if (el.model === newItem.model && el.power === newItem.power) {
                      flag = true;
