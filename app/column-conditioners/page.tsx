@@ -15,14 +15,6 @@ function ColumnConditioners() {
    useEffect(() => {
       dispatch(colConditioneListData());
    }, [dispatch]);
-   const data = [
-      {
-         title: "Кондиционеры Midea",
-      },
-      {
-         title: "Кондиционеры Welkin",
-      },
-   ];
    return !conditionerList ? (
       <div className="skeleton__container grid grid-cols-2 grid-rows-2">
          {skeletonSections.map((el, index) => {

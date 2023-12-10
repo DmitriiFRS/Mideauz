@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../Redux/store";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../Redux/store";
 import { useEffect } from "react";
 import { currencyValueData } from "../Redux/Slices/main.slice";
 import Image from "next/image";
@@ -12,7 +12,6 @@ type ConditionersList = {
 
 function ConditionersList({ conditionerList, brands }: ConditionersList) {
    const dispatch = useDispatch<AppDispatch>();
-   const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
    useEffect(() => {
       dispatch(currencyValueData());
    }, [dispatch]);
