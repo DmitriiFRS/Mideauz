@@ -16,6 +16,7 @@ type ModelsType = {
    mode: Array<string>;
    power: string;
    price: string;
+   InverterPrice?: string;
 };
 
 export type ModelType = {

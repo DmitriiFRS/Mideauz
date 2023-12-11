@@ -36,7 +36,11 @@ function SelectPowerInput({ model }: PropsType) {
       if (subInputRef) {
          model.models.find((el) => {
             if (el.power === subInputRef.current?.value) {
-               setItemPrice(+el.price);
+               if (el.InverterPrice && firstInput === "Inverter") {
+                  setItemPrice(+el.InverterPrice);
+               } else {
+                  setItemPrice(+el.price);
+               }
             }
          });
       }
@@ -65,7 +69,11 @@ function SelectPowerInput({ model }: PropsType) {
       if (subInputRef) {
          model.models.find((el) => {
             if (el.power === subInputRef.current?.value) {
-               setItemPrice(+el.price);
+               if (el.InverterPrice && firstInput === "Inverter") {
+                  setItemPrice(+el.InverterPrice);
+               } else {
+                  setItemPrice(+el.price);
+               }
             }
          });
       }
