@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import SelectPowerInput from "./SelectPowerInput";
 import Video from "../Video";
+import "../../column-conditioners/column-conditioners.scss";
 type ModelsType = {
    id: number;
    mode?: Array<string>;
