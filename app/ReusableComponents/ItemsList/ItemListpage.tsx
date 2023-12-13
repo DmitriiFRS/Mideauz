@@ -40,6 +40,7 @@ function ItemListpage({ items }: { items: Array<ModelType> }) {
          });
          setModel(newModel[0] as ModelType);
       }
+      console.log(items);
    }, [items]);
    return model ? (
       <div className="colConditionerCard container flex flex-col flex-auto">

@@ -21,7 +21,7 @@ function ConditionersList({ conditionerList, brands }: ConditionersList) {
          <ul className="grid grid-cols-2 gap-12 mt-14">
             {conditionerList.map((el: any, index: number) => {
                return (
-                  <Link key={index} href={`/column-conditioners/${el.href}`}>
+                  <Link key={index} href={`/ducted-conditioners/${el.href}`}>
                      <li key={index} className="flex flex-col justify-center text-center items-center">
                         <div
                            className={`${
