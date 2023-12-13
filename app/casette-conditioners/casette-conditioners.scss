@@ -1,0 +1,100 @@
+.col-conditioners {
+   & > *:not(:last-child) {
+      margin: 100px 0 0 0;
+   }
+   & > *:last-child {
+      margin: 0 0 50px 0;
+   }
+   &__img-container {
+      height: 732px;
+      width: 501px;
+   }
+   &__img-container-welkin {
+      height: 732px;
+      width: 280px;
+   }
+   &__btn {
+      background: linear-gradient(45deg, rgb(104, 104, 104) 0%, rgba(223, 223, 223, 0.10127801120448177) 100%);
+      padding: 15px 25px;
+      transition: 0.4s;
+      position: relative;
+      z-index: 2;
+      border-radius: 9px;
+      overflow: hidden;
+      &:before {
+         border-radius: 9px;
+         position: absolute;
+         left: -19px;
+         top: 0;
+         width: 0%;
+         height: 100%;
+         content: "";
+         background: #2585cd;
+         transition: 0.2s ease-in-out;
+         z-index: -1;
+         color: #fff;
+         transform: skew(45deg);
+      }
+      &:hover::before {
+         width: 122%;
+      }
+   }
+}
+.colConditionerCard {
+   &__imgBody {
+      max-width: 400px;
+      width: 100%;
+      aspect-ratio: 2/2;
+   }
+   &__descBody {
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 100px;
+      padding: 0 20px;
+   }
+   &__desc {
+      font-size: 17px;
+      line-height: 140%;
+   }
+   &__advantages {
+      & > *:not(:last-child) {
+         margin: 0 0 20px 0;
+      }
+   }
+   &__video {
+      width: 100%;
+      height: 420px;
+      &__inner {
+         width: 50%;
+      }
+   }
+   &__advantages {
+      font-size: 17px;
+   }
+   &__inputLineBody {
+   }
+   &__count {
+      border: 2px solid #838383;
+      border-radius: 8px;
+      max-width: 120px;
+      width: 100%;
+      padding: 10px 5px 10px 15px;
+      max-height: 50px;
+      height: 100%;
+   }
+   &__selectBody {
+      & > * {
+         margin: 20px 0 0 0;
+      }
+   }
+   &__inputLabel {
+      max-width: 170px;
+      width: 100%;
+   }
+   &__priceBody {
+      max-width: 170px;
+      width: 100%;
+      white-space: nowrap;
+      margin: 50px 0 0 0;
+   }
+}

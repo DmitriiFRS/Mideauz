@@ -7,7 +7,7 @@ import { colConditioneListData } from "../Redux/Slices/main.slice";
 import Skeleton from "../Utilities/Skeleton";
 import ConditionersList from ".";
 import "./column-conditioners.scss";
-const brands = ["Кондиционеры Midea", "Кондиционеры Welkin"];
+const brands = ["Колонныые кондиционеры Midea", "Колонные кондиционеры Welkin"];
 const skeletonSections = [1, 2, 3, 4];
 function ColumnConditioners() {
    const dispatch = useDispatch<AppDispatch>();

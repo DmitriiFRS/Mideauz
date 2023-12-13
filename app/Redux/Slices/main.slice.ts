@@ -6,6 +6,8 @@ import { getDoc, doc } from "firebase/firestore";
 type initialStateType = {
    conditioners: ConditionerList | null;
    colConditioners: ConditionerList | null;
+   casConditioners: ConditionerList | null;
+   ducConditioners: ConditionerList | null;
    currencyValue: CurrencyValueType | null;
    requestData: Array<RequestDataType> | null;
    clientVal: null | Array<CartItemType>;
@@ -14,6 +16,8 @@ type initialStateType = {
 const initialState: initialStateType = {
    conditioners: null,
    colConditioners: null,
+   casConditioners: null,
+   ducConditioners: null,
    currencyValue: null,
    requestData: null,
    clientVal: null,
@@ -69,6 +73,32 @@ export const colConditioneListData = createAsyncThunk<ConditionerList>(
       return dataRef as ConditionerList;
    }
 );
+export const casConditioneListData = createAsyncThunk<ConditionerList>(
+   "main/casConditionerListFirestore",
+   async function getData() {
+      const dataRef = await getDoc(doc(db, "кассетники", "rzfIwOoxodiuvbycV26v")).then((snap) => {
+         if (snap.exists()) {
+            return snap.data();
+         } else {
+            console.error("Ошибка загрузки данных");
+         }
+      });
+      return dataRef as ConditionerList;
+   }
+);
+export const ducConditioneListData = createAsyncThunk<ConditionerList>(
+   "main/ducConditionerListFirestore",
+   async function getData() {
+      const dataRef = await getDoc(doc(db, "канальники", "9PnHaI6KvJ3S5w0GmiXm")).then((snap) => {
+         if (snap.exists()) {
+            return snap.data();
+         } else {
+            console.error("Ошибка загрузки данных");
+         }
+      });
+      return dataRef as ConditionerList;
+   }
+);
 
 export const currencyValueData = createAsyncThunk<CurrencyValueType, undefined>(
    "main/currencyValueFirestore",
@@ -101,6 +131,12 @@ const mainSlice = createSlice({
       });
       builder.addCase(colConditioneListData.fulfilled, (state, action) => {
          state.colConditioners = action.payload;
+      });
+      builder.addCase(casConditioneListData.fulfilled, (state, action) => {
+         state.casConditioners = action.payload;
+      });
+      builder.addCase(ducConditioneListData.fulfilled, (state, action) => {
+         state.ducConditioners = action.payload;
       });
       builder.addCase(currencyValueData.fulfilled, (state, action) => {
          state.currencyValue = action.payload;
