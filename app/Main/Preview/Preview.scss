@@ -52,10 +52,10 @@
       }
    }
    &__bg {
-      margin: 8px 0 0 0;
       filter: brightness(60%);
       overflow: hidden;
-      height: 980px !important;
+      min-height: 980px;
+      height: 980px;
    }
 }
 
