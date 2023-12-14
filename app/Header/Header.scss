@@ -152,6 +152,7 @@
    line-height: 140%;
    font-weight: 600;
    transform: translateX(0px);
+   padding: 0 0 50px 0;
    &__hide {
       left: 100vw;
    }
@@ -192,6 +193,7 @@
    transform: translateX(-100vw);
    opacity: 0;
    transition: 0.3s;
+   padding: 0 0 50px 0;
    &__open {
       transform: translateX(0vw);
       opacity: 1;
