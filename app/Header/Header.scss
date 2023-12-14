@@ -48,9 +48,6 @@
    @media (max-width: 760px) {
       left: 25vw;
    }
-   @media (max-width: 760px) {
-      left: 25vw;
-   }
    @media (max-width: 530px) {
       left: 15vw;
    }
@@ -60,6 +57,9 @@
 }
 .welkin-logo {
    right: 10px;
+   @media (max-width: 760px) {
+      right: 25vw;
+   }
    @media (max-width: 530px) {
       right: 15vw;
    }
