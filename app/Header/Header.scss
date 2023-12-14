@@ -149,6 +149,8 @@
    font-size: 20px;
    transition: 0.3s;
    left: 0px;
+   line-height: 140%;
+   font-weight: 600;
    transform: translateX(0px);
    &__hide {
       left: 100vw;
@@ -185,6 +187,8 @@
 }
 .header__sublist {
    font-size: 20px;
+   line-height: 140%;
+   font-weight: 500;
    transform: translateX(-100vw);
    opacity: 0;
    transition: 0.3s;
