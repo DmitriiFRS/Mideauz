@@ -37,7 +37,7 @@ function BurgerNav({ isMenuOpen, setMenuOpen }: { isMenuOpen: boolean; setMenuOp
             >
                <IoIosArrowBack style={{ width: "100%", height: "100%" }} />
             </button>
-            <nav className="header__burgerNav flex justify-center w-full h-full relative">
+            <nav className="header__burgerNav flex justify-center w-full h-full relative overflow-y-auto">
                <ul
                   className={`header__burgerList ${
                      isSubMenuOpen ? "header__burgerList__hide" : ""
