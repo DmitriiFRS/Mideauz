@@ -11,6 +11,7 @@ function BurgerNav({ isMenuOpen, setMenuOpen }: { isMenuOpen: boolean; setMenuOp
    function closeMenu() {
       setMenuOpen(false);
       setSubMenuOpen(false);
+      document.body.style.overflow = "auto";
    }
    useEffect(() => {
       window.addEventListener("resize", closeMenu);
