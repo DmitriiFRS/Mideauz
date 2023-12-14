@@ -39,7 +39,7 @@ function HeaderNav() {
       setDisplay(false);
    }
    return (
-      <nav className="header__nav flex items-center justify-center mt-6 w-full">
+      <nav className="header__nav items-center justify-center mt-6 w-full">
          <div
             style={{ visibility: display ? "visible" : "hidden", opacity: isDropdownActive ? 1 : 0 }}
             onMouseEnter={hideBar}

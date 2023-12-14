@@ -1,5 +1,18 @@
 .footer {
-   background: #2585CD;
+   background: #2585cd;
+   &__top {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      @media (max-width: 750px) {
+         grid-template-columns: repeat(2, 1fr);
+         grid-template-rows: repeat(2, 1fr);
+      }
+      @media (max-width: 400px) {
+         grid-template-columns: repeat(1, 1fr);
+         grid-template-rows: repeat(4, 1fr);
+         place-items: center;
+      }
+   }
    &__iconsBody > * {
       &:not(:first-child) {
          margin: 0 0 0 20px;
@@ -10,14 +23,14 @@
    max-width: 280px;
 }
 .footer__icon1 {
-   color: #2585CD;
+   color: #2585cd;
 }
 .footer__icon2 {
-   color: #2585CD;
+   color: #2585cd;
 }
 .footer__icon3 {
-   color: #2585CD;
+   color: #2585cd;
 }
 .footer__icon4 {
-   color: #2585CD;
+   color: #2585cd;
 }

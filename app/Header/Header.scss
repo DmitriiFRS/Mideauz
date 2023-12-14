@@ -11,6 +11,13 @@
       @media (max-width: 1180px) {
          margin: 0;
       }
+      @media (max-width: 760px) {
+         position: relative;
+         left: 120px;
+      }
+      @media (max-width: 390px) {
+         left: 80px;
+      }
    }
    &__cart__title {
       display: inline-block;
@@ -25,6 +32,9 @@
       @media (max-width: 1050px) {
          width: 120px;
       }
+      @media (max-width: 390px) {
+         width: 80px;
+      }
    }
    &__cartCount__disabled {
       display: none;
@@ -34,23 +44,27 @@
    display: none;
 }
 .midea-logo {
-   top: 40px;
-   left: 40px;
-   @media (max-width: 1100px) {
-      top: 10px;
+   left: 10px;
+   @media (max-width: 760px) {
+      left: 25vw;
    }
-   @media (max-width: 850px) {
-      left: 10px;
+   @media (max-width: 760px) {
+      left: 25vw;
+   }
+   @media (max-width: 530px) {
+      left: 15vw;
+   }
+   @media (max-width: 390px) {
+      left: 17vw;
    }
 }
 .welkin-logo {
-   top: 48px;
-   right: 40px;
-   @media (max-width: 1100px) {
-      top: 16px;
+   right: 10px;
+   @media (max-width: 530px) {
+      right: 15vw;
    }
-   @media (max-width: 850px) {
-      right: 10px;
+   @media (max-width: 390px) {
+      right: 17vw;
    }
 }
 .header__inputBody {
@@ -72,11 +86,50 @@
 }
 .header__nav {
    margin: 0 auto;
+   display: flex;
+   @media (max-width: 760px) {
+      display: none;
+   }
+}
+.header__burgerBtn {
+   display: none;
+   position: relative;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   @media (max-width: 760px) {
+      display: flex;
+      transform: translateY(8px);
+      padding: 5px;
+   }
+   & > * {
+      width: 30px;
+      height: 3px;
+      background: #000;
+      &:not(:last-child) {
+         margin: 0 0 10px 0;
+      }
+   }
 }
 .header__navlist {
    @media (max-width: 970px) {
       margin: 0 50px 0 0;
    }
+}
+.header__burgerMenu {
+   display: none;
+   transform: translateX(-100%);
+   transition: 0.3s;
+   @media (max-width: 760px) {
+      display: block;
+   }
+   &__active {
+      transform: translateX(0%);
+   }
+}
+.header__burgerCloseBody {
+   width: 80px;
+   height: 80px;
 }
 .header__navItem {
    margin: 0 0 0 3vw;

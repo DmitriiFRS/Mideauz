@@ -28,7 +28,7 @@ function Footer() {
    return (
       <footer className="footer">
          <div className="container text-white">
-            <div className="footer__top grid grid-cols-4 py-10">
+            <div className="footer__top grid py-10 px-2">
                <Image src={midea} alt="midea" width={204} height={80} />
                {footerData.map((el, idx) => {
                   return (
