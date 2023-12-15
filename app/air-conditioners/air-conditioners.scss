@@ -1,9 +1,32 @@
 .conditioners {
-   padding: 50px 0;
+   padding: 50px 10px;
+   &__brandTitle {
+      font-size: 50px;
+      @media (max-width: 670px) {
+         font-size: 36px;
+      }
+      @media (max-width: 480px) {
+         font-size: 30px;
+      }
+      @media (max-width: 410px) {
+         font-size: 26px;
+      }
+      @media (max-width: 360px) {
+         font-size: 23px;
+      }
+   }
    &__list {
       overflow: hidden;
       transition: 0.4s;
       max-height: 2800px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 40px 40px;
+      @media (max-width: 850px) {
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @media (max-width: 400px) {
+         gap: 30px 20px;
+      }
       &__unactive {
          max-height: 0;
       }
@@ -14,6 +37,7 @@
       cursor: pointer;
       background: #dbdbdb;
       border-radius: 8px;
+      padding: 5px;
       &:hover .conditioners__img {
          transform: scale(1.2);
       }
@@ -24,6 +48,18 @@
    &__img-container {
       width: 350px;
       height: 350px;
+      @media (max-width: 1200px) {
+         width: 250px !important;
+         height: 250px !important;
+      }
+      @media (max-width: 580px) {
+         width: 150px !important;
+         height: 150px !important;
+      }
+      @media (max-width: 360px) {
+         width: 120px !important;
+         height: 120px !important;
+      }
    }
    &__img {
       transition: 0.4s;
@@ -37,6 +73,9 @@
       position: relative;
       z-index: 2;
       border-radius: 9px;
+      @media (max-width: 480px) {
+         padding: 10px 15px;
+      }
       &:before {
          border-radius: 9px;
          position: absolute;
@@ -60,6 +99,48 @@
    }
    &__hide {
       transform: rotate(180deg);
+   }
+   &__itemTitle {
+      font-size: 40px;
+      @media (max-width: 1000px) {
+         font-size: 30px;
+      }
+      @media (max-width: 480px) {
+         font-size: 24px;
+      }
+      @media (max-width: 360px) {
+         font-size: 20px;
+      }
+   }
+   &__itemSubtitle {
+      font-size: 22px;
+      @media (max-width: 410px) {
+         font-size: 16px;
+      }
+      @media (max-width: 360px) {
+         font-size: 14px;
+      }
+   }
+   &__itemPriceTitle {
+      font-size: 19px;
+      @media (max-width: 410px) {
+         font-size: 16px;
+      }
+      @media (max-width: 360px) {
+         font-size: 14px;
+      }
+   }
+   &__ArrowDropDownActive {
+      font-size: 60px;
+      @media (max-width: 510px) {
+         font-size: 50px;
+      }
+      @media (max-width: 410px) {
+         font-size: 40px;
+      }
+      @media (max-width: 360px) {
+         font-size: 35px;
+      }
    }
 }
 .skeleton__container {

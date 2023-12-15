@@ -2,7 +2,7 @@
 import Link from "next/link";
 import arrow from "../../public/icons/nav_arrow.svg";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HeaderDropdownList from "./HeaderDropdownList";
 const nav = [
    {
@@ -38,6 +38,19 @@ function HeaderNav() {
       setDropdownActive(false);
       setDisplay(false);
    }
+   useEffect(() => {
+      function onScroll() {
+         if (display) {
+            setDropdownActive(false);
+            setDisplay(false);
+            window.removeEventListener("scroll", onScroll);
+         }
+      }
+      window.addEventListener("scroll", onScroll);
+      return () => {
+         window.removeEventListener("scroll", onScroll);
+      };
+   }, [display]);
    return (
       <nav className="header__nav items-center justify-center mt-6 w-full">
          <div

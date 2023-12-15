@@ -21,11 +21,10 @@ function ConditionersList({ conditionerList, brands }: any) {
    return (
       <div className="conditioners container">
          <div className="flex items-center justify-center">
-            <h2 className="text-center font-bold text-6xl text-slate-600">{brands}</h2>
+            <h2 className="conditioners__brandTitle text-center font-bold text-6xl text-slate-600">{brands}</h2>
             <button onClick={toggleBlock} className={` conditioners__hideBtn ${isHide ? "conditioners__hide" : ""}`}>
                <MdOutlineArrowDropDown
                   className={`${"conditioners__ArrowDropDownActive"}`}
-                  size="80px"
                   style={{ color: "#475569" }}
                />
             </button>

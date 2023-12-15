@@ -9,9 +9,7 @@ type ConditionerListProps = {
 
 function ConditionerList({ conditionerList, currencyValue, isHide }: any) {
    return (
-      <ul
-         className={`${isHide ? "conditioners__list__unactive" : ""} conditioners__list grid grid-cols-3 gap-12 mt-14`}
-      >
+      <ul className={`${isHide ? "conditioners__list__unactive" : ""} conditioners__list grid mt-14`}>
          {conditionerList.map((el: any, index: number) => {
             return (
                <Link key={index} href={`/air-conditioners/${el.name.replace(/\s/g, "-")}`}>
@@ -23,10 +21,10 @@ function ConditionerList({ conditionerList, currencyValue, isHide }: any) {
                         <Image className="conditioners__img" src={el.img} alt={el.name} fill={true} />
                      </div>
                      <div className="flex flex-col">
-                        <p className="text-5xl font-medium relative z-10">{el.name}</p>
-                        <span className="text-2xl mt-5 inline-block">{el.sub}</span>
+                        <p className="conditioners__itemTitle font-medium relative z-10">{el.name}</p>
+                        <span className="conditioners__itemSubtitle mt-5 inline-block">{el.sub}</span>
                         {currencyValue ? (
-                           <span className="text-xl mt-5 inline-block">
+                           <span className="conditioners__itemPriceTitle mt-5 inline-block">
                               от {(el.price * currencyValue).toLocaleString()} UZS
                            </span>
                         ) : (
