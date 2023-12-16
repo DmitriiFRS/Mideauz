@@ -35,7 +35,7 @@
       transition: 0.5s ease-in-out;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       cursor: pointer;
-      background: #dbdbdb;
+      background: #e0e0e0;
       border-radius: 8px;
       padding: 5px;
       &:hover .conditioners__img {
@@ -249,6 +249,12 @@
          height: 100%;
          object-fit: cover;
       }
+   }
+}
+.skeleton__container {
+   @media (max-width: 850px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(3, minmax(0, 1fr));
    }
 }
 @keyframes fade-in {

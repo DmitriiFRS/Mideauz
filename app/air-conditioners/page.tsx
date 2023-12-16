@@ -6,6 +6,7 @@ import { AppDispatch, RootState } from "../Redux/store";
 import { useEffect } from "react";
 import { conditionerListData } from "../Redux/Slices/main.slice";
 import Skeleton from "../Utilities/Skeleton";
+import "./air-conditioners.scss";
 const brands = ["Кондиционеры Midea", "Кондиционеры Welkin"];
 const skeletonSections = [1, 2, 3, 4, 5, 6];
 
