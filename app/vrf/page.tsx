@@ -91,7 +91,9 @@ function Vrf() {
             </p>
          </div>
          <div className="">
-            <h2 className="text-center mt-36 text-6xl font-medium text-blue-950">Виды VRF систем Midea</h2>
+            <h2 className="vrf__typeTitle text-center mt-36 text-6xl font-medium text-blue-950">
+               Виды VRF систем Midea
+            </h2>
             {vrfs.map((el, index) => {
                return <ContentBlock key={index} content={el} />;
             })}

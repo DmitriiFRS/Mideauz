@@ -52,7 +52,7 @@ function Chillers() {
       <section className="chiller flex-auto container">
          <h2 className="chiller__title mt-20 text-center font-semibold text-7xl">Чиллеры</h2>
          <div className="chiller__content1 bg-slate-100 p-16 mt-10">
-            <div className="flex gap-11 justify-between mt-16 text-5xl items-center font-medium">
+            <div className="chiller__content1__body flex gap-10 justify-between text-5xl items-center font-medium">
                <div className="">
                   <p className="chiller__content1__sub text-slate-500">
                      Идеальное решение для больших и очень больших объектов.
@@ -71,24 +71,24 @@ function Chillers() {
                </div>
             </div>
          </div>
-         <div className="mt-28">
-            <h2 className="text-center text-6xl font-medium tracking-wide text-blue-950">
+         <div className="chiller__secondTitleBody mt-28">
+            <h2 className="chiller__secondTitle text-center text-6xl font-medium tracking-wide text-blue-950">
                Ведущий производитель климатического оборудования
             </h2>
-            <p className="mt-10 text-center text-3xl leading-10 text-slate-500">
+            <p className="chiller__secondSub mt-10 text-center text-3xl leading-10 text-slate-500">
                Сегодня Midea делает многомиллионные инвестиции в развитие производства чиллеров. С 1999 года компания
                сфокусировалась на исследованиях и разработках и конкурирует за счет самых передовых технологий.
             </p>
          </div>
          <div className="flex flex-col">
-            <h3 className="text-center mt-36 text-6xl font-medium text-blue-950">
+            <h3 className="chiller__secondTitle text-center mt-36 text-6xl font-medium text-blue-950">
                Чиллеры с воздушным охлаждением конденсатора
             </h3>
             {chillers.air.map((el, index) => {
                return <ContentBlock key={index} content={el} />;
             })}
 
-            <h3 className="text-center mt-20 text-6xl font-medium text-blue-950">
+            <h3 className="chiller__secondTitle text-center mt-20 text-6xl font-medium text-blue-950">
                Чиллеры с водяным охлаждением конденсатора
             </h3>
             {chillers.water.map((el, index) => {
