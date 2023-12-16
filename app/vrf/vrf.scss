@@ -7,6 +7,12 @@
    }
    &__content1 {
       border-radius: 10px;
+      @media (max-width: 640px) {
+         padding: 0 40px 40px 40px;
+      }
+      @media (max-width: 460px) {
+         padding: 0 15px 15px 15px;
+      }
       &__imgBody {
          max-width: 500px;
          width: 100%;
@@ -15,35 +21,88 @@
       &__sub {
          max-width: 750px;
          line-height: 160%;
+         @media (max-width: 880px) {
+            font-size: 30px;
+            text-align: center;
+         }
+         @media (max-width: 460px) {
+            font-size: 24px;
+         }
+      }
+      &__body {
+         @media (max-width: 640px) {
+            flex-direction: column-reverse;
+         }
       }
    }
    &__btns {
       max-width: 150px;
       width: 100%;
    }
+   &__secondTitle {
+      @media (max-width: 970px) {
+         font-size: 36px;
+      }
+      @media (max-width: 460px) {
+         font-size: 24px;
+      }
+   }
+   &__secondSub {
+      @media (max-width: 970px) {
+         font-size: 24px;
+      }
+      @media (max-width: 460px) {
+         font-size: 16px;
+      }
+   }
 }
 .vrf-content {
    padding: 30px 20px;
    background: #f1f5f9;
+   &__mainTitle {
+      @media (max-width: 440px) {
+         font-size: 24px;
+      }
+      @media (max-width: 340px) {
+         font-size: 20px;
+      }
+   }
    &__imgBody {
       max-width: 300px;
       width: 100%;
       aspect-ratio: 2/2;
+      @media (max-width: 760px) {
+         max-width: 200px;
+         margin: 30px 0 0 0;
+      }
    }
    &__list {
       max-width: 500px;
       list-style: initial;
+      @media (max-width: 760px) {
+      }
    }
    &__item {
       list-style: initial;
       &:not(:last-child) {
          margin: 0 0 15px 0;
       }
+      @media (max-width: 440px) {
+         font-size: 16px;
+      }
+      @media (max-width: 340px) {
+         font-size: 15px;
+      }
    }
    &__body {
       opacity: 0;
       transform: translateY(100px);
       transition: 0.6s;
+      @media (max-width: 760px) {
+         flex-direction: column;
+         align-items: center;
+         margin: 30px 0 0 0;
+      }
    }
    &__itemActive {
       opacity: 1;

@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { casConditioneListData } from "../Redux/Slices/main.slice";
 import Skeleton from "../Utilities/Skeleton";
 import ConditionersList from ".";
-import "./casette-conditioners.scss";
+import "../column-conditioners/column-conditioners.scss";
 const brands = ["Кассетные кондиционеры Midea", "Кассетные кондиционеры Welkin"];
 const skeletonSections = [1, 2, 3, 4];
 function CasetteConditioners() {

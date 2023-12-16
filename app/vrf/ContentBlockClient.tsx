@@ -17,7 +17,7 @@ function ContentBlockClient({ content }: { content: ContentBlockProps }) {
    return (
       <div
          ref={ref}
-         className={`vrf-content__body mt-20 flex justify-around ${isInView ? "vrf-content__itemActive" : ""}`}
+         className={`vrf-content__body mt-20 flex gap-3 justify-around ${isInView ? "vrf-content__itemActive" : ""}`}
       >
          <ul className="vrf-content__list flex flex-col justify-center">
             {content.list.map((el, index) => {
