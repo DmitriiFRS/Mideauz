@@ -5,13 +5,44 @@
    & > *:last-child {
       margin: 0 0 50px 0;
    }
+   &__brandTitle {
+      line-height: 130%;
+      @media (max-width: 920px) {
+         font-size: 40px;
+      }
+      @media (max-width: 460px) {
+         font-size: 30px;
+      }
+      @media (max-width: 340px) {
+         font-size: 26px;
+      }
+   }
+   &__listItem {
+      @media (max-width: 660px) {
+         gap: 30px;
+      }
+      @media (max-width: 660px) {
+         gap: 20px;
+      }
+      @media (max-width: 430px) {
+         grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+   }
+   &__li {
+      @media (max-width: 650px) {
+         max-height: 800px;
+         height: 100%;
+      }
+   }
    &__img-container {
-      height: 732px;
-      width: 501px;
+      max-width: 300px !important;
+      width: 100% !important;
+      aspect-ratio: 501/732;
    }
    &__img-container-welkin {
-      height: 732px;
-      width: 280px;
+      max-width: 300px !important;
+      width: 100% !important;
+      aspect-ratio: 455/1795;
    }
    &__btn {
       background: linear-gradient(45deg, rgb(104, 104, 104) 0%, rgba(223, 223, 223, 0.10127801120448177) 100%);
@@ -38,6 +69,27 @@
       &:hover::before {
          width: 122%;
       }
+   }
+   &__paramsTitle {
+      font-size: 40px;
+      flex: 1 1 auto;
+      height: 100%;
+      display: block;
+      @media (max-width: 1000px) {
+         font-size: 32px;
+      }
+      @media (max-width: 800px) {
+         font-size: 26px;
+      }
+      @media (max-width: 570px) {
+         font-size: 20px;
+      }
+   }
+   &__paramsPrice {
+   }
+   &__paramsSub {
+      display: block;
+      flex: 1 1 auto;
    }
 }
 .colConditionerCard {
@@ -96,5 +148,11 @@
       width: 100%;
       white-space: nowrap;
       margin: 50px 0 0 0;
+   }
+}
+.skeleton__container {
+   @media (max-width: 430px) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      grid-template-rows: repeat(4, minmax(0, 1fr));
    }
 }
