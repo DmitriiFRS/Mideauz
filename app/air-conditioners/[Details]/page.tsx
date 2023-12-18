@@ -83,10 +83,13 @@ function Details() {
                isInProgress ? "conditionerCard__order__active" : ""
             } w-full h-20 flex items-center justify-between text-2xl font-medium`}
          >
-            <FaCheckCircle style={{ height: "40px", width: "40px", color: "#08eb00" }} />
-            <h4 className="ml-16 text-slate-800">Товар добавлен в корзину</h4>
+            <FaCheckCircle
+               className="conditionerCard__order__accept"
+               style={{ height: "40px", width: "40px", color: "#08eb00" }}
+            />
+            <h4 className="conditionerCard__order__title ml-16 text-slate-800">Товар добавлен в корзину</h4>
             <Link href={"/cart"} className="conditionerCard__goToCart flex items-center h-full">
-               <p className="mr-3">Перейти в корзину</p>
+               <p className="conditionerCard__goToCart__sub mr-3">Перейти в корзину</p>
                <FaLongArrowAltRight
                   className="conditionerCard__goToCart__arrow"
                   style={{ height: "30px", width: "30px", color: "#343E4E" }}

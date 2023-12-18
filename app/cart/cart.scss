@@ -1,4 +1,5 @@
 .cart {
+   padding: 0 10px;
    &__body {
       animation-name: fade-in;
       animation-duration: 1s;
@@ -12,6 +13,10 @@
       grid-template-columns: 75% 25%;
       gap: 30px;
       margin: 0 0 15px 0;
+      @media (max-width: 1000px) {
+         gap: 10px;
+         grid-template-columns: 75% 27%;
+      }
       &__wfull {
          grid-template-columns: 100% 0%;
          background: #e4e4e4;
@@ -20,6 +25,14 @@
    &__main {
       min-height: 315px;
       background: #e4e4e4;
+   }
+   &__imgBody {
+      width: 200px;
+      height: 200px;
+      @media (max-width: 1070px) {
+         width: 150px;
+         height: 150px;
+      }
    }
    &__additional {
       background: #e4e4e4;
@@ -98,15 +111,36 @@
          @media (max-width: 1500px) {
             max-width: 300px;
          }
+         @media (max-width: 1280px) {
+            max-width: 250px;
+         }
+         @media (max-width: 1230px) {
+            max-width: 220px;
+         }
+         @media (max-width: 1070px) {
+            font-size: 20px;
+            max-width: 150px;
+         }
       }
       &__title {
          @media (max-width: 1420px) {
             font-size: 20px;
          }
+         @media (max-width: 1230px) {
+            font-size: 16px;
+         }
+      }
+      &__count {
+         @media (max-width: 1230px) {
+            font-size: 16px;
+         }
       }
       &__price {
          @media (max-width: 1420px) {
             font-size: 20px;
+         }
+         @media (max-width: 1230px) {
+            font-size: 16px;
          }
       }
       &__trash {

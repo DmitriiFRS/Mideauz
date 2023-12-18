@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import ultraviolet from "../../public/img/Equip/AirConditioners/Midea/Ultraviolet.jpg";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
@@ -69,7 +69,7 @@ function Main({
       setAcceptModalStatus(false);
    }
    return clientValue && currencyValue ? (
-      <div className="cart__body mt-10 mx-6">
+      <div className="cart__body mt-10">
          <div className={`cart__bodyContainer grid ${!value.length ? "cart__bodyContainer__wfull" : ""}`}>
             <div className="container cart__main">
                {!value.length ? (
@@ -86,15 +86,17 @@ function Main({
                            return (
                               <li key={index} className="cart__item flex items-center justify-between">
                                  <Link href={"/"}>
-                                    <Image src={ultraviolet} alt="condishn" width={200} height={200} />
+                                    <div className="cart__imgBody relative">
+                                       <Image src={ultraviolet} alt="condishn" fill />
+                                    </div>
                                  </Link>
                                  <div className="cart__desc flex justify-between items-center">
                                     <h3 className="cart__desc__model text-4xl">{`Midea ${el.model} ${el.power} BTU ${
                                        el.type ? el.type : ""
                                     }`}</h3>
                                     <div className="flex flex-col items-center">
-                                       <span className="text-2xl">Количество</span>
-                                       <span className="text-3xl mt-4">{el.count}</span>
+                                       <span className="cart__desc__count text-2xl">Количество</span>
+                                       <span className="cart__desc__count text-3xl mt-4">{el.count}</span>
                                     </div>
                                     <div className="cart__desc__priceBody flex">
                                        <div className="flex flex-col">
