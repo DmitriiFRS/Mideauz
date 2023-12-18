@@ -81,7 +81,7 @@ function Details() {
          <div
             className={`conditionerCard__order ${
                isInProgress ? "conditionerCard__order__active" : ""
-            } w-full h-20 mt-20 flex items-center justify-between text-2xl px-10 font-medium`}
+            } w-full h-20 flex items-center justify-between text-2xl font-medium`}
          >
             <FaCheckCircle style={{ height: "40px", width: "40px", color: "#08eb00" }} />
             <h4 className="ml-16 text-slate-800">Товар добавлен в корзину</h4>
@@ -97,21 +97,18 @@ function Details() {
             <div className="conditionerCard__img relative">
                <Image src={model.img} alt={model.name} fill={true} />
             </div>
-            <div className="conditionerCard__main flex flex-col mt-10 py-5">
-               <h2 className="text-5xl">{model.name}</h2>
-               <h4 className="mt-10 text-2xl">
-                  {(currencyValue && model.models[0].price * currencyValue)?.toLocaleString() + " UZS"}
-                  {" - "}
-                  {(currencyValue && model.models[model.models.length - 1].price * currencyValue)?.toLocaleString() +
-                     " UZS"}
-               </h4>
-               <div className="flex mt-10">
+            <div className="conditionerCard__main flex flex-col">
+               <h2 className="conditionerCard__modelTitle text-5xl">{model.name}</h2>
+               <div className="conditionerCard__optionContainer flex mt-10">
                   <SelectPowerInput selectRef={selectRef} getValue={getValue} model={model} />
                   <CountInput count={count} setCount={setCount} />
                </div>
                {currencyValue ? (
                   <div className="conditionerCard__price mt-10 text-2xl">
-                     {(model.models[optionValue].price * currencyValue).toLocaleString() + " UZS"}
+                     {"Стоимость за единицу:" +
+                        " " +
+                        (model.models[optionValue].price * currencyValue).toLocaleString() +
+                        " UZS"}
                   </div>
                ) : (
                   ""
