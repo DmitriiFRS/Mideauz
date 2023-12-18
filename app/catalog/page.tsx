@@ -9,7 +9,7 @@ function Catalog() {
       <div className="catalog flex-auto pb-3 mt-14">
          <div className="container">
             <h2 className="text-center text-4xl font-semibold text-slate-500">Каталоги</h2>
-            <div className="flex gap-10 items-center justify-center">
+            <div className="catalog__body flex gap-10 items-center justify-center">
                <div className="catalog__body flex flex-col items-center justify-center w-full">
                   <div className="catalog__logoContainer relative mt-16">
                      <Image src={midea} alt="midea logo" fill />
