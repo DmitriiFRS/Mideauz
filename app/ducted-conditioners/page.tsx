@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { ducConditioneListData } from "../Redux/Slices/main.slice";
 import Skeleton from "../Utilities/Skeleton";
 import ConditionersList from ".";
-import "../column-conditioners/column-conditioners.scss";
+import "./ducted-conditioners.scss";
 const brands = ["Канальные кондиционеры Midea", "Канальные кондиционеры Welkin"];
 const skeletonSections = [1, 2, 3, 4];
 function DuctedConditioners() {

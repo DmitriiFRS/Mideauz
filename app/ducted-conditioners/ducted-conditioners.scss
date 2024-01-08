@@ -5,9 +5,13 @@
    & > *:last-child {
       margin: 0 0 50px 0;
    }
+   & li {
+      margin: 40px 0 0 0;
+   }
    &__img-container {
-      height: 732px;
-      width: 501px;
+      max-width: 300px;
+      width: 100%;
+      aspect-ratio: 330/115;
    }
    &__img-container-welkin {
       height: 732px;

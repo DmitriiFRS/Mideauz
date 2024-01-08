@@ -29,15 +29,16 @@
       }
    }
    &__li {
+      margin: 40px 0 0 0;
       @media (max-width: 650px) {
          max-height: 800px;
          height: 100%;
       }
    }
    &__img-container {
-      max-width: 300px !important;
+      max-width: 200px !important;
       width: 100% !important;
-      aspect-ratio: 501/732;
+      aspect-ratio: 622/1810;
    }
    &__img-container-welkin {
       max-width: 300px !important;
@@ -85,18 +86,21 @@
          font-size: 20px;
       }
    }
-   &__paramsPrice {
-   }
    &__paramsSub {
       display: block;
       flex: 1 1 auto;
    }
 }
 .colConditionerCard {
+   margin: 0 auto 60px auto;
+   &__body {
+      grid-template-columns: 30% 40% 30%;
+      margin: 60px 0 0 0;
+   }
    &__imgBody {
-      max-width: 400px;
-      width: 100%;
-      aspect-ratio: 2/2;
+      margin: 0 0 0 100px;
+      max-height: 400px;
+      aspect-ratio: 578/1680;
    }
    &__descBody {
       grid-template-columns: 2fr 1fr;

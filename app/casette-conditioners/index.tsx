@@ -16,34 +16,30 @@ function ConditionersList({ conditionerList, brands }: ConditionersList) {
       dispatch(currencyValueData());
    }, [dispatch]);
    return (
-      <div className="col-conditioners container">
-         <h2 className="col-conditioners__brandTitle text-center font-bold text-6xl text-slate-600">{brands}</h2>
-         <ul className="col-conditioners__listItem grid grid-cols-2 gap-12 mt-14">
+      <div className="cas-conditioners container">
+         <h2 className="cas-conditioners__brandTitle text-center font-bold text-6xl text-slate-600">{brands}</h2>
+         <ul className="cas-conditioners__listItem grid grid-cols-2 gap-12 mt-14">
             {conditionerList.map((el: any, index: number) => {
                return (
                   <Link key={index} href={`/casette-conditioners/${el.href}`}>
                      <li
                         key={index}
-                        className="col-conditioners__li flex flex-col justify-center text-center items-center"
+                        className="cas-conditioners__li flex flex-col justify-center text-center items-center"
                      >
                         <div
-                           className={`${
-                              brands === "Кондиционеры Welkin"
-                                 ? "col-conditioners__img-container-welkin"
-                                 : "col-conditioners__img-container"
-                           } relative flex items-center justify-center z-0`}
+                           className={"cas-conditioners__img-container relative flex items-center justify-center z-0"}
                         >
                            <Image src={el.img} alt={el.name} fill={true} />
                         </div>
-                        <div className="col-conditioners__paramsList flex flex-col mt-10">
-                           <p className="col-conditioners__paramsTitle text-5xl font-medium relative z-10">{el.name}</p>
+                        <div className="cas-conditioners__paramsList flex flex-col mt-10">
+                           <p className="cas-conditioners__paramsTitle text-5xl font-medium relative z-10">{el.name}</p>
                            <span className="text-2xl mt-5 inline-block">{el.subname}</span>
-                           <span className="col-conditioners__paramsPrice text-xl mt-5 inline-block">
+                           <span className="cas-conditioners__paramsPrice text-xl mt-5 inline-block">
                               от {el.price.toLocaleString()} UZS
                            </span>
-                           <span className="col-conditioners__paramsSub text-xl mt-5 inline-block">{el.title}</span>
+                           <span className="cas-conditioners__paramsSub text-xl mt-5 inline-block">{el.title}</span>
                         </div>
-                        <button className="col-conditioners__btn mt-10">Выбрать параметры</button>
+                        <button className="cas-conditioners__btn mt-10">Выбрать параметры</button>
                      </li>
                   </Link>
                );

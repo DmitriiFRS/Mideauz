@@ -9,6 +9,7 @@ import Image from "next/image";
 import SelectPowerInput from "./SelectPowerInput";
 import Video from "../Video";
 import "../../column-conditioners/column-conditioners.scss";
+import ItemAddedToCart from "../ItemAddedToCart";
 type ModelsType = {
    id: number;
    mode?: Array<string>;
@@ -29,6 +30,7 @@ export type ModelType = {
 
 function ItemListpage({ items }: { items: Array<ModelType> }) {
    const [model, setModel] = useState<null | ModelType>(null);
+   const [isInProgress, setProgress] = useState<boolean>(false);
    const params = useParams();
    const dispatch = useDispatch<AppDispatch>();
    useEffect(() => {
@@ -45,14 +47,16 @@ function ItemListpage({ items }: { items: Array<ModelType> }) {
    }, [items]);
    return model ? (
       <div className="colConditionerCard container flex flex-col flex-auto">
-         <div className="flex">
+         <ItemAddedToCart isInProgress={isInProgress} />
+         <div className="colConditionerCard__body grid">
             <div className="colConditionerCard__imgBody relative">
                <Image src={model.img} alt={model.name} fill></Image>
             </div>
             <div className="flex flex-col justify-center">
-               <p className="text-4xl font-semibold text-center">{model.name}</p>
-               <SelectPowerInput model={model} />
+               <p className="text-4xl font-semibold">{model.name}</p>
+               <SelectPowerInput model={model} setProgress={setProgress} />
             </div>
+            <Video />
          </div>
          <div className="colConditionerCard__descBody grid mt-28">
             <div className="text-slate-600">
@@ -72,7 +76,6 @@ function ItemListpage({ items }: { items: Array<ModelType> }) {
                </ul>
             </div>
          </div>
-         <Video />
       </div>
    ) : (
       "null"

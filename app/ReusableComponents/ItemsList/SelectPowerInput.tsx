@@ -27,8 +27,9 @@ export type ModelType = {
 
 type PropsType = {
    model: ModelType;
+   setProgress: Function;
 };
-function SelectPowerInput({ model }: PropsType) {
+function SelectPowerInput({ model, setProgress }: PropsType) {
    const [firstInput, setFirstInput] = useState<string>("Inverter");
    const [secondInput, setSecondInput] = useState<Array<string>>([]);
    const [itemPrice, setItemPrice] = useState<number | null>(null);
@@ -38,6 +39,7 @@ function SelectPowerInput({ model }: PropsType) {
 
    /* функция, которая меняет значения второго инпута на основании значения в первом инпуте */
    function getValue(e: ChangeEvent<HTMLSelectElement>) {
+      setProgress(false);
       setFirstInput(e.target.value);
       const secondInputArr: Array<string> = [];
       model.models.forEach((el) => {
@@ -50,6 +52,7 @@ function SelectPowerInput({ model }: PropsType) {
 
    /* функция для расчета стоимости товара при изменении инпута мощности */
    function changeSecondInput(e: ChangeEvent<HTMLSelectElement>) {
+      setProgress(false);
       if (subInputRef) {
          model.models.find((el) => {
             if (el.power === subInputRef.current?.value) {
@@ -111,14 +114,26 @@ function SelectPowerInput({ model }: PropsType) {
                <PowerInput subInputRef={subInputRef} secondInput={secondInput} changeSecondInput={changeSecondInput} />
                <CountInput countValue={countValue} addCount={addCount} />
                <PriceField itemPrice={itemPrice} currencyValue={currencyValue} />
-               <AddToCart colModel={model} firstInput={firstInput} subInputRef={subInputRef} countValue={countValue} />
+               <AddToCart
+                  colModel={model}
+                  firstInput={firstInput}
+                  subInputRef={subInputRef}
+                  countValue={countValue}
+                  setProgress={setProgress}
+               />
             </>
          ) : (
             <>
                <PowerInput subInputRef={subInputRef} secondInput={secondInput} changeSecondInput={changeSecondInput} />
                <CountInput countValue={countValue} addCount={addCount} />
                <PriceField itemPrice={itemPrice} currencyValue={currencyValue} />
-               <AddToCart colModel={model} firstInput={firstInput} subInputRef={subInputRef} countValue={countValue} />
+               <AddToCart
+                  colModel={model}
+                  firstInput={firstInput}
+                  subInputRef={subInputRef}
+                  countValue={countValue}
+                  setProgress={setProgress}
+               />
             </>
          )}
       </div>

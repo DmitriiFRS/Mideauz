@@ -10,6 +10,7 @@ type PropsType = {
    firstInput: string;
    subInputRef: React.RefObject<HTMLSelectElement>;
    countValue: number;
+   setProgress: Function;
 };
 type NewItem = {
    model: string;
@@ -20,10 +21,11 @@ type NewItem = {
    count: number;
 };
 
-function AddToCart({ colModel, firstInput, subInputRef, countValue }: PropsType) {
+function AddToCart({ colModel, firstInput, subInputRef, countValue, setProgress }: PropsType) {
    const dispatch = useDispatch<AppDispatch>();
    const [value, setValue] = useLocalStorage<any>("item", []);
    function addItemToCart() {
+      setProgress(true);
       let modelType = null;
       if (subInputRef) {
          modelType = colModel.models.find((el) => {
@@ -42,14 +44,13 @@ function AddToCart({ colModel, firstInput, subInputRef, countValue }: PropsType)
             id: modelType.id,
             count: countValue,
          };
-         if (colModel.mode)
-            (newItem.type = firstInput === "Inverter" ? "Инверторный" : "On/Off"),
-               value.forEach((el: NewItem, index: number) => {
-                  if (el.model === newItem.model && el.power === newItem.power) {
-                     flag = true;
-                     newValue[index].count += countValue;
-                  }
-               });
+         (newItem.type = firstInput === "Inverter" ? "Инверторный" : "On/Off"),
+            value.forEach((el: NewItem, index: number) => {
+               if (el.model === newItem.model && el.power === newItem.power) {
+                  flag = true;
+                  newValue[index].count += countValue;
+               }
+            });
          if (flag) {
             setValue([...newValue]);
          } else {
