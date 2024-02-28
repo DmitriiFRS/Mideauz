@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../Redux/store";
 import { useEffect } from "react";
 import { ducConditioneListData } from "../Redux/Slices/main.slice";
-import Skeleton from "../Utilities/Skeleton";
+import Skeleton from "../Utilities/Loader";
 import ConditionersList from ".";
 import "./ducted-conditioners.scss";
 const brands = ["Канальные кондиционеры Midea", "Канальные кондиционеры Welkin"];

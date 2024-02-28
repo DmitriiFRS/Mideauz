@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../Redux/store";
 import { useEffect } from "react";
 import { casConditioneListData } from "../Redux/Slices/main.slice";
-import Skeleton from "../Utilities/Skeleton";
+import Skeleton from "../Utilities/Loader";
 import ConditionersList from ".";
 import "./casette-conditioners.scss";
 const brands = ["Кассетные кондиционеры Midea", "Кассетные кондиционеры Welkin"];
