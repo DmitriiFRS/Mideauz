@@ -1,23 +1,5 @@
-"use client";
-
-import { getConditionerItems } from "@/app/Redux/Slices/items.slice";
-import { AppDispatch, RootState } from "@/app/Redux/store";
-import { useParams } from "next/navigation";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import fetchGraphqlData from "@/app/Utilities/FetchGraphql";
 import Image from "next/image";
-import "../air-conditioners.scss";
-import SelectPowerInput from "./SelectPowerInput";
-import CountInput from "./CountInput";
-import AddToCart from "./AddToCart";
-import Description from "./Description";
-import { currencyValueData } from "@/app/Redux/Slices/main.slice";
-import Video from "./Video";
-import { FaCheckCircle } from "react-icons/fa";
-import { FaLongArrowAltRight } from "react-icons/fa";
-import Link from "next/link";
-import CartSkeleton from "@/app/Utilities/CartSkeleton";
-import ItemAddedToCart from "@/app/ReusableComponents/ItemAddedToCart";
 
 export type ModelsType = {
    details: Array<string>;
@@ -33,6 +15,92 @@ export type ModelType = {
    name: string;
 };
 
+type ModelTypeInner = {
+   conditionerField: {
+      name: string;
+      power: number;
+      cost: string;
+      coolingOutput: string | null;
+      heatOutput: string | null;
+      energyOutput: string | null;
+      areaCube: string | null;
+      areaQuad: string | null;
+      indoorNoiseLevel: string | null;
+      outdoorNoiseLevel: string | null;
+      company: Array<string>;
+      image: {
+         node: {
+            sourceUrl: string;
+         };
+      };
+   };
+};
+
+type ModelType2 = {
+   data: {
+      data: {
+         conditioners: {
+            nodes: Array<ModelTypeInner>;
+         };
+      };
+   };
+};
+
+async function Details({ params }: { params: { Details: string } }) {
+   const data = await fetchGraphqlData(`
+   {
+      conditioners(first: 999) {
+        nodes {
+          conditionerField {
+            name
+            power
+            cost
+            coolingOutput
+            heatOutput
+            energyOutput
+            areaCube
+            areaQuad
+            indoorNoiseLevel
+            outdoorNoiseLevel
+            company
+            image {
+              node {
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+    }
+   `);
+   let flag = false;
+   return (
+      <div className="conditionerCard container">
+         {data.data.conditioners.nodes.map((el: ModelTypeInner, index: number) => {
+            if (el.conditionerField.name.replace(/\s/g, "-") === params.Details && !flag) {
+               flag = true;
+               return (
+                  <div key={index} className="conditionerCard__mainBody grid mt-10">
+                     <div className="conditionerCard__img relative">
+                        <Image
+                           src={el.conditionerField.image.node.sourceUrl}
+                           alt={el.conditionerField.name}
+                           fill={true}
+                        />
+                     </div>
+                     <div className="conditionerCard__main flex flex-col">
+                        <h2 className="conditionerCard__modelTitle text-5xl">{el.conditionerField.name}</h2>
+                        <div className="conditionerCard__optionContainer flex mt-10"></div>
+                     </div>
+                  </div>
+               );
+            }
+         })}
+      </div>
+   );
+}
+
+/*
 function Details() {
    const params = useParams();
    const [model, setModel] = useState<any>(null);
@@ -110,5 +178,5 @@ function Details() {
    ) : (
       <CartSkeleton />
    );
-}
+}*/
 export default Details;
