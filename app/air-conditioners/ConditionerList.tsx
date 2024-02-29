@@ -8,6 +8,7 @@ type ConditionerListProps = {
 };
 
 function ConditionerList({ conditionerList, currencyValue, isHide }: any) {
+   console.log(conditionerList);
    return (
       <ul className={`${isHide ? "conditioners__list__unactive" : ""} conditioners__list grid mt-14`}>
          {conditionerList.map((el: any, index: number) => {
@@ -18,18 +19,10 @@ function ConditionerList({ conditionerList, currencyValue, isHide }: any) {
                      className={`conditioners__item flex flex-col text-center items-center py-6`}
                   >
                      <div className="conditioners__img-container relative flex items-center justify-center z-0">
-                        <Image className="conditioners__img" src={el.img} alt={el.name} fill={true} />
+                        <Image className="conditioners__img" src={el.image.node.sourceUrl} alt={el.name} fill={true} />
                      </div>
                      <div className="flex flex-col">
                         <p className="conditioners__itemTitle font-medium relative z-10">{el.name}</p>
-                        <span className="conditioners__itemSubtitle mt-5 inline-block">{el.sub}</span>
-                        {currencyValue ? (
-                           <span className="conditioners__itemPriceTitle mt-5 inline-block">
-                              от {(el.price * currencyValue).toLocaleString()} UZS
-                           </span>
-                        ) : (
-                           ""
-                        )}
                      </div>
                      <button className="conditioners__btn mt-10">Выбрать параметры</button>
                   </li>

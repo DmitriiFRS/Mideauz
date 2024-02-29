@@ -1,34 +1,91 @@
 "use client";
-
-import ConditionersList from "./index";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../Redux/store";
-import { useEffect } from "react";
-import { conditionerListData } from "../Redux/Slices/main.slice";
+import { useEffect, useState } from "react";
 import Loader from "../Utilities/Loader";
 import "./air-conditioners.scss";
-const brands = ["Кондиционеры Midea", "Кондиционеры Welkin"];
-const skeletonSections = [1, 2, 3, 4, 5, 6];
+import ConditionersList from ".";
+
+export type DataInner = {
+   conditionerField: {
+      company: Array<string>;
+      cost: string;
+      name: string;
+      power: number;
+      image: {
+         node: {
+            sourceUrl: string;
+         };
+      };
+   };
+};
+
+export type Data = {
+   data: {
+      conditioners: {
+         nodes: Array<DataInner>;
+      };
+   };
+};
 
 function AirConditiones() {
-   const dispatch = useDispatch<AppDispatch>();
-   const conditionerList = useSelector((state: RootState) => state.mainReducer.conditioners);
+   const [data, setData] = useState<null | Data>(null);
+   const [currencyValue, setCurrencyValue] = useState<any>(null);
    useEffect(() => {
-      dispatch(conditionerListData());
-   }, [dispatch]);
-   return !conditionerList ? (
+      fetch("http://wordpress/graphql", {
+         method: "POST",
+         headers: {
+            "Content-type": "application/json",
+         },
+         body: JSON.stringify({
+            query: `
+            {
+               conditioners(first: 999) {
+                 nodes {
+                   conditionerField {
+                     name
+                     power
+                     cost
+                     company
+                     image {
+                       node {
+                         sourceUrl
+                       }
+                     }
+                   }
+                 }
+               }
+             }
+               `,
+         }),
+      })
+         .then((res) => res.json())
+         .then((res) => setData(res));
+      fetch("http://wordpress/graphql", {
+         method: "POST",
+         headers: {
+            "Content-type": "application/json",
+         },
+         body: JSON.stringify({
+            query: `
+            query {
+               currencyValues {
+                 nodes {
+                   dollarValue {
+                     currencyValue
+                   }
+                 }
+               }
+             }
+            `,
+         }),
+      })
+         .then((res) => res.json())
+         .then((res) => setCurrencyValue(res));
+   }, []);
+   return !data && !currencyValue ? (
       <Loader />
    ) : (
       <section className="flex-auto">
-         {brands.map((el, index) => {
-            return (
-               <ConditionersList
-                  key={index}
-                  conditionerList={index === 0 ? conditionerList.list[0].midea : conditionerList.list[1].welkin}
-                  brands={brands[index]}
-               />
-            );
-         })}
+         <ConditionersList data={data} currencyValue={currencyValue} />
       </section>
    );
 }
