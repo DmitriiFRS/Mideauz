@@ -23,19 +23,21 @@ function ConditionersList({ data, currencyValue }: { data: Data | null; currency
    const [welkinData, setWelkinData] = useState<Array<DataInner>>([]);
    useEffect(() => {
       if (data) {
+         const lowerPower: Array<DataInner> = data.data.conditioners.nodes.slice();
          const uniqueData: Array<any> = [[], []];
-         const tempWelkinData: Array<any> = [];
-         data.data.conditioners.nodes.forEach((el) => {
-            if (el.conditionerField.company[0] === brands[0] && !uniqueData[0].includes(brands[0])) {
-               if (!uniqueData[0].find((tempEl: DataParams) => tempEl.name === el.conditionerField.name)) {
-                  uniqueData[0].push(el.conditionerField);
+         lowerPower
+            .sort((el1, el2) => el1.conditionerField.power - el2.conditionerField.power)
+            .forEach((el) => {
+               if (el.conditionerField.company[0] === brands[0] && !uniqueData[0].includes(brands[0])) {
+                  if (!uniqueData[0].find((tempEl: DataParams) => tempEl.name === el.conditionerField.name)) {
+                     uniqueData[0].push(el.conditionerField);
+                  }
+               } else {
+                  if (!uniqueData[1].find((tempEl: DataParams) => tempEl.name === el.conditionerField.name)) {
+                     uniqueData[1].push(el.conditionerField);
+                  }
                }
-            } else {
-               if (!uniqueData[1].find((tempEl: DataParams) => tempEl.name === el.conditionerField.name)) {
-                  uniqueData[1].push(el.conditionerField);
-               }
-            }
-         });
+            });
          setMideaData(uniqueData[0]);
          setWelkinData(uniqueData[1]);
       }

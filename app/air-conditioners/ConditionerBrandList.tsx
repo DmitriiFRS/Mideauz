@@ -19,7 +19,9 @@ function ConditionerBrandList({
    return (
       <div className="conditioners container">
          <div className="flex items-center justify-center">
-            <h2 className="conditioners__brandTitle text-center font-bold text-6xl text-slate-600">{brand}</h2>
+            <h2 className="conditioners__brandTitle text-center font-bold text-6xl text-slate-600">
+               Настенные кондиционеры {brand}
+            </h2>
             <button onClick={toggleBlock} className={` conditioners__hideBtn ${isHide ? "conditioners__hide" : ""}`}>
                <MdOutlineArrowDropDown
                   className={`${"conditioners__ArrowDropDownActive"}`}
