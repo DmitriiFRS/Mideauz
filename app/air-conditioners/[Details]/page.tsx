@@ -1,5 +1,11 @@
 import fetchGraphqlData from "@/app/Utilities/FetchGraphql";
+import { count } from "firebase/firestore";
+import { getValue } from "firebase/remote-config";
 import Image from "next/image";
+import CountInput from "./CountInput";
+import SelectPowerInput from "./SelectPowerInput";
+import CostPerUnit from "./CostPerUnit";
+import AddToCart from "./AddToCart";
 
 export type ModelsType = {
    details: Array<string>;
@@ -15,7 +21,8 @@ export type ModelType = {
    name: string;
 };
 
-type ModelTypeInner = {
+export type ModelTypeInner = {
+   id: string;
    conditionerField: {
       name: string;
       power: number;
@@ -51,6 +58,7 @@ async function Details({ params }: { params: { Details: string } }) {
    {
       conditioners(first: 999) {
         nodes {
+         id
           conditionerField {
             name
             power
@@ -73,6 +81,17 @@ async function Details({ params }: { params: { Details: string } }) {
       }
     }
    `);
+   const currencyData = await fetchGraphqlData(`
+   query {
+      currencyValues {
+        nodes {
+          dollarValue {
+            currencyValue
+          }
+        }
+      }
+    }
+   `);
    let flag = false;
    return (
       <div className="conditionerCard container">
@@ -90,7 +109,14 @@ async function Details({ params }: { params: { Details: string } }) {
                      </div>
                      <div className="conditionerCard__main flex flex-col">
                         <h2 className="conditionerCard__modelTitle text-5xl">{el.conditionerField.name}</h2>
-                        <div className="conditionerCard__optionContainer flex mt-10"></div>
+                        <div className="conditionerCard__optionContainer flex mt-10">
+                           <SelectPowerInput data={data.data.conditioners.nodes} details={params.Details} />
+                           <CountInput />
+                        </div>
+                        <CostPerUnit
+                           currencyData={currencyData.data.currencyValues.nodes[0].dollarValue.currencyValue}
+                        />
+                        <AddToCart />
                      </div>
                   </div>
                );

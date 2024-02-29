@@ -1,9 +1,16 @@
-import { ChangeEvent } from "react";
+"use client";
 
-function CountInput({ count, setCount }: { count: number; setCount: Function }) {
+import { setItemCount } from "@/app/Redux/Slices/items.slice";
+import { RootState } from "@/app/Redux/store";
+import { ChangeEvent } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+function CountInput() {
+   const itemCount = useSelector((state: RootState) => state.itemReducer.itemCount);
+   const dispatch = useDispatch();
    function addCount(e: ChangeEvent<HTMLInputElement>) {
       if (e.target.value === "0") return 1;
-      setCount(parseInt(e.target.value));
+      dispatch(setItemCount(e.target.value));
    }
    return (
       <div className="conditionerCount__modpowBody flex flex-col ml-10">
@@ -12,7 +19,7 @@ function CountInput({ count, setCount }: { count: number; setCount: Function }) 
          </label>
          <input
             id="conditionerCount"
-            value={count}
+            value={itemCount}
             onChange={(e) => addCount(e)}
             type="number"
             className="conditionerCard__input text-2xl mt-5"

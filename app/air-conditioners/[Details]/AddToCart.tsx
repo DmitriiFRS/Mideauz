@@ -3,48 +3,51 @@
 import useLocalStorage from "@/app/hooks/useLocalStorage";
 import { ModelType } from "./page";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/app/Redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/app/Redux/store";
 import { setCartCount } from "@/app/Redux/Slices/main.slice";
 type AddToCartPropsType = {
    model: ModelType;
    optionValue: number;
    count: number;
-   setProgress: Function;
+   setProgress?: Function;
 };
 
 type NewItem = {
    model: string;
-   power: string;
+   power: number;
    price: string;
    count: number;
-   id: number;
+   id: string;
 };
 
-function AddToCart({ model, optionValue, count, setProgress }: AddToCartPropsType) {
+function AddToCart() {
    const dispatch = useDispatch<AppDispatch>();
    const [value, setValue] = useLocalStorage<any>("item", []);
+   const currentEl = useSelector((state: RootState) => state.itemReducer.currentEl);
+   const count = useSelector((state: RootState) => state.itemReducer.itemCount);
    function addItemToCart() {
-      setProgress(true);
       let flag = false;
       const newValue = value;
-      const newItem: NewItem = {
-         model: `Кондиционер ${model.name}`,
-         power: model.models[optionValue].power,
-         price: model.models[optionValue].price,
-         count: count,
-         id: model.models[optionValue].id,
-      };
-      value.forEach((el: NewItem, index: number) => {
-         if (el.model === newItem.model && el.power === newItem.power) {
-            flag = true;
-            newValue[index].count += count;
+      if (currentEl) {
+         const newItem: NewItem = {
+            model: `Кондиционер ${currentEl.conditionerField.name}`,
+            power: currentEl.conditionerField.power,
+            price: currentEl.conditionerField.cost,
+            count: count,
+            id: currentEl.id,
+         };
+         value.forEach((el: NewItem, index: number) => {
+            if (el.model === newItem.model && el.power === newItem.power) {
+               flag = true;
+               newValue[index].count += count;
+            }
+         });
+         if (flag) {
+            setValue([...newValue]);
+         } else {
+            setValue([...newValue, newItem]);
          }
-      });
-      if (flag) {
-         setValue([...newValue]);
-      } else {
-         setValue([...newValue, newItem]);
       }
    }
    useEffect(() => {

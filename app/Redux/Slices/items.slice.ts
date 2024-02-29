@@ -1,6 +1,5 @@
-import { db } from "@/app/firebase/firebaseConfig";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getDoc, doc } from "firebase/firestore";
+import { ModelTypeInner } from "@/app/air-conditioners/[Details]/page";
+import { createSlice } from "@reduxjs/toolkit";
 
 type ConditionersPower = {
    power: string;
@@ -40,41 +39,36 @@ type ConditionerItems = {
 };
 
 type initialStateType = {
-   itemsList: null | ConditionerItems;
-   error: null | string;
+   conditionerEl: null | Array<any>;
+   currentPower: null | string;
+   currentEl: null | ModelTypeInner;
+   itemCount: number;
 };
 
 const initialState: initialStateType = {
-   itemsList: null,
-   error: null,
+   conditionerEl: null,
+   currentPower: null,
+   currentEl: null,
+   itemCount: 1,
 };
-
-export const getConditionerItems = createAsyncThunk<ConditionerItems, undefined>(
-   "items/conditionersItemsFirestore",
-   async function getData(_, { rejectWithValue }) {
-      const dataRef = await getDoc(doc(db, "подробнее", "3zRA7wzmLHRykHmYus8S")).then((snap) => {
-         if (snap.exists()) {
-            return snap.data();
-         } else {
-            return rejectWithValue("error");
-         }
-      });
-      return dataRef as ConditionerItems;
-   }
-);
 
 const itemSlice = createSlice({
    name: "items",
    initialState,
-   reducers: {},
-   extraReducers: (builder) => {
-      builder.addCase(getConditionerItems.fulfilled, (state, action) => {
-         state.itemsList = action.payload;
-      });
-      builder.addCase(getConditionerItems.rejected, (state, action: any) => {
-         state.error = action.payload;
-      });
+   reducers: {
+      addElem: (state, action) => {
+         state.conditionerEl = action.payload;
+      },
+      setCurrentPower: (state, action) => {
+         state.currentPower = action.payload;
+      },
+      setItemCount: (state, action) => {
+         state.itemCount = action.payload;
+      },
+      setCurrentEl: (state, action) => {
+         state.currentEl = action.payload;
+      },
    },
 });
-export const {} = itemSlice.actions;
+export const { addElem, setCurrentPower, setItemCount, setCurrentEl } = itemSlice.actions;
 export default itemSlice.reducer;

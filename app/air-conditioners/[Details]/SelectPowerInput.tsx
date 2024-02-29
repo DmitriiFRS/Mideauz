@@ -1,12 +1,33 @@
-import { LegacyRef } from "react";
-import { ModelType, ModelsType } from "./page";
+"use client";
+
+import { ChangeEvent, LegacyRef, Ref, useEffect, useRef } from "react";
+import { ModelType, ModelTypeInner, ModelsType } from "./page";
+import { useDispatch } from "react-redux";
+import { addElem, setCurrentPower } from "@/app/Redux/Slices/items.slice";
 
 type PropsType = {
-   getValue: Function;
-   model: ModelType;
+   data: Array<ModelTypeInner>;
+   details: string;
 };
 
-function SelectPowerInput({ getValue, model }: PropsType) {
+function SelectPowerInput({ data, details }: PropsType) {
+   const dispatch = useDispatch();
+   const selectRef = useRef<any>(null);
+   useEffect(() => {
+      let newData = data.slice();
+      newData = newData
+         .sort((a, b) => a.conditionerField.power - b.conditionerField.power)
+         .filter((el) => {
+            if (el.conditionerField.name.replace(/\s/g, "-") === details) {
+               return true;
+            }
+         });
+      dispatch(addElem(newData));
+      dispatch(setCurrentPower(selectRef.current?.value));
+   }, []);
+   function getValue(e: ChangeEvent<HTMLSelectElement>) {
+      dispatch(setCurrentPower(selectRef.current?.value));
+   }
    return (
       <div className="flex flex-col">
          <label htmlFor="conditionerPower" className=" text-2xl">
@@ -17,14 +38,15 @@ function SelectPowerInput({ getValue, model }: PropsType) {
             name="powerSelect"
             id="conditionerPower"
             className="conditionerCard__select mt-5 text-2xl"
+            ref={selectRef}
          >
-            {model.models.map((el: ModelsType, index: number) => {
-               return (
-                  <option key={index} value={index}>
-                     {el.power}
-                  </option>
-               );
-            })}
+            {data
+               .sort((a, b) => a.conditionerField.power - b.conditionerField.power)
+               .map((el, index) => {
+                  if (el.conditionerField.name.replace(/\s/g, "-") === details) {
+                     return <option key={index}>{el.conditionerField.power}</option>;
+                  }
+               })}
          </select>
       </div>
    );
