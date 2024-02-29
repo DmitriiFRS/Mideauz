@@ -1,11 +1,11 @@
 import fetchGraphqlData from "@/app/Utilities/FetchGraphql";
-import { count } from "firebase/firestore";
-import { getValue } from "firebase/remote-config";
 import Image from "next/image";
 import CountInput from "./CountInput";
 import SelectPowerInput from "./SelectPowerInput";
 import CostPerUnit from "./CostPerUnit";
 import AddToCart from "./AddToCart";
+import "../air-conditioners.scss";
+import Description from "./Description";
 
 export type ModelsType = {
    details: Array<string>;
@@ -105,6 +105,7 @@ async function Details({ params }: { params: { Details: string } }) {
                            src={el.conditionerField.image.node.sourceUrl}
                            alt={el.conditionerField.name}
                            fill={true}
+                           priority={true}
                         />
                      </div>
                      <div className="conditionerCard__main flex flex-col">
@@ -118,6 +119,7 @@ async function Details({ params }: { params: { Details: string } }) {
                         />
                         <AddToCart />
                      </div>
+                     <Description />
                   </div>
                );
             }
