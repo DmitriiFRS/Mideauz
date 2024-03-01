@@ -1,9 +1,11 @@
 "use client";
 
-import { ChangeEvent, LegacyRef, Ref, useEffect, useRef } from "react";
-import { ModelType, ModelTypeInner, ModelsType } from "./page";
+import { useEffect, useRef } from "react";
+import { ModelTypeInner } from "./page";
 import { useDispatch } from "react-redux";
 import { addElem, setCurrentPower } from "@/app/Redux/Slices/items.slice";
+import Image from "next/image";
+import shevron from "../../../public/icons/option-down.svg";
 
 type PropsType = {
    data: Array<ModelTypeInner>;
@@ -25,7 +27,7 @@ function SelectPowerInput({ data, details }: PropsType) {
       dispatch(addElem(newData));
       dispatch(setCurrentPower(selectRef.current?.value));
    }, []);
-   function getValue(e: ChangeEvent<HTMLSelectElement>) {
+   function getValue() {
       dispatch(setCurrentPower(selectRef.current?.value));
    }
    return (
@@ -33,21 +35,27 @@ function SelectPowerInput({ data, details }: PropsType) {
          <label htmlFor="conditionerPower" className=" text-2xl">
             Мощность
          </label>
-         <select
-            onChange={(e) => getValue(e)}
-            name="powerSelect"
-            id="conditionerPower"
-            className="conditionerCard__select mt-5 text-2xl"
-            ref={selectRef}
-         >
-            {data
-               .sort((a, b) => a.conditionerField.power - b.conditionerField.power)
-               .map((el, index) => {
-                  if (el.conditionerField.name.replace(/\s/g, "-") === details) {
-                     return <option key={index}>{el.conditionerField.power}</option>;
-                  }
-               })}
-         </select>
+         <div className="conditionerCard__selectContainer relative">
+            <select
+               onChange={() => getValue()}
+               name="powerSelect"
+               id="conditionerPower"
+               className="conditionerCard__select text-2xl w-full h-full appearance-none"
+               ref={selectRef}
+            >
+               {data
+                  .sort((a, b) => a.conditionerField.power - b.conditionerField.power)
+                  .map((el, index) => {
+                     if (el.conditionerField.name.replace(/\s/g, "-") === details) {
+                        return <option key={index}>{el.conditionerField.power}</option>;
+                     }
+                  })}
+            </select>
+            <span className="conditionerCard__btuh">Btu/h</span>
+            <div className="conditionerCard__arrowContainer absolute">
+               <Image src={shevron} alt="" width={20} height={20} />
+            </div>
+         </div>
       </div>
    );
 }

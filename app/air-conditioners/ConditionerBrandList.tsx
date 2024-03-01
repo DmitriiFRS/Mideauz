@@ -29,7 +29,7 @@ function ConditionerBrandList({
                />
             </button>
          </div>
-         <ConditionerList conditionerList={conditionerList} isHide={isHide} currencyValue={currencyValue} />
+         <ConditionerList conditionerList={conditionerList} isHide={isHide} currencyValue={currencyValue} brand={brand} />
       </div>
    );
 }

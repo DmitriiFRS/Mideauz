@@ -1,13 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
 
-type ConditionerListProps = {
-   ref: React.RefObject<HTMLUListElement>;
-   conditionerList: any;
-};
-
-function ConditionerList({ conditionerList, currencyValue, brand, isHide }: any) {
+function ConditionerList({ conditionerList, currencyValue, isHide, brand }: any) {
    const dollarVal = currencyValue.data.currencyValues.nodes[0].dollarValue.currencyValue;
    return (
       <ul className={`${isHide ? "conditioners__list__unactive" : ""} conditioners__list grid mt-14`}>
@@ -16,7 +10,9 @@ function ConditionerList({ conditionerList, currencyValue, brand, isHide }: any)
                <Link key={index} href={`/air-conditioners/${el.name.replace(/\s/g, "-")}`}>
                   <li
                      style={{ transitionDelay: index / 6 + "s" }}
-                     className={`conditioners__item flex flex-col text-center items-center py-6`}
+                     className={`conditioners__item ${
+                        brand === "Midea" ? "conditioners__item__midea" : "conditioners__item__welkin"
+                     } flex flex-col text-center items-center py-6`}
                   >
                      <div className="conditioners__img-container relative flex items-center justify-center z-0">
                         <Image className="conditioners__img" src={el.image.node.sourceUrl} alt={el.name} fill={true} />
@@ -40,13 +36,3 @@ function ConditionerList({ conditionerList, currencyValue, brand, isHide }: any)
    );
 }
 export default ConditionerList;
-
-/*
-{currencyValue ? (
-                           <span className="conditioners__itemPriceTitle mt-5 inline-block">
-                              от {(el.price * currencyValue).toLocaleString()} UZS
-                           </span>
-                        ) : (
-                           ""
-                        )}
-                        */

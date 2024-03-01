@@ -6,6 +6,7 @@ import CostPerUnit from "./CostPerUnit";
 import AddToCart from "./AddToCart";
 import "../air-conditioners.scss";
 import Description from "./Description";
+import About from "./About";
 
 export type ModelsType = {
    details: Array<string>;
@@ -35,6 +36,8 @@ export type ModelTypeInner = {
       indoorNoiseLevel: string | null;
       outdoorNoiseLevel: string | null;
       company: Array<string>;
+      description1: string;
+      description2: string;
       image: {
          node: {
             sourceUrl: string;
@@ -61,6 +64,8 @@ async function Details({ params }: { params: { Details: string } }) {
             indoorNoiseLevel
             outdoorNoiseLevel
             company
+            description1
+            description2
             image {
               node {
                 sourceUrl
@@ -89,27 +94,30 @@ async function Details({ params }: { params: { Details: string } }) {
             if (el.conditionerField.name.replace(/\s/g, "-") === params.Details && !flag) {
                flag = true;
                return (
-                  <div key={index} className="conditionerCard__mainBody grid">
+                  <div key={index} className="conditionerCard__mainBody flex flex-col">
                      <h2 className="conditionerCard__mainBody__title text-slate-700">Кондиционер настенного типа</h2>
-                     <div className="conditionerCard__img relative">
-                        <Image
-                           src={el.conditionerField.image.node.sourceUrl}
-                           alt={el.conditionerField.name}
-                           fill={true}
-                           priority={true}
-                        />
-                     </div>
-                     <div className="conditionerCard__main flex flex-col">
-                        <h3 className="conditionerCard__modelTitle text-5xl">{el.conditionerField.name}</h3>
-                        <div className="conditionerCard__optionContainer flex mt-10">
-                           <SelectPowerInput data={data.data.conditioners.nodes} details={params.Details} />
-                           <CountInput />
+                     <div className="conditionerCard__img_optionsContainer">
+                        <div className="conditionerCard__img relative">
+                           <Image
+                              src={el.conditionerField.image.node.sourceUrl}
+                              alt={el.conditionerField.name}
+                              fill={true}
+                              priority={true}
+                           />
                         </div>
-                        <CostPerUnit
-                           currencyData={currencyData.data.currencyValues.nodes[0].dollarValue.currencyValue}
-                        />
-                        <AddToCart />
+                        <div className="conditionerCard__main flex flex-col">
+                           <h3 className="conditionerCard__modelTitle text-5xl">{el.conditionerField.name}</h3>
+                           <div className="conditionerCard__optionContainer flex mt-10">
+                              <SelectPowerInput data={data.data.conditioners.nodes} details={params.Details} />
+                              <CountInput />
+                           </div>
+                           <CostPerUnit
+                              currencyData={currencyData.data.currencyValues.nodes[0].dollarValue.currencyValue}
+                           />
+                           <AddToCart />
+                        </div>
                      </div>
+                     <About />
                      <Description />
                   </div>
                );

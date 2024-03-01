@@ -3,7 +3,6 @@
 import { RootState } from "@/app/Redux/store";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ModelTypeInner } from "./page";
 import { setCurrentEl } from "@/app/Redux/Slices/items.slice";
 
 function CostPerUnit({ currencyData }: { currencyData: number }) {
@@ -22,14 +21,14 @@ function CostPerUnit({ currencyData }: { currencyData: number }) {
    }, [power, items]);
    return (
       currentItem && (
-         <>
+         <div className="conditionerCard__priceContainer">
             <div className="conditionerCard__price mt-10 text-2xl">
                {"Стоимость за единицу:" +
                   " " +
                   (+currentItem.conditionerField.cost * currencyData).toLocaleString() +
                   " UZS"}
             </div>
-         </>
+         </div>
       )
    );
 }
