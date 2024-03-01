@@ -16,8 +16,12 @@ function Description() {
    return (
       currentEl && (
          <div className="conditionerCard__desc">
-            <h2 className="text-3xl text-slate-800">Параметры</h2>
-            <ul className={`${isFadeOut ? "conditionerCard__desc__hide" : ""} conditionerCard__descList mt-10`}>
+            <h2 className="text-5xl text-slate-700 text-center">Основные параметры</h2>
+            <ul
+               className={`${
+                  isFadeOut ? "conditionerCard__desc__hide" : ""
+               } conditionerCard__descList mt-14 grid grid-cols-2 w-full`}
+            >
                {currentEl.conditionerField.coolingOutput && (
                   <li className="conditionerCard__descItem text-slate-600 text-lg">
                      Мощность охлаждения: {currentEl.conditionerField.coolingOutput} Btu/h

@@ -1,5 +1,7 @@
 import { ModelTypeInner } from "@/app/air-conditioners/[Details]/page";
-import { createSlice } from "@reduxjs/toolkit";
+import { db } from "@/app/firebase/firebaseConfig";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getDoc, doc } from "firebase/firestore";
 
 type ConditionersPower = {
    power: string;
@@ -43,6 +45,7 @@ type initialStateType = {
    currentPower: null | string;
    currentEl: null | ModelTypeInner;
    itemCount: number;
+   itemsList: any;
 };
 
 const initialState: initialStateType = {
@@ -50,8 +53,22 @@ const initialState: initialStateType = {
    currentPower: null,
    currentEl: null,
    itemCount: 1,
+   itemsList: null,
 };
 
+export const getConditionerItems = createAsyncThunk<ConditionerItems, undefined>(
+   "items/conditionersItemsFirestore",
+   async function getData(_, { rejectWithValue }) {
+      const dataRef = await getDoc(doc(db, "подробнее", "3zRA7wzmLHRykHmYus8S")).then((snap) => {
+         if (snap.exists()) {
+            return snap.data();
+         } else {
+            return rejectWithValue("error");
+         }
+      });
+      return dataRef as ConditionerItems;
+   }
+);
 const itemSlice = createSlice({
    name: "items",
    initialState,
@@ -68,6 +85,14 @@ const itemSlice = createSlice({
       setCurrentEl: (state, action) => {
          state.currentEl = action.payload;
       },
+   },
+   extraReducers: (builder) => {
+      builder.addCase(getConditionerItems.fulfilled, (state, action) => {
+         state.itemsList = action.payload;
+      });
+      builder.addCase(getConditionerItems.rejected, (state: any, action: any) => {
+         state.error = action.payload;
+      });
    },
 });
 export const { addElem, setCurrentPower, setItemCount, setCurrentEl } = itemSlice.actions;
