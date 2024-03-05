@@ -1,3 +1,5 @@
+"use client";
+
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/Redux/store";
@@ -181,33 +183,3 @@ function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) 
    );
 }
 export default SelectPowerInput;
-/*
-<>
-               <ModeInput getValue={getValue} model={model} />
-               <PowerInput subInputRef={subInputRef} secondInput={secondInput} changeSecondInput={changeSecondInput} />
-               <CountInput countValue={countValue} addCount={addCount} />
-               <PriceField itemPrice={itemPrice} currencyValue={currencyValue} />
-               <AddToCart
-                  colModel={model}
-                  firstInput={firstInput}
-                  subInputRef={subInputRef}
-                  countValue={countValue}
-                  setProgress={setProgress}
-               />
-            </>
-*/
-
-/*
-<>
-               <PowerInput subInputRef={subInputRef} secondInput={secondInput} changeSecondInput={changeSecondInput} />
-               <CountInput countValue={countValue} addCount={addCount} />
-               <PriceField itemPrice={itemPrice} currencyValue={currencyValue} />
-               <AddToCart
-                  colModel={model}
-                  firstInput={firstInput}
-                  subInputRef={subInputRef}
-                  countValue={countValue}
-                  setProgress={setProgress}
-               />
-            </>
-*/

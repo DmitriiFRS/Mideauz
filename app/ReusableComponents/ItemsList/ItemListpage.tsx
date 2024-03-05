@@ -1,15 +1,6 @@
-"use client";
-
-import { useDispatch } from "react-redux";
-import { useParams } from "next/navigation";
-import { AppDispatch } from "@/app/Redux/store";
-import { currencyValueData } from "@/app/Redux/Slices/main.slice";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import SelectPowerInput from "./SelectPowerInput";
-import Video from "../Video";
 import "../../column-conditioners/column-conditioners.scss";
-import ItemAddedToCart from "../ItemAddedToCart";
 import { ColModelTypeInner } from "@/app/Types/Col.type";
 type ModelsType = {
    id: number;
@@ -50,7 +41,7 @@ function ItemListpage({
                         <div className="colConditionerCard__imgBody relative">
                            <Image src={el.col.image.node.sourceUrl} alt={el.col.name} fill></Image>
                         </div>
-                        <div className="flex flex-col justify-center">
+                        <div className="colConditionerCard__select flex flex-col">
                            <p className="text-4xl font-semibold">{el.col.name}</p>
                            <SelectPowerInput
                               model={el}
@@ -58,6 +49,45 @@ function ItemListpage({
                               items={items}
                               hrefName={hrefName}
                            />
+                        </div>
+                        <div className="colConditionerCard__descBody flex flex-col mt-14">
+                           <div className="text-slate-600">
+                              <h4 className="text-center text-2xl font-semibold">Описание</h4>
+                              <p className="colConditionerCard__desc mt-10">{el.col.description}</p>
+                           </div>
+                           <div className="colConditionerCard__paramBody text-slate-600 w-full mt-14 py-6">
+                              <h4 className="text-2xl font-semibold text-center">Основные параметры</h4>
+                              <ul className="colConditionerCard__advantages mt-10 grid w-full">
+                                 <li className="colConditionerCard__list-disc">
+                                    Мощность охлаждения: {el.col.coolingOutput} Btu/h
+                                 </li>
+                                 <li className="colConditionerCard__list-disc">
+                                    Мощность обогрева: {el.col.heatOutput} Btu/h
+                                 </li>
+                                 <li className="colConditionerCard__list-disc">
+                                    Расход электроэнергии: {el.col.energyOutput} kW
+                                 </li>
+                                 <li className="colConditionerCard__list-disc">Тип компрессора: {el.col.type}</li>
+                                 <li className="colConditionerCard__list-disc">
+                                    Диапазон температур: {el.col.temperatureRange}С
+                                 </li>
+                                 <li className="colConditionerCard__list-disc">
+                                    Обслуживаемая площадь: {el.col.areaQuad} м2
+                                 </li>
+                                 <li className="colConditionerCard__list-disc">
+                                    Обслуживаемая площадь: {el.col.areaCube} м3
+                                 </li>
+                                 <li className="colConditionerCard__list-disc">
+                                    Количество хладагента: {el.col.coolantCapacity}
+                                 </li>
+                                 <li className="colConditionerCard__list-disc">
+                                    Уровень шума внутр. блока: {el.col.indoorNoiseLevel} dB
+                                 </li>
+                                 <li className="colConditionerCard__list-disc">
+                                    Уровень шума внеш. блока: {el.col.outdoorNoiseLevel} dB
+                                 </li>
+                              </ul>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -68,53 +98,3 @@ function ItemListpage({
    );
 }
 export default ItemListpage;
-
-/*
-const [model, setModel] = useState<null | ModelType>(null);
-   const [isInProgress, setProgress] = useState<boolean>(false);
-   const params = useParams();
-   useEffect(() => {
-      if (items) {
-         const newModel = items.filter((el) => {
-            return el.name.replace(/\s/g, "-") === params.Details;
-         });
-         setModel(newModel[0] as ModelType);
-      }
-      console.log(items);
-   }, [items]);
-   return model ? (
-      <div className="colConditionerCard container flex flex-col flex-auto">
-         <ItemAddedToCart isInProgress={isInProgress} />
-         <div className="colConditionerCard__body grid">
-            <div className="colConditionerCard__imgBody relative">
-               <Image src={model.img} alt={model.name} fill></Image>
-            </div>
-            <div className="flex flex-col justify-center">
-               <p className="text-4xl font-semibold">{model.name}</p>
-               <SelectPowerInput model={model} setProgress={setProgress} />
-            </div>
-            <Video />
-         </div>
-         <div className="colConditionerCard__descBody grid mt-28">
-            <div className="text-slate-600">
-               <h4 className="text-center text-2xl font-semibold">Описание</h4>
-               <p className="colConditionerCard__desc mt-10">{model.desc}</p>
-            </div>
-            <div className="text-slate-600">
-               <h4 className="text-2xl font-semibold">Параметры</h4>
-               <ul className="colConditionerCard__advantages mt-10 ">
-                  {model.params.map((el, index) => {
-                     return (
-                        <li key={index} className="list-disc">
-                           {el}
-                        </li>
-                     );
-                  })}
-               </ul>
-            </div>
-         </div>
-      </div>
-   ) : (
-      "null"
-   );
-*/
