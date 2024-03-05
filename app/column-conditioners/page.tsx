@@ -1,29 +1,88 @@
-"use client";
-
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../Redux/store";
-import { useEffect } from "react";
-import { colConditioneListData } from "../Redux/Slices/main.slice";
-import Skeleton from "../Utilities/Loader";
-import ConditionersList from ".";
 import "./column-conditioners.scss";
-const brands = ["Колонные кондиционеры Midea", "Колонные кондиционеры Welkin"];
-const skeletonSections = [1, 2, 3, 4];
-function ColumnConditioners() {
-   const dispatch = useDispatch<AppDispatch>();
-   const conditionerList = useSelector((state: RootState) => state.mainReducer.colConditioners);
-   useEffect(() => {
-      dispatch(colConditioneListData());
-   }, [dispatch]);
-   return !conditionerList ? (
-      <div className="skeleton__container grid grid-cols-2 grid-rows-2">
-         {skeletonSections.map((el, index) => {
-            return <Skeleton key={index} />;
-         })}
-      </div>
-   ) : (
+import fetchGraphqlData from "../Utilities/FetchGraphql";
+import ConditionersList from ".";
+
+export type ColListInner = {
+   col: {
+      name: string;
+      company: Array<string>;
+      areaCube: string;
+      areaQuad: string;
+      coolantCapacity: string;
+      coolingOutput: string;
+      cost: number;
+      description: string;
+      heatOutput: string;
+      image: {
+         node: {
+            sourceUrl: string;
+         };
+      };
+      indoorNoiseLevel: string;
+      outdoorNoiseLevel: string;
+      power: Array<string>;
+      temperatureRange: string;
+   };
+};
+
+export type ColList = {
+   data: {
+      data: {
+         colConditioners: {
+            nodes: Array<ColListInner>;
+         };
+      };
+   };
+};
+async function ColumnConditioners() {
+   const data = await fetchGraphqlData(`
+   query {
+      colConditioners(first: 99) {
+        nodes {
+          col {
+            name
+            company
+            areaCube
+            areaQuad
+            coolantCapacity
+            coolingOutput
+            cost
+            description
+            heatOutput
+            image {
+              node {
+                sourceUrl
+              }
+            }
+            indoorNoiseLevel
+            outdoorNoiseLevel
+            power
+            temperatureRange
+          }
+        }
+      }
+      currencyValues {
+        nodes {
+          dollarValue {
+            currencyValue
+          }
+        }
+      }
+    }
+   `);
+   return (
       <section className="flex-auto">
-         {brands.map((el, index) => {
+         <ConditionersList
+            currencyValue={data.data.currencyValues.nodes[0].dollarValue.currencyValue}
+            conditionerList={data.data.colConditioners.nodes}
+         />
+      </section>
+   );
+}
+export default ColumnConditioners;
+
+/*
+{brands.map((el, index) => {
             return (
                <ConditionersList
                   key={index}
@@ -32,7 +91,4 @@ function ColumnConditioners() {
                />
             );
          })}
-      </section>
-   );
-}
-export default ColumnConditioners;
+*/

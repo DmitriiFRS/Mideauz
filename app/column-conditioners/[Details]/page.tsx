@@ -1,11 +1,7 @@
-"use client";
-
-import { useDispatch, useSelector } from "react-redux";
+import fetchGraphqlData from "@/app/Utilities/FetchGraphql";
 import "../column-conditioners.scss";
-import { AppDispatch, RootState } from "@/app/Redux/store";
-import { useEffect } from "react";
-import { getConditionerItems } from "@/app/Redux/Slices/items.slice";
 import ItemListpage from "@/app/ReusableComponents/ItemsList/ItemListpage";
+import { ColFetchData } from "@/app/Types/Col.type";
 
 type ModelsType = {
    id: number;
@@ -25,12 +21,51 @@ export type ModelType = {
    mode?: Array<string>;
 };
 
-function Details() {
-   const dispatch = useDispatch<AppDispatch>();
-   const goods = useSelector((state: RootState) => state.itemReducer.itemsList);
-   useEffect(() => {
-      dispatch(getConditionerItems());
-   }, []);
-   return goods?.колонники ? <ItemListpage items={goods.колонники} /> : "first null";
+async function Details({ params }: { params: { Details: string } }) {
+   const data: ColFetchData = await fetchGraphqlData(`
+   query {
+    colConditioners(first: 99) {
+      nodes {
+        id
+        col {
+          name
+          company
+          areaCube
+          areaQuad
+          coolantCapacity
+          coolingOutput
+          cost
+          description
+          heatOutput
+          type
+          image {
+            node {
+              sourceUrl
+            }
+          }
+          indoorNoiseLevel
+          outdoorNoiseLevel
+          power
+          temperatureRange
+        }
+      }
+    }
+    currencyValues {
+      nodes {
+        dollarValue {
+          currencyValue
+        }
+      }
+    }
+  }
+   `);
+   return (
+      <ItemListpage
+         items={data.data.colConditioners.nodes}
+         currencyValue={data.data.currencyValues.nodes[0].dollarValue.currencyValue}
+         hrefName={params.Details}
+      />
+   );
 }
 export default Details;
+//goods?.колонники ? <ItemListpage items={goods.колонники} /> : "first null";

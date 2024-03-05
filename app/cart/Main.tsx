@@ -16,7 +16,7 @@ export type CartItemType = {
    power: string;
    price: number;
    count: number;
-   id: number;
+   id: string;
    type?: string;
 };
 
@@ -107,11 +107,7 @@ function Main({
                                              </span>
                                           )}
                                        </div>
-                                       <button
-                                          id={el.id.toString()}
-                                          onClick={(e) => deleteItem(e)}
-                                          className="cart__desc__trash"
-                                       >
+                                       <button id={el.id} onClick={(e) => deleteItem(e)} className="cart__desc__trash">
                                           <PiTrashBold size={40} />
                                        </button>
                                     </div>

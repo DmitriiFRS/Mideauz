@@ -9,11 +9,12 @@ function PriceField({ itemPrice, currencyValue }: PropsType) {
          {itemPrice && currencyValue && (
             <p className="text-slate-600">
                Стоимость за единицу:{" "}
-               <span className="text-neutral-800 font-semibold">{(itemPrice * currencyValue).toLocaleString()}</span>{" "}
-               UZS
+               <span className="text-neutral-800 font-semibold">{itemPrice.toLocaleString()}</span> UZS
             </p>
          )}
       </div>
    );
 }
 export default PriceField;
+
+//itemPrice * currencyValue

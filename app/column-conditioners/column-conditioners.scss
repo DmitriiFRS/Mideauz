@@ -90,6 +90,10 @@
       display: block;
       flex: 1 1 auto;
    }
+   &__imgBody {
+      width: 140px;
+      aspect-ratio: 1/3;
+   }
 }
 .colConditionerCard {
    margin: 0 auto 60px auto;

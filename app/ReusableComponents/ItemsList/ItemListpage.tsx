@@ -10,6 +10,7 @@ import SelectPowerInput from "./SelectPowerInput";
 import Video from "../Video";
 import "../../column-conditioners/column-conditioners.scss";
 import ItemAddedToCart from "../ItemAddedToCart";
+import { ColModelTypeInner } from "@/app/Types/Col.type";
 type ModelsType = {
    id: number;
    mode?: Array<string>;
@@ -28,14 +29,50 @@ export type ModelType = {
    mode?: Array<string>;
 };
 
-function ItemListpage({ items }: { items: Array<ModelType> }) {
-   const [model, setModel] = useState<null | ModelType>(null);
+function ItemListpage({
+   items,
+   currencyValue,
+   hrefName,
+}: {
+   items: Array<ColModelTypeInner>;
+   currencyValue: number;
+   hrefName: string;
+}) {
+   let flag = false;
+   return (
+      <div>
+         {items.map((el, index) => {
+            if (el.col.name.replace(/\s|\//g, "_") === hrefName && !flag) {
+               flag = true;
+               return (
+                  <div key={index} className="colConditionerCard container flex flex-col flex-auto">
+                     <div className="colConditionerCard__body grid">
+                        <div className="colConditionerCard__imgBody relative">
+                           <Image src={el.col.image.node.sourceUrl} alt={el.col.name} fill></Image>
+                        </div>
+                        <div className="flex flex-col justify-center">
+                           <p className="text-4xl font-semibold">{el.col.name}</p>
+                           <SelectPowerInput
+                              model={el}
+                              currencyValue={currencyValue}
+                              items={items}
+                              hrefName={hrefName}
+                           />
+                        </div>
+                     </div>
+                  </div>
+               );
+            }
+         })}
+      </div>
+   );
+}
+export default ItemListpage;
+
+/*
+const [model, setModel] = useState<null | ModelType>(null);
    const [isInProgress, setProgress] = useState<boolean>(false);
    const params = useParams();
-   const dispatch = useDispatch<AppDispatch>();
-   useEffect(() => {
-      dispatch(currencyValueData());
-   }, [dispatch]);
    useEffect(() => {
       if (items) {
          const newModel = items.filter((el) => {
@@ -80,5 +117,4 @@ function ItemListpage({ items }: { items: Array<ModelType> }) {
    ) : (
       "null"
    );
-}
-export default ItemListpage;
+*/

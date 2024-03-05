@@ -4,32 +4,31 @@ import { useDispatch } from "react-redux";
 import { ModelType } from "./ItemListpage";
 import { useEffect } from "react";
 import { setCartCount } from "@/app/Redux/Slices/main.slice";
+import { ColModelTypeInner } from "@/app/Types/Col.type";
 
 type PropsType = {
-   colModel: ModelType;
+   currentItems: null | Array<ColModelTypeInner>;
    firstInput: string;
    subInputRef: React.RefObject<HTMLSelectElement>;
    countValue: number;
-   setProgress: Function;
 };
 type NewItem = {
    model: string;
    type?: string;
    power: string;
    price: string;
-   id: number;
+   id: string;
    count: number;
 };
 
-function AddToCart({ colModel, firstInput, subInputRef, countValue, setProgress }: PropsType) {
+function AddToCart({ currentItems, firstInput, subInputRef, countValue }: PropsType) {
    const dispatch = useDispatch<AppDispatch>();
    const [value, setValue] = useLocalStorage<any>("item", []);
    function addItemToCart() {
-      setProgress(true);
       let modelType = null;
-      if (subInputRef) {
-         modelType = colModel.models.find((el) => {
-            if (el.power === subInputRef.current?.value) {
+      if (subInputRef && currentItems) {
+         modelType = currentItems.find((el) => {
+            if (el.col.power[0] === subInputRef.current?.value && el.col.type[0] === firstInput) {
                return el;
             }
          });
@@ -37,16 +36,18 @@ function AddToCart({ colModel, firstInput, subInputRef, countValue, setProgress 
       let flag = false;
       const newValue = value;
       if (modelType) {
+         console.log(modelType);
          const newItem: NewItem = {
-            model: `Колонный кондиционер ${colModel.name}`,
-            power: modelType.power,
-            price: modelType.price,
+            model: `Колонный кондиционер ${modelType.col.name}`,
+            power: modelType.col.power[0],
+            price: modelType.col.cost,
             id: modelType.id,
             count: countValue,
+            type: modelType.col.type[0],
          };
-         (newItem.type = firstInput === "Inverter" ? "Инверторный" : "On/Off"),
+         (newItem.type = firstInput),
             value.forEach((el: NewItem, index: number) => {
-               if (el.model === newItem.model && el.power === newItem.power) {
+               if (el.model === newItem.model && el.power === newItem.power && el.type === newItem.type) {
                   flag = true;
                   newValue[index].count += countValue;
                }

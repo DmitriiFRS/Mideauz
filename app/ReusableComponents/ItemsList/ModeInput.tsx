@@ -3,10 +3,9 @@ import { ModelType } from "./ItemListpage";
 
 type PropsType = {
    getValue: (e: ChangeEvent<HTMLSelectElement>) => void;
-   model: ModelType;
 };
 
-function ModeInput({ getValue, model }: PropsType) {
+function ModeInput({ getValue }: PropsType) {
    return (
       <div className="flex items-center gap-8 ">
          <label htmlFor="columnParam" className="colConditionerCard__inputLabel text-xl font-medium">
@@ -18,13 +17,8 @@ function ModeInput({ getValue, model }: PropsType) {
             id="columnParam"
             className="colConditionerCard__count text-xl"
          >
-            {model.mode?.map((el, index) => {
-               return (
-                  <option key={index} value={el}>
-                     {el}
-                  </option>
-               );
-            })}
+            <option value={"Inverter"}>Inverter</option>
+            <option value={"On/Off"}>On/Off</option>
          </select>
       </div>
    );
