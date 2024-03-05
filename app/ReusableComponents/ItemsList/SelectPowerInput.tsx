@@ -9,7 +9,13 @@ import CountInput from "./CountInput";
 import PriceField from "./PriceField";
 import AddToCart from "./AddToCart";
 import { ColModelTypeInner } from "@/app/Types/Col.type";
-import { addCurrentItems, setCurrentPower, setCurrentType } from "@/app/Redux/Slices/items.slice";
+import {
+   addCurrentItems,
+   setCurrentPower,
+   setCurrentType,
+   setFirstInputVal,
+   setSecondInputVal,
+} from "@/app/Redux/Slices/items.slice";
 
 type ModelsType = {
    id: number;
@@ -38,6 +44,7 @@ type PropsType = {
 function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) {
    const dispatch = useDispatch();
    const currentItems = useSelector((state: RootState) => state.itemReducer.itemsList);
+   const firstInputVal = useSelector((state: RootState) => state.itemReducer.firstInputVal);
    const [inverterPower, setInverterPower] = useState<null | Array<string>>(null);
    const [onoffPower, setOnoffPower] = useState<null | Array<string>>(null);
    const [firstInput, setFirstInput] = useState<string>("Inverter");
@@ -45,6 +52,13 @@ function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) 
    const [itemPrice, setItemPrice] = useState<number | null>(null);
    const [countValue, setCount] = useState<number>(1);
    const subInputRef = useRef<HTMLSelectElement>(null);
+
+   useEffect(() => {
+      if (subInputRef.current?.value) {
+         dispatch(setSecondInputVal(subInputRef.current.value));
+      }
+      dispatch(setFirstInputVal(firstInput));
+   }, [subInputRef.current?.value, firstInput]);
 
    /* функция, которая меняет значения второго инпута на основании значения в первом инпуте */
    function getValue(e: ChangeEvent<HTMLSelectElement>) {
@@ -96,6 +110,7 @@ function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) 
             return el.col.name.replace(/\s|\//g, "_") === hrefName;
          })
          .sort((a, b) => Number(a.col.power) - Number(b.col.power));
+      console.log(itemsCopy);
       dispatch(addCurrentItems(itemsCopy));
       itemsCopy.forEach((el) => {
          if (el.col.type[0] === "Inverter") {
@@ -110,7 +125,9 @@ function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) 
       }
       if (onoffArr.length > 0) {
          setOnoffPower(onoffArr);
-         setSecondInput(onoffArr);
+         if (inverterArr.length < 1) {
+            setSecondInput(onoffArr);
+         }
       }
    }, []);
 

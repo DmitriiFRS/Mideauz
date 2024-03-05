@@ -1,6 +1,5 @@
 import { ColModelTypeInner } from "@/app/Types/Col.type";
 import { ModelTypeInner } from "@/app/air-conditioners/[Details]/page";
-import { db } from "@/app/firebase/firebaseConfig";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 type initialStateType = {
@@ -10,6 +9,8 @@ type initialStateType = {
    currentEl: null | ModelTypeInner;
    itemCount: number;
    itemsList: null | Array<ColModelTypeInner>;
+   firstInputVal: null | string;
+   secondInputVal: null | Array<string>;
 };
 
 const initialState: initialStateType = {
@@ -19,6 +20,8 @@ const initialState: initialStateType = {
    currentEl: null,
    itemCount: 1,
    itemsList: null,
+   firstInputVal: "Inverter",
+   secondInputVal: null,
 };
 
 const itemSlice = createSlice({
@@ -40,11 +43,25 @@ const itemSlice = createSlice({
       setCurrentEl: (state, action) => {
          state.currentEl = action.payload;
       },
+      setFirstInputVal: (state, action) => {
+         state.firstInputVal = action.payload;
+      },
+      setSecondInputVal: (state, action) => {
+         state.secondInputVal = action.payload;
+      },
       addCurrentItems: (state, action) => {
          state.itemsList = action.payload;
       },
    },
 });
-export const { addElem, setCurrentPower, setCurrentType, setItemCount, setCurrentEl, addCurrentItems } =
-   itemSlice.actions;
+export const {
+   addElem,
+   setCurrentPower,
+   setCurrentType,
+   setItemCount,
+   setCurrentEl,
+   addCurrentItems,
+   setFirstInputVal,
+   setSecondInputVal,
+} = itemSlice.actions;
 export default itemSlice.reducer;
