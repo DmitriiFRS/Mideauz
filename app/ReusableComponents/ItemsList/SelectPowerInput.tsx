@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/Redux/store";
 import ModeInput from "./ModeInput";
 import PowerInput from "./PowerInput";
@@ -9,6 +9,7 @@ import CountInput from "./CountInput";
 import PriceField from "./PriceField";
 import AddToCart from "./AddToCart";
 import { ColModelTypeInner } from "@/app/Types/Col.type";
+import { addCurrentItems, setCurrentPower, setCurrentType } from "@/app/Redux/Slices/items.slice";
 
 type ModelsType = {
    id: number;
@@ -35,13 +36,14 @@ type PropsType = {
    hrefName: string;
 };
 function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) {
+   const dispatch = useDispatch();
+   const currentItems = useSelector((state: RootState) => state.itemReducer.itemsList);
    const [inverterPower, setInverterPower] = useState<null | Array<string>>(null);
    const [onoffPower, setOnoffPower] = useState<null | Array<string>>(null);
    const [firstInput, setFirstInput] = useState<string>("Inverter");
    const [secondInput, setSecondInput] = useState<Array<string>>([]);
    const [itemPrice, setItemPrice] = useState<number | null>(null);
    const [countValue, setCount] = useState<number>(1);
-   const [currentItems, setCurrentItems] = useState<null | Array<ColModelTypeInner>>(null);
    const subInputRef = useRef<HTMLSelectElement>(null);
 
    /* функция, которая меняет значения второго инпута на основании значения в первом инпуте */
@@ -68,8 +70,6 @@ function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) 
       //setProgress(false);
       if (subInputRef && currentItems && inverterPower && onoffPower) {
          currentItems.find((el) => {
-            console.log(subInputRef.current?.value);
-            console.log(el.col.power[0]);
             if (el.col.power[0] === subInputRef.current?.value && el.col.type[0] === firstInput) {
                setItemPrice(+el.col.cost);
                return true;
@@ -96,7 +96,7 @@ function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) 
             return el.col.name.replace(/\s|\//g, "_") === hrefName;
          })
          .sort((a, b) => Number(a.col.power) - Number(b.col.power));
-      setCurrentItems(itemsCopy);
+      dispatch(addCurrentItems(itemsCopy));
       itemsCopy.forEach((el) => {
          if (el.col.type[0] === "Inverter") {
             inverterArr.push(el.col.power[0]);
@@ -112,18 +112,6 @@ function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) 
          setOnoffPower(onoffArr);
          setSecondInput(onoffArr);
       }
-      /*const secondInputArr: Array<string> = [];
-         model.models.forEach((el) => {
-            if ((el.mode && el.mode.length === 2) || (el.mode && el.mode[0] === firstInput)) {
-               secondInputArr.push(el.power);
-            }
-         });
-         setSecondInput(secondInputArr);
-      } else {
-         model.models.forEach((el) => {
-            secondInputArr.push(el.power);
-         });
-         setSecondInput(secondInputArr);*/
    }, []);
 
    /* расчет стоимости товара */
