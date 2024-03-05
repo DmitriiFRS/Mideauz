@@ -9,8 +9,8 @@ type initialStateType = {
    currentEl: null | ModelTypeInner;
    itemCount: number;
    itemsList: null | Array<ColModelTypeInner>;
-   firstInputVal: null | string;
-   secondInputVal: null | Array<string>;
+   firstInputVal: string;
+   secondInputVal: null | string;
 };
 
 const initialState: initialStateType = {

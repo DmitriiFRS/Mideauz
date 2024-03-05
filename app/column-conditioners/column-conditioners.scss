@@ -142,7 +142,7 @@
       font-size: 17px;
       grid-template-columns: 1fr 1fr;
       width: 100%;
-      gap: 20px 60px;
+      gap: 10px 60px;
    }
    &__paramBody {
       background: #eeeeee;
@@ -174,7 +174,7 @@
    }
    &__list-disc {
       background: #bdccd8;
-      height: 100%;
+      height: 35px;
       text-align: center;
       display: flex;
       align-items: center;

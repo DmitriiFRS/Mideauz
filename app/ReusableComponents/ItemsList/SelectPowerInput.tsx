@@ -9,13 +9,7 @@ import CountInput from "./CountInput";
 import PriceField from "./PriceField";
 import AddToCart from "./AddToCart";
 import { ColModelTypeInner } from "@/app/Types/Col.type";
-import {
-   addCurrentItems,
-   setCurrentPower,
-   setCurrentType,
-   setFirstInputVal,
-   setSecondInputVal,
-} from "@/app/Redux/Slices/items.slice";
+import { addCurrentItems, setFirstInputVal, setSecondInputVal } from "@/app/Redux/Slices/items.slice";
 
 type ModelsType = {
    id: number;
@@ -44,10 +38,9 @@ type PropsType = {
 function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) {
    const dispatch = useDispatch();
    const currentItems = useSelector((state: RootState) => state.itemReducer.itemsList);
-   const firstInputVal = useSelector((state: RootState) => state.itemReducer.firstInputVal);
+   const firstInput = useSelector((state: RootState) => state.itemReducer.firstInputVal);
    const [inverterPower, setInverterPower] = useState<null | Array<string>>(null);
    const [onoffPower, setOnoffPower] = useState<null | Array<string>>(null);
-   const [firstInput, setFirstInput] = useState<string>("Inverter");
    const [secondInput, setSecondInput] = useState<Array<string>>([]);
    const [itemPrice, setItemPrice] = useState<number | null>(null);
    const [countValue, setCount] = useState<number>(1);
@@ -58,7 +51,7 @@ function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) 
          dispatch(setSecondInputVal(subInputRef.current.value));
       }
       dispatch(setFirstInputVal(firstInput));
-   }, [subInputRef.current?.value, firstInput]);
+   }, [subInputRef.current?.value, firstInput, dispatch]);
 
    /* функция, которая меняет значения второго инпута на основании значения в первом инпуте */
    function getValue(e: ChangeEvent<HTMLSelectElement>) {
@@ -67,16 +60,8 @@ function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) 
       } else {
          onoffPower && setSecondInput(onoffPower);
       }
-      setFirstInput(e.target.value);
-      /*setProgress(false);
-      setFirstInput(e.target.value);
-      const secondInputArr: Array<string> = [];
-      model.models.forEach((el) => {
-         if ((el.mode && el.mode.length === 2) || (el.mode && el.mode[0] === e.target.value)) {
-            secondInputArr.push(el.power);
-         }
-      });
-      setSecondInput(secondInputArr);*/
+      dispatch(setFirstInputVal(e.target.value));
+      //setProgress(false);
    }
 
    /* функция для расчета стоимости товара при изменении инпута мощности */
@@ -110,7 +95,6 @@ function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) 
             return el.col.name.replace(/\s|\//g, "_") === hrefName;
          })
          .sort((a, b) => Number(a.col.power) - Number(b.col.power));
-      console.log(itemsCopy);
       dispatch(addCurrentItems(itemsCopy));
       itemsCopy.forEach((el) => {
          if (el.col.type[0] === "Inverter") {
