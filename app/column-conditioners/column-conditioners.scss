@@ -98,14 +98,23 @@
 .colConditionerCard {
    margin: 0 auto 60px auto;
    &__body {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       grid-template-areas:
-         "img sel"
+         "title title"
+         "main main"
          "desc desc";
-      margin: 60px 0 0 0;
+      margin: 40px 0 0 0;
+   }
+   &__title {
+      grid-area: title;
+   }
+   &__mainBody {
+      grid-area: main;
+      max-width: 900px;
+      width: 100%;
+      margin: 60px auto 0px auto;
    }
    &__imgBody {
-      margin: 0 0 0 100px;
       max-height: 400px;
       aspect-ratio: 578/1680;
       grid-area: img;
@@ -122,7 +131,7 @@
    }
    &__desc {
       font-size: 17px;
-      line-height: 140%;
+      line-height: 150%;
    }
    &__advantages {
       & > *:not(:last-child) {
@@ -172,10 +181,10 @@
       justify-content: center;
       border-radius: 8px;
       &:nth-child(odd) {
-         background: #2584cd27;
+         background: #2584cd10;
       }
       &:nth-child(even) {
-         background: #fec30027;
+         background: #fdf5dc;
       }
    }
 }
