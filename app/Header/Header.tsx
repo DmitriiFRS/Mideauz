@@ -3,11 +3,7 @@ import midea from "../../public/logos/midea.svg";
 import welkin from "../../public/logos/welkin.svg";
 import Link from "next/link";
 import "./Header.scss";
-import HeaderNav from "./HeaderNav";
-import Search from "./Search";
 import Cart from "./Cart";
-import BurgerIcon from "./BurgerIcon";
-import BurgerNav from "./BurgerNav";
 import Navs from "./Navs";
 
 function Header() {

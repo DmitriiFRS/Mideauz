@@ -21,6 +21,9 @@
       max-height: 2800px;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 40px 40px;
+      @media (max-width: 1200px) {
+         grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
       @media (max-width: 850px) {
          grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -46,6 +49,9 @@
       }
       &:hover .conditioners__img {
          transform: scale(1.2);
+         @media (max-width: 1350px) {
+            transform: scale(1.1);
+         }
       }
       &__active {
          opacity: 1;
@@ -55,8 +61,8 @@
       width: 250px;
       height: 250px;
       @media (max-width: 1200px) {
-         width: 250px !important;
-         height: 250px !important;
+         width: 200px !important;
+         height: 200px !important;
       }
       @media (max-width: 580px) {
          width: 150px !important;

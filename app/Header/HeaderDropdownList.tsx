@@ -50,7 +50,7 @@ function HeaderDropdownList({ hideBar }: { hideBar: () => void }) {
                   <Link className="flex flex-col justify-center items-center h-full" href={el.href}>
                      <h4 className="dropdownList__title">{el.title}</h4>
                      <div className="dropdownList__imgBody relative">
-                        <Image className="dropdownList__img" src={el.img} alt="item" fill />
+                        <Image className="dropdownList__img" src={el.img} alt="item" fill objectFit="contain" />
                      </div>
                   </Link>
                </li>

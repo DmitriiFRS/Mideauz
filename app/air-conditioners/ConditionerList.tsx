@@ -27,7 +27,7 @@ function ConditionerList({ conditionerList, currencyValue, isHide, brand }: any)
                            ""
                         )}
                      </div>
-                     <button className="conditioners__btn mt-10">Выбрать параметры</button>
+                     <button className="conditioners__btn mt-10">Подробнее</button>
                   </li>
                </Link>
             );

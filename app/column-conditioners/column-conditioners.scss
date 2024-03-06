@@ -1,4 +1,5 @@
 .col-conditioners {
+   padding: 0 10px;
    & > *:not(:last-child) {
       margin: 100px 0 0 0;
    }
@@ -10,10 +11,10 @@
       @media (max-width: 920px) {
          font-size: 40px;
       }
-      @media (max-width: 460px) {
+      @media (max-width: 520px) {
          font-size: 30px;
       }
-      @media (max-width: 340px) {
+      @media (max-width: 410px) {
          font-size: 26px;
       }
    }
@@ -187,6 +188,9 @@
    max-height: 400px;
    aspect-ratio: 578/1680;
    grid-area: img;
+   @media (max-width: 550px) {
+      max-width: 100px;
+   }
 }
 .duct-conditioners__imgBody {
    max-width: 250px;

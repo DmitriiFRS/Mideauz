@@ -4,17 +4,7 @@ import "./Banner.scss";
 import Link from "next/link";
 import fetchGraphqlData from "@/app/Utilities/FetchGraphql";
 
-async function Banner() {
-   const data = await fetchGraphqlData(`
-   query {
-      comments {
-        nodes {
-          id
-        }
-      }
-    }  
-   `);
-   console.log(data.data.comments);
+function Banner() {
    return (
       <section className="banner">
          <div className="container banner__container px-2.5">

@@ -50,4 +50,3 @@ function ConditionersList({ data, currencyValue }: { data: Data | null; currency
    );
 }
 export default ConditionersList;
-//<ConditionerList conditionerList={conditionerList} isHide={isHide} currencyValue={currencyValue} />
