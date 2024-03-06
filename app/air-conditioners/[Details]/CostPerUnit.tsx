@@ -23,10 +23,8 @@ function CostPerUnit({ currencyData }: { currencyData: number }) {
       currentItem && (
          <div className="conditionerCard__priceContainer">
             <div className="conditionerCard__price mt-10 text-2xl">
-               {"Стоимость за единицу:" +
-                  " " +
-                  (+currentItem.conditionerField.cost * currencyData).toLocaleString() +
-                  " UZS"}
+               Стоимость за единицу:{" "}
+               <span>{(+currentItem.conditionerField.cost * currencyData).toLocaleString() + " UZS"}</span>
             </div>
          </div>
       )

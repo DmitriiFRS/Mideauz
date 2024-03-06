@@ -4,19 +4,13 @@ import { RootState } from "@/app/Redux/store";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-type ParamsPropsType = {
-   itemParams: Array<string>;
-   itemOtherParams: Array<string>;
-   isFadeOut: boolean;
-};
-
 function Description() {
    const [isFadeOut, setFadeOut] = useState(false);
    const currentEl = useSelector((state: RootState) => state.itemReducer.currentEl);
    return (
       currentEl && (
          <div className="conditionerCard__desc">
-            <h2 className="text-5xl text-slate-700 text-center">Основные параметры</h2>
+            <h2 className=" text-5xl text-slate-700 text-center conditionerCard__descTitle">Основные параметры</h2>
             <ul
                className={`${
                   isFadeOut ? "conditionerCard__desc__hide" : ""
@@ -24,37 +18,37 @@ function Description() {
             >
                {currentEl.conditionerField.coolingOutput && (
                   <li className="conditionerCard__descItem text-slate-600 text-lg">
-                     Мощность охлаждения: {currentEl.conditionerField.coolingOutput} Btu/h
+                     Мощность охлаждения: <span>{currentEl.conditionerField.coolingOutput} Btu/h</span>
                   </li>
                )}
                {currentEl.conditionerField.heatOutput && (
                   <li className="conditionerCard__descItem text-slate-600 text-lg">
-                     Мощность обогрева: {currentEl.conditionerField.heatOutput} Btu/h
+                     Мощность обогрева: <span>{currentEl.conditionerField.heatOutput} Btu/h</span>
                   </li>
                )}
                {currentEl.conditionerField.energyOutput && (
                   <li className="conditionerCard__descItem text-slate-600 text-lg">
-                     Расход электроэнергии: {currentEl.conditionerField.energyOutput} kW
+                     Расход электроэнергии: <span>{currentEl.conditionerField.energyOutput} kW</span>
                   </li>
                )}
                {currentEl.conditionerField.areaQuad && (
                   <li className="conditionerCard__descItem text-slate-600 text-lg">
-                     Обслуживаемая площадь: {currentEl.conditionerField.areaQuad} м2
+                     Обслуживаемая площадь: <span>{currentEl.conditionerField.areaQuad} м2</span>
                   </li>
                )}
                {currentEl.conditionerField.areaCube && (
                   <li className="conditionerCard__descItem text-slate-600 text-lg">
-                     Обслуживаемая площадь: {currentEl.conditionerField.areaCube} м3
+                     Обслуживаемая площадь: <span>{currentEl.conditionerField.areaCube} м3</span>
                   </li>
                )}
                {currentEl.conditionerField.indoorNoiseLevel && (
                   <li className="conditionerCard__descItem text-slate-600 text-lg">
-                     Уровень шума внутр. блока: {currentEl.conditionerField.indoorNoiseLevel} dB
+                     Уровень шума внутр. блока: <span>{currentEl.conditionerField.indoorNoiseLevel} dB</span>
                   </li>
                )}
                {currentEl.conditionerField.outdoorNoiseLevel && (
                   <li className="conditionerCard__descItem text-slate-600 text-lg">
-                     Уровень шума внеш. блока: {currentEl.conditionerField.outdoorNoiseLevel} dB
+                     Уровень шума внеш. блока: <span>{currentEl.conditionerField.outdoorNoiseLevel} dB</span>
                   </li>
                )}
             </ul>

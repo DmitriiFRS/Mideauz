@@ -74,17 +74,13 @@ async function Details({ params }: { params: { Details: string } }) {
           }
         }
       }
-    }
-   `);
-   const currencyData = await fetchGraphqlData(`
-   query {
       currencyValues {
-        nodes {
-          dollarValue {
-            currencyValue
-          }
-        }
-      }
+         nodes {
+           dollarValue {
+             currencyValue
+           }
+         }
+       }
     }
    `);
    let flag = false;
@@ -111,9 +107,7 @@ async function Details({ params }: { params: { Details: string } }) {
                               <SelectPowerInput data={data.data.conditioners.nodes} details={params.Details} />
                               <CountInput />
                            </div>
-                           <CostPerUnit
-                              currencyData={currencyData.data.currencyValues.nodes[0].dollarValue.currencyValue}
-                           />
+                           <CostPerUnit currencyData={data.data.currencyValues.nodes[0].dollarValue.currencyValue} />
                            <AddToCart />
                         </div>
                      </div>
@@ -126,84 +120,4 @@ async function Details({ params }: { params: { Details: string } }) {
       </div>
    );
 }
-
-/*
-function Details() {
-   const params = useParams();
-   const [model, setModel] = useState<any>(null);
-   const [count, setCount] = useState<number>(1);
-   const [optionValue, setValue] = useState(0);
-   const [itemParams, setItemParams] = useState([]);
-   const [itemOtherParams, setItemOtherParams] = useState([]);
-   const selectRef = useRef<HTMLSelectElement>(null);
-   const dispatch = useDispatch<AppDispatch>();
-   const goods = useSelector((state: RootState) => state.itemReducer.itemsList);
-   const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
-   const [isInProgress, setProgress] = useState<boolean>(false);
-   const [isFadeOut, setFadeEffect] = useState<boolean>(false);
-   useEffect(() => {
-      dispatch(currencyValueData());
-   }, [dispatch]);
-
-   useEffect(() => {
-      dispatch(getConditionerItems());
-   }, [dispatch]);
-
-   useEffect(() => {
-      if (goods) {
-         const newModel = goods.кондиционеры.filter((el) => {
-            return el.name.replace(/\s/g, "-") === params.Details;
-         });
-         setModel(newModel[0]);
-      }
-   }, [goods]);
-   useEffect(() => {
-      if (selectRef.current) {
-         setItemParams(model.models[optionValue].params);
-         setItemOtherParams(model.models[optionValue].details);
-      }
-   }, [optionValue, itemParams, model]);
-   function getValue(e: ChangeEvent<HTMLSelectElement>) {
-      setProgress(false);
-      setFadeEffect(true);
-      setTimeout(() => {
-         setValue(parseInt(e.target.value));
-         setFadeEffect(false);
-      }, 200);
-   }
-
-   return model ? (
-      <div className="conditionerCard container">
-         <ItemAddedToCart isInProgress={isInProgress} />
-         <div className="conditionerCard__mainBody grid mt-10">
-            <div className="conditionerCard__img relative">
-               <Image src={model.img} alt={model.name} fill={true} />
-            </div>
-            <div className="conditionerCard__main flex flex-col">
-               <h2 className="conditionerCard__modelTitle text-5xl">{model.name}</h2>
-               <div className="conditionerCard__optionContainer flex mt-10">
-                  <SelectPowerInput selectRef={selectRef} getValue={getValue} model={model} />
-                  <CountInput count={count} setCount={setCount} />
-               </div>
-               {currencyValue ? (
-                  <div className="conditionerCard__price mt-10 text-2xl">
-                     {"Стоимость за единицу:" +
-                        " " +
-                        (model.models[optionValue].price * currencyValue).toLocaleString() +
-                        " UZS"}
-                  </div>
-               ) : (
-                  ""
-               )}
-
-               <AddToCart setProgress={setProgress} model={model} optionValue={optionValue} count={count} />
-            </div>
-            <Description isFadeOut={isFadeOut} itemParams={itemParams} itemOtherParams={itemOtherParams} />
-            <Video />
-         </div>
-      </div>
-   ) : (
-      <CartSkeleton />
-   );
-}*/
 export default Details;

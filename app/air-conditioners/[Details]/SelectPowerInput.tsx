@@ -32,7 +32,7 @@ function SelectPowerInput({ data, details }: PropsType) {
    }
    return (
       <div className="flex flex-col">
-         <label htmlFor="conditionerPower" className=" text-2xl">
+         <label htmlFor="conditionerPower" className=" text-2xl text-center">
             Мощность
          </label>
          <div className="conditionerCard__selectContainer relative">
