@@ -11,15 +11,17 @@ function ModeInput({ getValue }: PropsType) {
          <label htmlFor="columnParam" className="colConditionerCard__inputLabel text-xl font-medium">
             Тип
          </label>
-         <select
-            onChange={(e) => getValue(e)}
-            name="paramSelect"
-            id="columnParam"
-            className="colConditionerCard__count text-xl"
-         >
-            <option value={"Inverter"}>Inverter</option>
-            <option value={"On/Off"}>On/Off</option>
-         </select>
+         <div>
+            <select
+               onChange={(e) => getValue(e)}
+               name="paramSelect"
+               id="columnParam"
+               className="colConditionerCard__count text-xl"
+            >
+               <option value={"Inverter"}>Inverter</option>
+               <option value={"On/Off"}>On/Off</option>
+            </select>
+         </div>
       </div>
    );
 }

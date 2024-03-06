@@ -26,11 +26,13 @@ function ItemListpage({
    currencyValue,
    hrefName,
    itemType,
+   imgStyle,
 }: {
    items: Array<ColModelTypeInner>;
    currencyValue: number;
    hrefName: string;
    itemType: string;
+   imgStyle: string;
 }) {
    let flag = false;
    return (
@@ -45,16 +47,11 @@ function ItemListpage({
                            {itemType} {el.col.name} {el.col.company}
                         </h2>
                         <div className="colConditionerCard__mainBody flex justify-between">
-                           <div className="colConditionerCard__imgBody relative mt-14">
+                           <div className={`colConditionerCard__imgBody ${imgStyle} relative mt-14`}>
                               <Image src={el.col.image.node.sourceUrl} alt={el.col.name} fill></Image>
                            </div>
                            <div className="colConditionerCard__select flex flex-col mt-14">
-                              <SelectPowerInput
-                                 model={el}
-                                 currencyValue={currencyValue}
-                                 items={items}
-                                 hrefName={hrefName}
-                              />
+                              <SelectPowerInput currencyValue={currencyValue} items={items} hrefName={hrefName} />
                            </div>
                         </div>
 

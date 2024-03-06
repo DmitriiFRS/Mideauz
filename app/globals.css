@@ -124,3 +124,40 @@ h6 {
 .btn-blue:hover::after {
    width: 145%;
 }
+
+.selectContainer {
+   margin: 18px 0 0 0;
+   height: 50px;
+   width: 190px;
+   border: 1px solid #d4d4d4;
+   border-radius: 5px;
+   position: relative;
+}
+.select {
+   font-size: 1.5rem;
+   line-height: 2rem;
+   width: 100%;
+   height: 100%;
+   appearance: none;
+}
+.select-btuh {
+   position: absolute;
+   left: 80px;
+   top: 32%;
+   width: 100%;
+   height: auto;
+   font-size: 18px;
+   pointer-events: none;
+}
+.select-arrowContainer {
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   height: 100%;
+   width: 50px;
+   background: #dadada;
+   pointer-events: none;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}

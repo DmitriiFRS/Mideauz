@@ -64,8 +64,9 @@ async function Details({ params }: { params: { Details: string } }) {
          items={data.data.colConditioners.nodes}
          currencyValue={data.data.currencyValues.nodes[0].dollarValue.currencyValue}
          hrefName={params.Details}
+         itemType="Колонный кондиционер"
+         imgStyle="col-conditioners__imgBody"
       />
    );
 }
 export default Details;
-//goods?.колонники ? <ItemListpage items={goods.колонники} /> : "first null";

@@ -30,12 +30,11 @@ export type ModelType = {
 };
 
 type PropsType = {
-   model: ColModelTypeInner;
    items: Array<ColModelTypeInner>;
    currencyValue: number;
    hrefName: string;
 };
-function SelectPowerInput({ model, items, currencyValue, hrefName }: PropsType) {
+function SelectPowerInput({ items, currencyValue, hrefName }: PropsType) {
    const dispatch = useDispatch();
    const currentItems = useSelector((state: RootState) => state.itemReducer.itemsList);
    const firstInput = useSelector((state: RootState) => state.itemReducer.firstInputVal);
