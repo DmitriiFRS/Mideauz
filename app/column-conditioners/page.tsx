@@ -34,6 +34,10 @@ export type ColList = {
       };
    };
 };
+
+const urlParam = "column-conditioners";
+const itemsType = "Колонные кондиционеры";
+const imgStyle = "col-conditioners__imgBody";
 async function ColumnConditioners() {
    const data = await fetchGraphqlData(`
    query {
@@ -75,20 +79,11 @@ async function ColumnConditioners() {
          <ConditionersList
             currencyValue={data.data.currencyValues.nodes[0].dollarValue.currencyValue}
             conditionerList={data.data.colConditioners.nodes}
+            urlParam={urlParam}
+            itemsType={itemsType}
+            imgStyle={imgStyle}
          />
       </section>
    );
 }
 export default ColumnConditioners;
-
-/*
-{brands.map((el, index) => {
-            return (
-               <ConditionersList
-                  key={index}
-                  conditionerList={index === 0 ? conditionerList.list[0].midea : conditionerList.list[1].welkin}
-                  brands={brands[index]}
-               />
-            );
-         })}
-*/

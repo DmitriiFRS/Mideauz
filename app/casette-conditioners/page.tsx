@@ -1,38 +1,57 @@
-"use client";
+import fetchGraphqlData from "../Utilities/FetchGraphql";
+import "../column-conditioners/column-conditioners.scss";
+import ConditionersList from "../column-conditioners/index";
 
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../Redux/store";
-import { useEffect } from "react";
-import { casConditioneListData } from "../Redux/Slices/main.slice";
-import Skeleton from "../Utilities/Loader";
-import ConditionersList from ".";
-import "./casette-conditioners.scss";
-const brands = ["Кассетные кондиционеры Midea", "Кассетные кондиционеры Welkin"];
-const skeletonSections = [1, 2, 3, 4];
-function CasetteConditioners() {
-   const dispatch = useDispatch<AppDispatch>();
-   const conditionerList = useSelector((state: RootState) => state.mainReducer.casConditioners);
-   useEffect(() => {
-      dispatch(casConditioneListData());
-      console.log(conditionerList?.list[0].midea);
-   }, [dispatch]);
-   return !conditionerList ? (
-      <div className="skeleton__container grid grid-cols-2 grid-rows-2">
-         {skeletonSections.map((el, index) => {
-            return <Skeleton key={index} />;
-         })}
-      </div>
-   ) : (
+const urlParam = "casette-conditioners";
+const itemsType = "Кассетные кондиционеры";
+const imgStyle = "cas-conditioners__imgBody";
+
+async function CasetteConditioners() {
+   const data = await fetchGraphqlData(`
+   query {
+      casConditioners(first: 99) {
+        nodes {
+          col {
+            name
+            company
+            areaCube
+            areaQuad
+            coolantCapacity
+            coolingOutput
+            cost
+            description
+            heatOutput
+            type
+            image {
+              node {
+                sourceUrl
+              }
+            }
+            indoorNoiseLevel
+            outdoorNoiseLevel
+            power
+            temperatureRange
+          }
+        }
+      }
+      currencyValues {
+        nodes {
+          dollarValue {
+            currencyValue
+          }
+        }
+      }
+    }
+   `);
+   return (
       <section className="flex-auto">
-         {brands.map((el, index) => {
-            return (
-               <ConditionersList
-                  key={index}
-                  conditionerList={index === 0 ? conditionerList.list[0].midea : conditionerList.list[1].welkin}
-                  brands={brands[index]}
-               />
-            );
-         })}
+         <ConditionersList
+            currencyValue={data.data.currencyValues.nodes[0].dollarValue.currencyValue}
+            conditionerList={data.data.casConditioners.nodes}
+            urlParam={urlParam}
+            itemsType={itemsType}
+            imgStyle={imgStyle}
+         />
       </section>
    );
 }

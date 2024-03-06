@@ -40,3 +40,24 @@ export type ColFetchData = {
       };
    };
 };
+
+export type DuctFetchData = {
+   data: {
+      ductConditioners: {
+         nodes: Array<ColModelTypeInner>;
+      };
+      currencyValues: {
+         nodes: Array<CurrencyInner>;
+      };
+   };
+};
+export type CasFetchData = {
+   data: {
+      casConditioners: {
+         nodes: Array<ColModelTypeInner>;
+      };
+      currencyValues: {
+         nodes: Array<CurrencyInner>;
+      };
+   };
+};

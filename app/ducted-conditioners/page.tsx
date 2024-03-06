@@ -1,37 +1,56 @@
-"use client";
+import ConditionersList from "../column-conditioners/index";
+import "../column-conditioners/column-conditioners.scss";
+import fetchGraphqlData from "../Utilities/FetchGraphql";
 
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../Redux/store";
-import { useEffect } from "react";
-import { ducConditioneListData } from "../Redux/Slices/main.slice";
-import Skeleton from "../Utilities/Loader";
-import ConditionersList from ".";
-import "./ducted-conditioners.scss";
-const brands = ["Канальные кондиционеры Midea", "Канальные кондиционеры Welkin"];
-const skeletonSections = [1, 2, 3, 4];
-function DuctedConditioners() {
-   const dispatch = useDispatch<AppDispatch>();
-   const conditionerList = useSelector((state: RootState) => state.mainReducer.ducConditioners);
-   useEffect(() => {
-      dispatch(ducConditioneListData());
-   }, [dispatch]);
-   return !conditionerList ? (
-      <div className="skeleton__container grid grid-cols-2 grid-rows-2">
-         {skeletonSections.map((el, index) => {
-            return <Skeleton key={index} />;
-         })}
-      </div>
-   ) : (
+const urlParam = "ducted-conditioners";
+const itemsType = "Канальные кондиционеры";
+const imgStyle = "duct-conditioners__imgBody";
+
+async function DuctedConditioners() {
+   const data = await fetchGraphqlData(`
+   query {
+      ductConditioners(first: 99) {
+        nodes {
+          col {
+            name
+            company
+            areaCube
+            areaQuad
+            coolantCapacity
+            coolingOutput
+            cost
+            description
+            heatOutput
+            image {
+              node {
+                sourceUrl
+              }
+            }
+            indoorNoiseLevel
+            outdoorNoiseLevel
+            power
+            temperatureRange
+          }
+        }
+      }
+      currencyValues {
+        nodes {
+          dollarValue {
+            currencyValue
+          }
+        }
+      }
+    }
+   `);
+   return (
       <section className="flex-auto">
-         {brands.map((el, index) => {
-            return (
-               <ConditionersList
-                  key={index}
-                  conditionerList={index === 0 ? conditionerList.list[0].midea : conditionerList.list[1].welkin}
-                  brands={brands[index]}
-               />
-            );
-         })}
+         <ConditionersList
+            currencyValue={data.data.currencyValues.nodes[0].dollarValue.currencyValue}
+            conditionerList={data.data.ductConditioners.nodes}
+            urlParam={urlParam}
+            itemsType={itemsType}
+            imgStyle={imgStyle}
+         />
       </section>
    );
 }

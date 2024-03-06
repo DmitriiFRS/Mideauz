@@ -1,10 +1,6 @@
-"use client";
-
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/app/Redux/store";
-import { useEffect } from "react";
-import { getConditionerItems } from "@/app/Redux/Slices/items.slice";
+import fetchGraphqlData from "@/app/Utilities/FetchGraphql";
 import ItemListpage from "@/app/ReusableComponents/ItemsList/ItemListpage";
+import { CasFetchData } from "@/app/Types/Col.type";
 
 type ModelsType = {
    id: number;
@@ -24,12 +20,50 @@ export type ModelType = {
    mode?: Array<string>;
 };
 
-function Details() {
-   const dispatch = useDispatch<AppDispatch>();
-   const goods = useSelector((state: RootState) => state.itemReducer.itemsList);
-   useEffect(() => {
-      dispatch(getConditionerItems());
-   }, []);
-   return goods?.кассеты ? <ItemListpage items={goods.кассеты} /> : "first null";
+async function Details({ params }: { params: { Details: string } }) {
+   const data: CasFetchData = await fetchGraphqlData(`
+   query {
+      casConditioners(first: 99) {
+        nodes {
+          col {
+            name
+            company
+            areaCube
+            areaQuad
+            coolantCapacity
+            coolingOutput
+            cost
+            description
+            heatOutput
+            type
+            image {
+              node {
+                sourceUrl
+              }
+            }
+            indoorNoiseLevel
+            outdoorNoiseLevel
+            power
+            temperatureRange
+          }
+        }
+      }
+      currencyValues {
+        nodes {
+          dollarValue {
+            currencyValue
+          }
+        }
+      }
+    }
+   `);
+   return (
+      <ItemListpage
+         items={data.data.casConditioners.nodes}
+         currencyValue={data.data.currencyValues.nodes[0].dollarValue.currencyValue}
+         hrefName={params.Details}
+         itemType="Канальный кондиционер"
+      />
+   );
 }
 export default Details;

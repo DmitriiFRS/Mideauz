@@ -25,10 +25,12 @@ function ItemListpage({
    items,
    currencyValue,
    hrefName,
+   itemType,
 }: {
    items: Array<ColModelTypeInner>;
    currencyValue: number;
    hrefName: string;
+   itemType: string;
 }) {
    let flag = false;
    return (
@@ -40,7 +42,7 @@ function ItemListpage({
                   <div key={index} className="colConditionerCard container flex flex-col flex-auto">
                      <div className="colConditionerCard__body grid">
                         <h2 className="colConditionerCard__title text-4xl font-semibold text-center">
-                           Колонный кондиционер {el.col.name} {el.col.company}
+                           {itemType} {el.col.name} {el.col.company}
                         </h2>
                         <div className="colConditionerCard__mainBody flex justify-between">
                            <div className="colConditionerCard__imgBody relative mt-14">
