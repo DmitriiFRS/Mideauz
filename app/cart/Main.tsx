@@ -118,7 +118,7 @@ function Main({
                      </ul>
                      <div className="my-10 mx-9 text-xl  flex flex-col items-end">
                         Итоговая стоимость:{" "}
-                        <span className="flex items-end text-3xl font-semibold mt-4">
+                        <span className="cart__totalPrice flex items-end text-3xl font-semibold mt-4">
                            {total.toLocaleString() + " UZS"}
                         </span>
                      </div>

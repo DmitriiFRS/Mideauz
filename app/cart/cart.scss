@@ -13,9 +13,9 @@
       grid-template-columns: 75% 25%;
       gap: 30px;
       margin: 0 0 15px 0;
-      @media (max-width: 1000px) {
+      @media (max-width: 1170px) {
          gap: 10px;
-         grid-template-columns: 75% 27%;
+         grid-template-columns: 1fr;
       }
       &__wfull {
          grid-template-columns: 100% 0%;
@@ -38,6 +38,9 @@
       background: #e4e4e4;
       max-height: 350px;
       max-width: 460px;
+      @media (max-width: 1170px) {
+         margin: -120px 0 0 0;
+      }
       &__disable {
          display: none;
       }
@@ -218,6 +221,11 @@
    }
    &__modalStatus {
       display: none;
+   }
+   &__totalPrice {
+      @media (max-width: 800px) {
+         font-size: 20px;
+      }
    }
 }
 .rect {
