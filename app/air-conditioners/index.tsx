@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import "./air-conditioners.scss";
 import ConditionerBrandList from "./ConditionerBrandList";
 import { Data, DataInner } from "./page";
+import { ConditionerTypeInner } from "../Types/Col.type";
 
 const brands = ["Midea", "Welkin"];
 type DataParams = {
@@ -18,12 +19,12 @@ type DataParams = {
    };
 };
 
-function ConditionersList({ data, currencyValue }: { data: Data | null; currencyValue: any }) {
+function ConditionersList({ data, currencyValue }: { data: Array<ConditionerTypeInner>; currencyValue: any }) {
    const [mideaData, setMideaData] = useState<Array<DataInner>>([]);
    const [welkinData, setWelkinData] = useState<Array<DataInner>>([]);
    useEffect(() => {
       if (data) {
-         const lowerPower: Array<DataInner> = data.data.conditioners.nodes.slice();
+         const lowerPower: Array<ConditionerTypeInner> = data.slice();
          const uniqueData: Array<any> = [[], []];
          lowerPower
             .sort((el1, el2) => el1.conditionerField.power - el2.conditionerField.power)
@@ -38,6 +39,7 @@ function ConditionersList({ data, currencyValue }: { data: Data | null; currency
                   }
                }
             });
+         console.log(uniqueData);
          setMideaData(uniqueData[0]);
          setWelkinData(uniqueData[1]);
       }

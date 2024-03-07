@@ -1,8 +1,9 @@
-"use client";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Loader from "../Utilities/Loader";
 import "./air-conditioners.scss";
 import ConditionersList from ".";
+import fetchGraphqlData from "../Utilities/FetchGraphql";
+import { ConditionersFetchData } from "../Types/Col.type";
 
 export type DataInner = {
    conditionerField: {
@@ -26,66 +27,41 @@ export type Data = {
    };
 };
 
-function AirConditiones() {
-   const [data, setData] = useState<null | Data>(null);
-   const [currencyValue, setCurrencyValue] = useState<any>(null);
-   useEffect(() => {
-      fetch("http://wordpress/graphql", {
-         method: "POST",
-         headers: {
-            "Content-type": "application/json",
-         },
-         body: JSON.stringify({
-            query: `
-            {
-               conditioners(first: 999) {
-                 nodes {
-                   conditionerField {
-                     name
-                     power
-                     cost
-                     company
-                     image {
-                       node {
-                         sourceUrl
-                       }
-                     }
-                   }
-                 }
-               }
-             }
-               `,
-         }),
-      })
-         .then((res) => res.json())
-         .then((res) => setData(res));
-      fetch("http://wordpress/graphql", {
-         method: "POST",
-         headers: {
-            "Content-type": "application/json",
-         },
-         body: JSON.stringify({
-            query: `
-            query {
-               currencyValues {
-                 nodes {
-                   dollarValue {
-                     currencyValue
-                   }
-                 }
-               }
-             }
-            `,
-         }),
-      })
-         .then((res) => res.json())
-         .then((res) => setCurrencyValue(res));
-   }, []);
-   return !data && !currencyValue ? (
-      <Loader />
-   ) : (
+async function AirConditiones() {
+   const data: ConditionersFetchData = await fetchGraphqlData(`
+   query {
+      conditioners(first: 999) {
+        nodes {
+          conditionerField {
+            name
+            power
+            cost
+            company
+            image {
+              node {
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+      currencyValues {
+        nodes {
+          dollarValue {
+            currencyValue
+          }
+        }
+      }
+    }
+   `);
+   return (
       <section className="flex-auto">
-         <ConditionersList data={data} currencyValue={currencyValue} />
+         <Suspense fallback={<Loader />}>
+            <ConditionersList
+               data={data.data.conditioners.nodes}
+               currencyValue={data.data.currencyValues.nodes[0].dollarValue.currencyValue}
+            />
+         </Suspense>
       </section>
    );
 }

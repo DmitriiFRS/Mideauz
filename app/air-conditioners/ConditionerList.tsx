@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 function ConditionerList({ conditionerList, currencyValue, isHide, brand }: any) {
-   const dollarVal = currencyValue.data.currencyValues.nodes[0].dollarValue.currencyValue;
+   const dollarVal = currencyValue;
    return (
       <ul className={`${isHide ? "conditioners__list__unactive" : ""} conditioners__list grid mt-14`}>
          {conditionerList.map((el: any, index: number) => {

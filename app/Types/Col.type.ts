@@ -24,6 +24,20 @@ export type ColModelTypeInner = {
    };
 };
 
+export type ConditionerTypeInner = {
+   conditionerField: {
+      name: string;
+      power: number;
+      cost: string;
+      company: Array<string>;
+      image: {
+         node: {
+            sourceUrl: string;
+         };
+      };
+   };
+};
+
 export type CurrencyInner = {
    dollarValue: {
       currencyValue: number;
@@ -55,6 +69,16 @@ export type CasFetchData = {
    data: {
       casConditioners: {
          nodes: Array<ColModelTypeInner>;
+      };
+      currencyValues: {
+         nodes: Array<CurrencyInner>;
+      };
+   };
+};
+export type ConditionersFetchData = {
+   data: {
+      conditioners: {
+         nodes: Array<ConditionerTypeInner>;
       };
       currencyValues: {
          nodes: Array<CurrencyInner>;
