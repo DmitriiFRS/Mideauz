@@ -85,32 +85,28 @@ function Main({
                         {value.map((el: CartItemType, index: number) => {
                            return (
                               <li key={index} className="cart__item flex items-center justify-between">
-                                 <Link href={"/"}>
-                                    <div className="cart__imgBody relative">
-                                       <Image src={ultraviolet} alt="condishn" fill />
+                                 <div className="cart__imgBody relative">
+                                    <Image src={ultraviolet} alt="condishn" fill />
+                                 </div>
+                                 <h3 className="cart__desc__model text-4xl">{`Midea ${el.model} ${el.power} BTU ${
+                                    el.type ? el.type : ""
+                                 }`}</h3>
+                                 <div className="cart__desc__countBody flex flex-col items-center">
+                                    <span className="cart__desc__count text-2xl">Количество</span>
+                                    <span className="cart__desc__count text-3xl mt-4">{el.count}</span>
+                                 </div>
+                                 <div className="cart__desc__priceBody flex">
+                                    <div className="flex flex-col">
+                                       <span className="cart__desc__title text-2xl">Общая стоимость</span>
+                                       {currencyValue && (
+                                          <span className="cart__desc__price text-3xl mt-4">
+                                             {(el.price * currencyValue * el.count).toLocaleString()} UZS
+                                          </span>
+                                       )}
                                     </div>
-                                 </Link>
-                                 <div className="cart__desc flex justify-between items-center">
-                                    <h3 className="cart__desc__model text-4xl">{`Midea ${el.model} ${el.power} BTU ${
-                                       el.type ? el.type : ""
-                                    }`}</h3>
-                                    <div className="flex flex-col items-center">
-                                       <span className="cart__desc__count text-2xl">Количество</span>
-                                       <span className="cart__desc__count text-3xl mt-4">{el.count}</span>
-                                    </div>
-                                    <div className="cart__desc__priceBody flex">
-                                       <div className="flex flex-col">
-                                          <span className="cart__desc__title text-2xl">Общая стоимость</span>
-                                          {currencyValue && (
-                                             <span className="cart__desc__price text-3xl mt-4">
-                                                {(el.price * currencyValue * el.count).toLocaleString()} UZS
-                                             </span>
-                                          )}
-                                       </div>
-                                       <button id={el.id} onClick={(e) => deleteItem(e)} className="cart__desc__trash">
-                                          <PiTrashBold size={40} />
-                                       </button>
-                                    </div>
+                                    <button id={el.id} onClick={(e) => deleteItem(e)} className="cart__desc__trash">
+                                       <PiTrashBold className="cart__desc__trashIcon" />
+                                    </button>
                                  </div>
                               </li>
                            );
@@ -163,3 +159,32 @@ function Main({
    );
 }
 export default Main;
+/*
+<Link href={"/"}>
+                                    <div className="cart__imgBody relative">
+                                       <Image src={ultraviolet} alt="condishn" fill />
+                                    </div>
+                                 </Link>
+                                 <div className="cart__desc flex justify-between items-center">
+                                    <h3 className="cart__desc__model text-4xl">{`Midea ${el.model} ${el.power} BTU ${
+                                       el.type ? el.type : ""
+                                    }`}</h3>
+                                    <div className="flex flex-col items-center">
+                                       <span className="cart__desc__count text-2xl">Количество</span>
+                                       <span className="cart__desc__count text-3xl mt-4">{el.count}</span>
+                                    </div>
+                                    <div className="cart__desc__priceBody flex">
+                                       <div className="flex flex-col">
+                                          <span className="cart__desc__title text-2xl">Общая стоимость</span>
+                                          {currencyValue && (
+                                             <span className="cart__desc__price text-3xl mt-4">
+                                                {(el.price * currencyValue * el.count).toLocaleString()} UZS
+                                             </span>
+                                          )}
+                                       </div>
+                                       <button id={el.id} onClick={(e) => deleteItem(e)} className="cart__desc__trash">
+                                          <PiTrashBold size={40} />
+                                       </button>
+                                    </div>
+                                 </div>
+*/

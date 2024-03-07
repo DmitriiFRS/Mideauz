@@ -25,12 +25,14 @@ function Cart() {
       <div className="cart mt-14 ">
          <div className="cart__header container flex items-center">
             <h2 className="text-4xl font-medium flex-auto">Корзина товаров</h2>
-            <button onClick={back} className="cart__btnBody ml-3 flex items-center justify-center">
-               <span className="cart__btn relative z-10">Вернуться назад</span>
-            </button>
-            <button onClick={clearModalOpen} className="cart__btnBody ml-3 flex items-center justify-center">
-               <span className="cart__btn relative z-10">Очистить корзину</span>
-            </button>
+            <div className="flex">
+               <button onClick={back} className="cart__btnBody ml-3 flex items-center justify-center">
+                  <span className="cart__btn relative z-10">Вернуться назад</span>
+               </button>
+               <button onClick={clearModalOpen} className="cart__btnBody ml-3 flex items-center justify-center">
+                  <span className="cart__btn relative z-10">Очистить корзину</span>
+               </button>
+            </div>
          </div>
          <Main
             value={value}
