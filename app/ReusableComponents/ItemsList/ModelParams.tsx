@@ -34,26 +34,35 @@ function ModelParams() {
          }
       }
    }, [firstInputVal, secondInputVal, currentItems]);
-   useEffect(() => {
-      console.log(currentItem);
-   }, [currentItem]);
    return (
       currentItem && (
          <ul className="colConditionerCard__advantages mt-10 grid w-full">
             <li className="colConditionerCard__list-disc">
-               Мощность охлаждения: {currentItem.col.coolingOutput} Btu/h
-            </li>
-            <li className="colConditionerCard__list-disc">Мощность обогрева: {currentItem.col.heatOutput} Btu/h</li>
-            <li className="colConditionerCard__list-disc">Тип компрессора: {currentItem.col.type}</li>
-            <li className="colConditionerCard__list-disc">Диапазон температур: {currentItem.col.temperatureRange}С</li>
-            <li className="colConditionerCard__list-disc">Обслуживаемая площадь: {currentItem.col.areaQuad} м2</li>
-            <li className="colConditionerCard__list-disc">Обслуживаемая площадь: {currentItem.col.areaCube} м3</li>
-            <li className="colConditionerCard__list-disc">Количество хладагента: {currentItem.col.coolantCapacity}</li>
-            <li className="colConditionerCard__list-disc">
-               Уровень шума внутр. блока: {currentItem.col.indoorNoiseLevel} dB
+               Мощность охлаждения:&nbsp; <span>{currentItem.col.coolingOutput} Btu/h</span>
             </li>
             <li className="colConditionerCard__list-disc">
-               Уровень шума внеш. блока: {currentItem.col.outdoorNoiseLevel} dB
+               Мощность обогрева:&nbsp; <span>{currentItem.col.heatOutput} Btu/h</span>
+            </li>
+            <li className="colConditionerCard__list-disc">
+               Тип компрессора:&nbsp; <span>{currentItem.col.type}</span>
+            </li>
+            <li className="colConditionerCard__list-disc">
+               Диапазон температур:&nbsp; <span>{currentItem.col.temperatureRange}С</span>
+            </li>
+            <li className="colConditionerCard__list-disc">
+               Обслуживаемая площадь:&nbsp; <span>{currentItem.col.areaQuad} м2</span>
+            </li>
+            <li className="colConditionerCard__list-disc">
+               Обслуживаемая площадь:&nbsp; <span>{currentItem.col.areaCube} м3</span>
+            </li>
+            <li className="colConditionerCard__list-disc">
+               Количество хладагента:&nbsp; <span>{currentItem.col.coolantCapacity}</span>
+            </li>
+            <li className="colConditionerCard__list-disc">
+               Уровень шума внутр. блока:&nbsp; <span>{currentItem.col.indoorNoiseLevel} dB</span>
+            </li>
+            <li className="colConditionerCard__list-disc">
+               Уровень шума внеш. блока:&nbsp; <span>{currentItem.col.outdoorNoiseLevel} dB</span>
             </li>
          </ul>
       )

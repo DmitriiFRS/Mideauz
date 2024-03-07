@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
-import { ModelType } from "./ItemListpage";
+import shevron from "../../../public/icons/option-down.svg";
+import Image from "next/image";
 
 type PropsType = {
    getValue: (e: ChangeEvent<HTMLSelectElement>) => void;
@@ -11,16 +12,14 @@ function ModeInput({ getValue }: PropsType) {
          <label htmlFor="columnParam" className="colConditionerCard__inputLabel text-xl font-medium">
             Тип
          </label>
-         <div>
-            <select
-               onChange={(e) => getValue(e)}
-               name="paramSelect"
-               id="columnParam"
-               className="colConditionerCard__count text-xl"
-            >
+         <div className="selectContainer">
+            <select onChange={(e) => getValue(e)} name="paramSelect" id="columnParam" className="select">
                <option value={"Inverter"}>Inverter</option>
                <option value={"On/Off"}>On/Off</option>
             </select>
+            <div className="select-arrowContainer">
+               <Image src={shevron} alt="" width={20} height={20} />
+            </div>
          </div>
       </div>
    );

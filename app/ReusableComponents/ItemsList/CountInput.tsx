@@ -11,13 +11,9 @@ function CountInput({ countValue, addCount }: PropsType) {
          <label htmlFor="columnCount" className="colConditionerCard__inputLabel text-xl font-medium">
             Количество
          </label>
-         <input
-            value={countValue}
-            onChange={(e) => addCount(e)}
-            id="columnCount"
-            type="number"
-            className="colConditionerCard__count text-xl"
-         />
+         <div className="selectContainer">
+            <input value={countValue} onChange={(e) => addCount(e)} id="columnCount" type="number" className="select" />
+         </div>
       </div>
    );
 }

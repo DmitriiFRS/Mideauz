@@ -35,12 +35,12 @@ function SelectPowerInput({ data, details }: PropsType) {
          <label htmlFor="conditionerPower" className=" text-2xl text-center">
             Мощность
          </label>
-         <div className="conditionerCard__selectContainer relative">
+         <div className="selectContainer">
             <select
                onChange={() => getValue()}
                name="powerSelect"
                id="conditionerPower"
-               className="conditionerCard__select text-2xl w-full h-full appearance-none"
+               className="select"
                ref={selectRef}
             >
                {data
@@ -51,8 +51,8 @@ function SelectPowerInput({ data, details }: PropsType) {
                      }
                   })}
             </select>
-            <span className="conditionerCard__btuh">Btu/h</span>
-            <div className="conditionerCard__arrowContainer absolute">
+            <span className="select-btuh">Btu/h</span>
+            <div className="select-arrowContainer">
                <Image src={shevron} alt="" width={20} height={20} />
             </div>
          </div>

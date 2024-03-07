@@ -48,7 +48,12 @@ function ItemListpage({
                         </h2>
                         <div className="colConditionerCard__mainBody flex justify-between">
                            <div className={`colConditionerCard__imgBody ${imgStyle} relative mt-14`}>
-                              <Image src={el.col.image.node.sourceUrl} alt={el.col.name} fill></Image>
+                              <Image
+                                 src={el.col.image.node.sourceUrl}
+                                 alt={el.col.name}
+                                 fill
+                                 objectFit="contain"
+                              ></Image>
                            </div>
                            <div className="colConditionerCard__select flex flex-col mt-14">
                               <SelectPowerInput currencyValue={currencyValue} items={items} hrefName={hrefName} />

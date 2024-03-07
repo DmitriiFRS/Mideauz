@@ -63,6 +63,7 @@ async function Details({ params }: { params: { Details: string } }) {
          currencyValue={data.data.currencyValues.nodes[0].dollarValue.currencyValue}
          hrefName={params.Details}
          itemType="Канальный кондиционер"
+         imgStyle="cas-conditioners__imgBody"
       />
    );
 }
