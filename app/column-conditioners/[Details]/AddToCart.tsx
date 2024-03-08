@@ -10,7 +10,6 @@ type PropsType = {
    firstInput: string;
    subInputRef: React.RefObject<HTMLSelectElement>;
    countValue: number;
-   setProgress: (arg0: boolean) => void;
 };
 type NewItem = {
    model: string;
@@ -21,11 +20,11 @@ type NewItem = {
    count: number;
 };
 
-function AddToCart({ colModel, firstInput, subInputRef, countValue, setProgress }: PropsType) {
+function AddToCart({ colModel, firstInput, subInputRef, countValue }: PropsType) {
    const dispatch = useDispatch<AppDispatch>();
    const [value, setValue] = useLocalStorage<any>("item", []);
    function addItemToCart() {
-      setProgress(true);
+      //setProgress(true);
       let modelType = null;
       if (subInputRef) {
          modelType = colModel.models.find((el) => {

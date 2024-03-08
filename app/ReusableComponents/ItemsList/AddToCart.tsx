@@ -8,7 +8,7 @@ import { ColModelTypeInner } from "@/app/Types/Col.type";
 
 type PropsType = {
    currentItems: null | Array<ColModelTypeInner>;
-   firstInput: string;
+   firstInput?: string;
    subInputRef: React.RefObject<HTMLSelectElement>;
    countValue: number;
 };
@@ -27,8 +27,12 @@ function AddToCart({ currentItems, firstInput, subInputRef, countValue }: PropsT
    function addItemToCart() {
       let modelType = null;
       if (subInputRef && currentItems) {
+         console.log(currentItems?.forEach((el) => el));
          modelType = currentItems.find((el) => {
-            if (el.col.power[0] === subInputRef.current?.value && el.col.type[0] === firstInput) {
+            if (
+               (el.col.power[0] === subInputRef.current?.value && el.col.type[0] === firstInput) ||
+               (el.col.power[0] === subInputRef.current?.value && !firstInput)
+            ) {
                return el;
             }
          });
@@ -38,7 +42,7 @@ function AddToCart({ currentItems, firstInput, subInputRef, countValue }: PropsT
       if (modelType) {
          console.log(modelType);
          const newItem: NewItem = {
-            model: `Колонный кондиционер ${modelType.col.name}`,
+            model: `Кондиционер ${modelType.col.name}`,
             power: modelType.col.power[0],
             price: modelType.col.cost,
             id: modelType.id,

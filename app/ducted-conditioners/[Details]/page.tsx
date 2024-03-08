@@ -25,6 +25,7 @@ async function Details({ params }: { params: { Details: string } }) {
    query {
       ductConditioners(first: 99) {
         nodes {
+          id
           col {
             name
             company

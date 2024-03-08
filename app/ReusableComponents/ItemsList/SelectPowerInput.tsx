@@ -159,12 +159,7 @@ function SelectPowerInput({ items, currencyValue, hrefName }: PropsType) {
                <PowerInput subInputRef={subInputRef} secondInput={secondInput} changeSecondInput={changeSecondInput} />
                <CountInput countValue={countValue} addCount={addCount} />
                <PriceField itemPrice={itemPrice} currencyValue={currencyValue} />
-               <AddToCart
-                  currentItems={currentItems}
-                  firstInput={firstInput}
-                  subInputRef={subInputRef}
-                  countValue={countValue}
-               />
+               <AddToCart currentItems={currentItems} subInputRef={subInputRef} countValue={countValue} />
             </>
          )}
       </div>
