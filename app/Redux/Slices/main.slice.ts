@@ -100,20 +100,6 @@ export const ducConditioneListData = createAsyncThunk<ConditionerList>(
    }
 );
 
-export const currencyValueData = createAsyncThunk<CurrencyValueType, undefined>(
-   "main/currencyValueFirestore",
-   async function getData() {
-      const dataRef = await getDoc(doc(db, "курс", "yVapa0s2zVOtixss6hQD")).then((snap) => {
-         if (snap.exists()) {
-            return snap.data();
-         } else {
-            console.error("error");
-         }
-      });
-      return dataRef as CurrencyValueType;
-   }
-);
-
 const mainSlice = createSlice({
    name: "main",
    initialState,
@@ -137,9 +123,6 @@ const mainSlice = createSlice({
       });
       builder.addCase(ducConditioneListData.fulfilled, (state, action) => {
          state.ducConditioners = action.payload;
-      });
-      builder.addCase(currencyValueData.fulfilled, (state, action) => {
-         state.currencyValue = action.payload;
       });
    },
 });

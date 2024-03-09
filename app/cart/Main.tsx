@@ -4,7 +4,7 @@ import ultraviolet from "../../public/img/Equip/AirConditioners/Midea/Ultraviole
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../Redux/store";
-import { currencyValueData, setClientValData } from "../Redux/Slices/main.slice";
+import { setClientValData } from "../Redux/Slices/main.slice";
 import CartSkeleton from "../Utilities/CartSkeleton";
 import SendDataForm from "./SendDataForm";
 import CartModal from "./CartModal";
@@ -39,15 +39,41 @@ function Main({
 }) {
    const [clientValue, setClientValue] = useState<Array<CartItemType> | null>(null);
    const dispatch = useDispatch<AppDispatch>();
-   const currencyValue = useSelector((state: RootState) => state.mainReducer.currencyValue?.value);
    const [total, setTotal] = useState(0);
    const [totalUSD, setTotalUSD] = useState(0);
+   const [currencyValue, setUsdData] = useState<null | number>(null);
+   useEffect(() => {
+      try {
+         fetch("http://wordpress/graphql", {
+            method: "POST",
+            headers: {
+               "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+               query: `
+                  query {
+                     currencyValues {
+                       nodes {
+                         dollarValue {
+                           currencyValue
+                         }
+                       }
+                     }
+                   }
+                  `,
+            }),
+         })
+            .then((res) => res.json())
+            .then((res) => setUsdData(res.data.currencyValues.nodes[0].dollarValue.currencyValue as number));
+      } catch (err: any) {
+         console.error("error when fetching data", err);
+      }
+   }, []);
    useEffect(() => {
       setClientValue(value);
       dispatch(setClientValData(value));
    }, [value, dispatch]);
    useEffect(() => {
-      dispatch(currencyValueData());
       let totalVal = 0;
       clientValue?.forEach((el) => {
          totalVal += +el.price * el.count;

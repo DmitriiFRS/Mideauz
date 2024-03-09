@@ -48,6 +48,7 @@ function AddToCart({ currentItems, firstInput, subInputRef, countValue }: PropsT
             id: modelType.id,
             count: countValue,
             type: modelType.col.type[0],
+            //img: modelType.col.image.node.sourceUrl
          };
          (newItem.type = firstInput),
             value.forEach((el: NewItem, index: number) => {
