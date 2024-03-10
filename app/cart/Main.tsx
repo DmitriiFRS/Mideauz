@@ -18,6 +18,7 @@ export type CartItemType = {
    count: number;
    id: string;
    type?: string;
+   img: string;
 };
 
 function Main({
@@ -112,7 +113,7 @@ function Main({
                            return (
                               <li key={index} className="cart__item flex items-center justify-between">
                                  <div className="cart__imgBody relative">
-                                    <Image src={ultraviolet} alt="condishn" fill />
+                                    <Image src={el.img} alt="condishn" fill objectFit="contain" />
                                  </div>
                                  <h3 className="cart__desc__model text-4xl">{`Midea ${el.model} ${el.power} BTU ${
                                     el.type ? el.type : ""

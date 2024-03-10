@@ -19,6 +19,7 @@ type NewItem = {
    price: string;
    count: number;
    id: string;
+   img: string;
 };
 
 function AddToCart() {
@@ -36,6 +37,7 @@ function AddToCart() {
             price: currentEl.conditionerField.cost,
             count: count,
             id: currentEl.id,
+            img: currentEl.conditionerField.image.node.sourceUrl,
          };
          value.forEach((el: NewItem, index: number) => {
             if (el.model === newItem.model && el.power === newItem.power) {
