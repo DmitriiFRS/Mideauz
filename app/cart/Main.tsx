@@ -10,6 +10,7 @@ import CartModal from "./CartModal";
 import { PiTrashBold } from "react-icons/pi";
 import { BsQuestionCircle } from "react-icons/bs";
 import { MdDone } from "react-icons/md";
+import AnimateAcceptSVG from "../Utilities/AnimateAcceptSVG";
 export type CartItemType = {
    model: string;
    power: string;
@@ -135,7 +136,7 @@ function Main({
                   </div>
                </CartModal>
                <CartModal isModalOpen={isAcceptModalOpen} closeModal={closeModal}>
-                  <MdDone style={{ color: "rgb(82 82 91)" }} size={60} />
+                  <AnimateAcceptSVG />
                   <h3 className="text-2xl text-center font-medium mt-10 text-zinc-600">
                      Ваша заявка принята. Ожидайте, специалист с вами свяжется в ближайшее время
                   </h3>
