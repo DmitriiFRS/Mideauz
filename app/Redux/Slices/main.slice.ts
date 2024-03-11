@@ -46,60 +46,6 @@ type RequestDataType = {
    number: number;
 };
 
-export const conditionerListData = createAsyncThunk<ConditionerList, undefined>(
-   "main/conditionerListFirestore",
-   async function getData() {
-      const dataRef = await getDoc(doc(db, "кондиционеры", "9aSgSZhM0mZM021Euag3")).then((snap) => {
-         if (snap.exists()) {
-            return snap.data();
-         } else {
-            console.error("Ошибка загрузки данных");
-         }
-      });
-      return dataRef as ConditionerList;
-   }
-);
-
-export const colConditioneListData = createAsyncThunk<ConditionerList>(
-   "main/colConditionerListFirestore",
-   async function getData() {
-      const dataRef = await getDoc(doc(db, "колонники", "GpFsxfyXXsIP12F904c9")).then((snap) => {
-         if (snap.exists()) {
-            return snap.data();
-         } else {
-            console.error("Ошибка загрузки данных");
-         }
-      });
-      return dataRef as ConditionerList;
-   }
-);
-export const casConditioneListData = createAsyncThunk<ConditionerList>(
-   "main/casConditionerListFirestore",
-   async function getData() {
-      const dataRef = await getDoc(doc(db, "кассетники", "rzfIwOoxodiuvbycV26v")).then((snap) => {
-         if (snap.exists()) {
-            return snap.data();
-         } else {
-            console.error("Ошибка загрузки данных");
-         }
-      });
-      return dataRef as ConditionerList;
-   }
-);
-export const ducConditioneListData = createAsyncThunk<ConditionerList>(
-   "main/ducConditionerListFirestore",
-   async function getData() {
-      const dataRef = await getDoc(doc(db, "канальники", "9PnHaI6KvJ3S5w0GmiXm")).then((snap) => {
-         if (snap.exists()) {
-            return snap.data();
-         } else {
-            console.error("Ошибка загрузки данных");
-         }
-      });
-      return dataRef as ConditionerList;
-   }
-);
-
 const mainSlice = createSlice({
    name: "main",
    initialState,
@@ -110,20 +56,6 @@ const mainSlice = createSlice({
       setCartCount: (state, action) => {
          state.cartCount = action.payload;
       },
-   },
-   extraReducers: (builder) => {
-      builder.addCase(conditionerListData.fulfilled, (state, action) => {
-         state.conditioners = action.payload;
-      });
-      builder.addCase(colConditioneListData.fulfilled, (state, action) => {
-         state.colConditioners = action.payload;
-      });
-      builder.addCase(casConditioneListData.fulfilled, (state, action) => {
-         state.casConditioners = action.payload;
-      });
-      builder.addCase(ducConditioneListData.fulfilled, (state, action) => {
-         state.ducConditioners = action.payload;
-      });
    },
 });
 export const { setClientValData, setCartCount } = mainSlice.actions;
