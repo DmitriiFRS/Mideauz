@@ -39,7 +39,6 @@ function ConditionersList({ data, currencyValue }: { data: Array<ConditionerType
                   }
                }
             });
-         console.log(uniqueData);
          setMideaData(uniqueData[0]);
          setWelkinData(uniqueData[1]);
       }

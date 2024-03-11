@@ -78,13 +78,14 @@
    }
 
    &__btn {
-      background: linear-gradient(45deg, rgb(104, 104, 104) 0%, rgba(223, 223, 223, 0.10127801120448177) 100%);
       overflow: hidden;
-      padding: 15px 25px;
+      padding: 15px 35px;
       transition: 0.4s;
       position: relative;
       z-index: 2;
       border-radius: 9px;
+      font-size: 16px;
+      color: #383838;
       @media (max-width: 480px) {
          padding: 10px 15px;
       }
@@ -103,7 +104,19 @@
          transform: skew(45deg);
       }
       &:hover::before {
-         width: 122%;
+         width: 130%;
+      }
+   }
+   &__btnMidea {
+      background: #379cd0;
+      &:before {
+         background: #fec300;
+      }
+   }
+   &__btnWelkin {
+      background: #fec300;
+      &:before {
+         background: #379cd0;
       }
    }
    &__hideBtn {

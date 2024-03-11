@@ -15,7 +15,13 @@ function ConditionerList({ conditionerList, currencyValue, isHide, brand }: any)
                      } flex flex-col text-center items-center py-6`}
                   >
                      <div className="conditioners__img-container relative flex items-center justify-center z-0">
-                        <Image className="conditioners__img" src={el.image.node.sourceUrl} alt={el.name} fill={true} />
+                        <Image
+                           className="conditioners__img"
+                           src={el.image.node.sourceUrl}
+                           alt={el.name}
+                           fill={true}
+                           objectFit="contain"
+                        />
                      </div>
                      <div className="flex flex-col">
                         <p className="conditioners__itemTitle font-medium relative z-10">{el.name}</p>
@@ -27,7 +33,13 @@ function ConditionerList({ conditionerList, currencyValue, isHide, brand }: any)
                            ""
                         )}
                      </div>
-                     <button className="conditioners__btn mt-10">Подробнее</button>
+                     <button
+                        className={`conditioners__btn mt-10 ${
+                           brand === "Midea" ? "conditioners__btnMidea" : "conditioners__btnWelkin"
+                        }`}
+                     >
+                        <span>Подробнее</span>
+                     </button>
                   </li>
                </Link>
             );
