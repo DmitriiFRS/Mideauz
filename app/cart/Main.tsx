@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import ultraviolet from "../../public/img/Equip/AirConditioners/Midea/Ultraviolet.jpg";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../Redux/store";
@@ -45,7 +44,7 @@ function Main({
    const [currencyValue, setUsdData] = useState<null | number>(null);
    useEffect(() => {
       try {
-         fetch("http://wordpress/graphql", {
+         fetch("http://dmitrpjh.beget.tech/graphql", {
             method: "POST",
             headers: {
                "Content-type": "application/json",
