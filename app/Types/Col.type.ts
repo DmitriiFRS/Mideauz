@@ -85,3 +85,11 @@ export type ConditionersFetchData = {
       };
    };
 };
+
+export type CurrencyFetchData = {
+   data: {
+      currencyValues: {
+         nodes: Array<CurrencyInner>;
+      };
+   };
+};

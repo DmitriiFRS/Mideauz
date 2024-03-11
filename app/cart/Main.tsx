@@ -28,6 +28,7 @@ function Main({
    setAcceptModalStatus,
    clearCart,
    setValue,
+   currencyValue,
 }: {
    value: Array<CartItemType>;
    isClearModalOpen: boolean;
@@ -36,39 +37,12 @@ function Main({
    setAcceptModalStatus: (value: boolean) => void;
    clearCart: () => void;
    setValue: Function;
+   currencyValue: number;
 }) {
    const [clientValue, setClientValue] = useState<Array<CartItemType> | null>(null);
    const dispatch = useDispatch<AppDispatch>();
    const [total, setTotal] = useState(0);
    const [totalUSD, setTotalUSD] = useState(0);
-   const [currencyValue, setUsdData] = useState<null | number>(null);
-   useEffect(() => {
-      try {
-         fetch("http://dmitrpjh.beget.tech/graphql", {
-            method: "POST",
-            headers: {
-               "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-               query: `
-                  query {
-                     currencyValues {
-                       nodes {
-                         dollarValue {
-                           currencyValue
-                         }
-                       }
-                     }
-                   }
-                  `,
-            }),
-         })
-            .then((res) => res.json())
-            .then((res) => setUsdData(res.data.currencyValues.nodes[0].dollarValue.currencyValue as number));
-      } catch (err: any) {
-         console.error("error when fetching data", err);
-      }
-   }, []);
    useEffect(() => {
       setClientValue(value);
       dispatch(setClientValData(value));
@@ -94,7 +68,7 @@ function Main({
       setClearModalStatus(false);
       setAcceptModalStatus(false);
    }
-   return clientValue && currencyValue ? (
+   return clientValue ? (
       <div className="cart__body mt-10">
          <div className={`cart__bodyContainer grid ${!value.length ? "cart__bodyContainer__wfull" : ""}`}>
             <div className="container cart__main">

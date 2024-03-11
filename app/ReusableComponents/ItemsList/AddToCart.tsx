@@ -1,7 +1,6 @@
 import { AppDispatch } from "@/app/Redux/store";
 import useLocalStorage from "@/app/hooks/useLocalStorage";
 import { useDispatch } from "react-redux";
-import { ModelType } from "./ItemListpage";
 import { useEffect, useState } from "react";
 import { setCartCount } from "@/app/Redux/Slices/main.slice";
 import { ColModelTypeInner } from "@/app/Types/Col.type";
