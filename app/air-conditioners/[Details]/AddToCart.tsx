@@ -1,14 +1,15 @@
 "use client";
 
 import useLocalStorage from "@/app/hooks/useLocalStorage";
-import { ModelType } from "./page";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/app/Redux/store";
 import { setCartCount } from "@/app/Redux/Slices/main.slice";
 import CartModal from "@/app/cart/CartModal";
+import "../../cart/cart.scss";
 import Link from "next/link";
 import { MdDone } from "react-icons/md";
+import AnimateAcceptSVG from "@/app/Utilities/AnimateAcceptSVG";
 
 type NewItem = {
    model: string;
@@ -24,9 +25,9 @@ function AddToCart() {
    const [value, setValue] = useLocalStorage<any>("item", []);
    const currentEl = useSelector((state: RootState) => state.itemReducer.currentEl);
    const count = useSelector((state: RootState) => state.itemReducer.itemCount);
-   const [isAcceptModalOpen, setAcceptModalStatus] = useState<boolean>(false);
+   const [isModalOpen, setModalStatus] = useState<boolean>(false);
    function closeModal() {
-      setAcceptModalStatus(false);
+      setModalStatus(false);
    }
    function addItemToCart() {
       let flag = false;
@@ -51,6 +52,7 @@ function AddToCart() {
          } else {
             setValue([...newValue, newItem]);
          }
+         setModalStatus(true);
       }
    }
    useEffect(() => {
@@ -61,13 +63,14 @@ function AddToCart() {
          <button onClick={addItemToCart} className="btn-blue text-2x1">
             <span className="btn-blue-inner">Добавить в корзину</span>
          </button>
-         <CartModal isModalOpen={isAcceptModalOpen} closeModal={closeModal}>
-            <MdDone style={{ color: "rgb(82 82 91)" }} size={60} />
-            <h3 className="text-2xl text-center font-medium mt-10 text-zinc-600">
-               Ваша заявка принята. Ожидайте, специалист с вами свяжется в ближайшее время
-            </h3>
-            <Link className="cart__modal__btn cart__modal__btnAccept mt-10 text-center" href={"/"}>
-               <button>Вернуться на главную</button>
+         <CartModal isModalOpen={isModalOpen} closeModal={closeModal}>
+            <AnimateAcceptSVG />
+            <h3 className="text-2xl text-center font-medium mt-10 text-zinc-600">Ваш товар добавлен в корзину</h3>
+            <Link className="cart__modal__btn cart__modal__btnAccept mt-10 text-center" href={"/air-conditioners"}>
+               <button>Вернуться к покупкам</button>
+            </Link>
+            <Link className="cart__modal__btn cart__modal__btnAccept mt-10 text-center" href={"/cart"}>
+               <button>Перейти в корзину</button>
             </Link>
          </CartModal>
       </div>
