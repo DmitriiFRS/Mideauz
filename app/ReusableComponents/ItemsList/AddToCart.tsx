@@ -2,9 +2,13 @@ import { AppDispatch } from "@/app/Redux/store";
 import useLocalStorage from "@/app/hooks/useLocalStorage";
 import { useDispatch } from "react-redux";
 import { ModelType } from "./ItemListpage";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setCartCount } from "@/app/Redux/Slices/main.slice";
 import { ColModelTypeInner } from "@/app/Types/Col.type";
+import CartModal from "@/app/cart/CartModal";
+import AnimateAcceptSVG from "@/app/Utilities/AnimateAcceptSVG";
+import Link from "next/link";
+import "../../cart/cart.scss";
 
 type PropsType = {
    currentItems: null | Array<ColModelTypeInner>;
@@ -25,6 +29,10 @@ type NewItem = {
 function AddToCart({ currentItems, firstInput, subInputRef, countValue }: PropsType) {
    const dispatch = useDispatch<AppDispatch>();
    const [value, setValue] = useLocalStorage<any>("item", []);
+   const [isModalOpen, setModalStatus] = useState<boolean>(false);
+   function closeModal() {
+      setModalStatus(false);
+   }
    function addItemToCart() {
       let modelType = null;
       if (subInputRef && currentItems) {
@@ -63,6 +71,7 @@ function AddToCart({ currentItems, firstInput, subInputRef, countValue }: PropsT
          } else {
             setValue([...newValue, newItem]);
          }
+         setModalStatus(true);
       }
    }
    useEffect(() => {
@@ -73,6 +82,16 @@ function AddToCart({ currentItems, firstInput, subInputRef, countValue }: PropsT
          <button onClick={addItemToCart} className="btn-blue text-2x1">
             <span className="btn-blue-inner">Добавить в корзину</span>
          </button>
+         <CartModal isModalOpen={isModalOpen} closeModal={closeModal}>
+            <AnimateAcceptSVG />
+            <h3 className="text-2xl text-center font-medium mt-10 text-zinc-600">Ваш товар добавлен в корзину</h3>
+            <Link className="cart__modal__btn cart__modal__btnAccept mt-10 text-center" href={"/air-conditioners"}>
+               <button>Вернуться к покупкам</button>
+            </Link>
+            <Link className="cart__modal__btn cart__modal__btnAccept mt-10 text-center" href={"/cart"}>
+               <button>Перейти в корзину</button>
+            </Link>
+         </CartModal>
       </div>
    );
 }
