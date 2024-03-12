@@ -133,6 +133,9 @@ h6 {
    border: 1px solid #d4d4d4;
    border-radius: 5px;
    position: relative;
+   &__error {
+      border: 2px solid #ff0000;
+   }
 }
 .select {
    font-size: 1.5rem;
@@ -163,4 +166,69 @@ h6 {
    display: flex;
    align-items: center;
    justify-content: center;
+}
+
+.btn_yellow {
+   background: #fec300;
+   padding: 15px 35px;
+   transition: 0.4s;
+   position: relative;
+   z-index: 2;
+   border-radius: 9px;
+   overflow: hidden;
+   font-size: 18px;
+   color: #383838;
+   @media (max-width: 440px) {
+      padding: 10px 20px;
+      font-size: 12px;
+   }
+   &:before {
+      border-radius: 9px;
+      position: absolute;
+      left: -50px;
+      top: 0;
+      width: 0%;
+      height: 100%;
+      content: "";
+      background: #379cd0;
+      transition: 0.3s ease-in-out;
+      z-index: -1;
+      color: #fff;
+      transform: skew(135deg);
+   }
+   &:hover::before {
+      width: 160%;
+   }
+}
+.btn_blue {
+   background: #379cd0;
+   padding: 15px 35px;
+   transition: 0.4s;
+   position: relative;
+   z-index: 2;
+   border-radius: 9px;
+   overflow: hidden;
+   font-size: 18px;
+   color: #383838;
+   @media (max-width: 440px) {
+      padding: 10px 20px;
+      font-size: 12px;
+   }
+   &:before {
+      border-radius: 9px;
+      position: absolute;
+      left: -50px;
+      top: 0;
+      width: 0%;
+      height: 100%;
+      content: "";
+      background: #fec300;
+      transition: 0.3s ease-in-out;
+      z-index: -1;
+      color: #fff;
+      transform: skew(135deg);
+   }
+   &:hover::before {
+      width: 160%;
+   }
 }

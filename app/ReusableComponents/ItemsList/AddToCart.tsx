@@ -14,6 +14,7 @@ type PropsType = {
    firstInput?: string;
    subInputRef: React.RefObject<HTMLSelectElement>;
    countValue: number;
+   setDirty: (bool: boolean) => void;
 };
 type NewItem = {
    model: string;
@@ -25,7 +26,7 @@ type NewItem = {
    img: string;
 };
 
-function AddToCart({ currentItems, firstInput, subInputRef, countValue }: PropsType) {
+function AddToCart({ currentItems, firstInput, subInputRef, countValue, setDirty }: PropsType) {
    const dispatch = useDispatch<AppDispatch>();
    const [value, setValue] = useLocalStorage<any>("item", []);
    const [isModalOpen, setModalStatus] = useState<boolean>(false);
@@ -34,8 +35,11 @@ function AddToCart({ currentItems, firstInput, subInputRef, countValue }: PropsT
    }
    function addItemToCart() {
       let modelType = null;
+      if (!countValue) {
+         setDirty(true);
+         return;
+      }
       if (subInputRef && currentItems) {
-         console.log(currentItems?.forEach((el) => el));
          modelType = currentItems.find((el) => {
             if (
                (el.col.power[0] === subInputRef.current?.value && el.col.type[0] === firstInput) ||
@@ -48,7 +52,6 @@ function AddToCart({ currentItems, firstInput, subInputRef, countValue }: PropsT
       let flag = false;
       const newValue = value;
       if (modelType) {
-         console.log(modelType);
          const newItem: NewItem = {
             model: `Кондиционер ${modelType.col.name}`,
             power: modelType.col.power[0],
@@ -78,8 +81,8 @@ function AddToCart({ currentItems, firstInput, subInputRef, countValue }: PropsT
    }, [value]);
    return (
       <div className="colConditionerCard__btnContainer mt-10">
-         <button onClick={addItemToCart} className="btn-blue text-2x1">
-            <span className="btn-blue-inner">Добавить в корзину</span>
+         <button onClick={addItemToCart} className="btn_blue font-medium">
+            <span>Добавить в корзину</span>
          </button>
          <CartModal isModalOpen={isModalOpen} closeModal={closeModal}>
             <AnimateAcceptSVG />

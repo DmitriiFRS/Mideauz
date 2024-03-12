@@ -1,4 +1,4 @@
-import "../globals.css";
+import "../globals.scss";
 import "./Footer.scss";
 import midea from "../../public/logos/midea-footer.png";
 import Image from "next/image";

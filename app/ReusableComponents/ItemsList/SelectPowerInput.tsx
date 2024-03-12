@@ -43,6 +43,7 @@ function SelectPowerInput({ items, currencyValue, hrefName }: PropsType) {
    const [secondInput, setSecondInput] = useState<Array<string>>([]);
    const [itemPrice, setItemPrice] = useState<number | null>(null);
    const [countValue, setCount] = useState<number>(1);
+   const [isDirty, setDirty] = useState(false);
    const subInputRef = useRef<HTMLSelectElement>(null);
 
    useEffect(() => {
@@ -145,21 +146,27 @@ function SelectPowerInput({ items, currencyValue, hrefName }: PropsType) {
             <>
                <ModeInput getValue={getValue} />
                <PowerInput subInputRef={subInputRef} secondInput={secondInput} changeSecondInput={changeSecondInput} />
-               <CountInput countValue={countValue} addCount={addCount} />
+               <CountInput countValue={countValue} addCount={addCount} isDirty={isDirty} setDirty={setDirty} />
                <PriceField itemPrice={itemPrice} currencyValue={currencyValue} />
                <AddToCart
                   currentItems={currentItems}
                   firstInput={firstInput}
                   subInputRef={subInputRef}
                   countValue={countValue}
+                  setDirty={setDirty}
                />
             </>
          ) : (
             <>
                <PowerInput subInputRef={subInputRef} secondInput={secondInput} changeSecondInput={changeSecondInput} />
-               <CountInput countValue={countValue} addCount={addCount} />
+               <CountInput countValue={countValue} addCount={addCount} isDirty={isDirty} setDirty={setDirty} />
                <PriceField itemPrice={itemPrice} currencyValue={currencyValue} />
-               <AddToCart currentItems={currentItems} subInputRef={subInputRef} countValue={countValue} />
+               <AddToCart
+                  currentItems={currentItems}
+                  subInputRef={subInputRef}
+                  countValue={countValue}
+                  setDirty={setDirty}
+               />
             </>
          )}
       </div>

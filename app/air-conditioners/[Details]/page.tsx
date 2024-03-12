@@ -92,7 +92,13 @@ async function Details({ params }: { params: { Details: string } }) {
                return (
                   <div key={index} className="conditionerCard__mainBody flex flex-col">
                      <h2 className="conditionerCard__mainBody__title text-slate-700">Кондиционер настенного типа</h2>
-                     <div className="conditionerCard__img_optionsContainer">
+                     <div
+                        className={`conditionerCard__img_optionsContainer ${
+                           el.conditionerField.company[0] === "Midea"
+                              ? "conditionerCard__midea"
+                              : "conditionerCard__welkin"
+                        }`}
+                     >
                         <div className="conditionerCard__img relative">
                            <Image
                               src={el.conditionerField.image.node.sourceUrl}

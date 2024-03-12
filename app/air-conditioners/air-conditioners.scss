@@ -217,7 +217,6 @@
       display: flex;
       justify-content: space-around;
       padding: 20px;
-      background: linear-gradient(90deg, rgba(55, 156, 208, 0.3) 0%, rgba(254, 195, 0, 0.3) 100%);
       border-radius: 5px;
       @media (max-width: 1300px) {
          justify-content: space-between;
@@ -228,6 +227,12 @@
       @media (max-width: 730px) {
          flex-direction: column;
       }
+   }
+   &__midea {
+      background: rgba(55, 156, 208, 0.3);
+   }
+   &__welkin {
+      background: rgba(254, 195, 0, 0.3);
    }
    &__price {
       width: 450px;
@@ -345,7 +350,6 @@
       margin: 60px auto 0px auto;
       gap: 0 60px;
       width: 100%;
-      background: linear-gradient(90deg, rgba(55, 156, 208, 0.3) 0%, rgba(254, 195, 0, 0.3) 100%);
       padding: 20px;
       border-radius: 5px;
       @media (max-width: 800px) {

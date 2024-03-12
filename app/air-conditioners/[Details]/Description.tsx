@@ -14,7 +14,11 @@ function Description() {
             <ul
                className={`${
                   isFadeOut ? "conditionerCard__desc__hide" : ""
-               } conditionerCard__descList mt-14 grid grid-cols-2 w-full`}
+               } conditionerCard__descList mt-14 grid grid-cols-2 w-full ${
+                  currentEl.conditionerField.company[0] === "Midea"
+                     ? "conditionerCard__midea"
+                     : "conditionerCard__welkin"
+               }`}
             >
                {currentEl.conditionerField.coolingOutput && (
                   <li className="conditionerCard__descItem text-slate-600 text-lg">

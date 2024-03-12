@@ -60,8 +60,11 @@ function AddToCart() {
    }, [value]);
    return (
       <div className="conditionerCard__btnContainer mt-10">
-         <button onClick={addItemToCart} className="btn-blue text-2x1">
-            <span className="btn-blue-inner">Добавить в корзину</span>
+         <button
+            onClick={addItemToCart}
+            className={currentEl?.conditionerField.company[0] === "Midea" ? "btn_yellow" : "btn_blue"}
+         >
+            <span>Добавить в корзину</span>
          </button>
          <CartModal isModalOpen={isModalOpen} closeModal={closeModal}>
             <AnimateAcceptSVG />
