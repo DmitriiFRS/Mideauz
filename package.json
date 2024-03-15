@@ -5,9 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "server": "json-server -w app/Data/Data2.json -p 4000"
+    "start": "npx serve@latest out",
+    "lint": "next lint"
   },
   "dependencies": {
     "@pbe/react-yandex-maps": "^1.2.5",
