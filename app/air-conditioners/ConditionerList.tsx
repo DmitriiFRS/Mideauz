@@ -1,13 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 function ConditionerList({ conditionerList, currencyValue, isHide, brand }: any) {
+   const router = useRouter();
    const dollarVal = currencyValue;
    return (
       <ul className={`${isHide ? "conditioners__list__unactive" : ""} conditioners__list grid mt-14`}>
          {conditionerList.map((el: any, index: number) => {
             return (
-               <Link key={index} href={`/air-conditioners/${el.name.replace(/\s/g, "-")}`}>
+               <button onClick={() => router.push(`/air-conditioners/${el.name.replace(/\s/g, "-")}`)} key={index}>
                   <li
                      style={{ transitionDelay: index / 6 + "s" }}
                      className={`conditioners__item ${
@@ -41,7 +43,7 @@ function ConditionerList({ conditionerList, currencyValue, isHide, brand }: any)
                         <span>Подробнее</span>
                      </button>
                   </li>
-               </Link>
+               </button>
             );
          })}
       </ul>
