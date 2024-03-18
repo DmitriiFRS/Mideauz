@@ -21,6 +21,29 @@ export type ModelType = {
    mode?: Array<string>;
 };
 
+type GenerateParams = {
+   col: {
+      name: string;
+   };
+};
+
+export async function generateStaticParams() {
+   const data = await fetchGraphqlData(`
+  {
+    colConditioners(first: 99) {
+       nodes {
+         col {
+           name
+         }
+       }
+     }
+   }
+  `);
+   return data.data.colConditioners.nodes.map((el: GenerateParams) => ({
+      Details: el.col.name.replace(/\s/g, "-"),
+   }));
+}
+
 async function Details({ params }: { params: { Details: string } }) {
    const data: ColFetchData = await fetchGraphqlData(`
    query {

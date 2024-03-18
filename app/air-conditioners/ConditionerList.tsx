@@ -7,7 +7,7 @@ function ConditionerList({ conditionerList, currencyValue, isHide, brand }: any)
       <ul className={`${isHide ? "conditioners__list__unactive" : ""} conditioners__list grid mt-14`}>
          {conditionerList.map((el: any, index: number) => {
             return (
-               <Link key={index} href={`/air-conditioners/${el.name.replace(/\s/g, "-")}`}>
+               <Link key={index} href={`/air-conditioners/${el.name.replace(/\s/g, "-")}/`}>
                   <li
                      style={{ transitionDelay: index / 6 + "s" }}
                      className={`conditioners__item ${

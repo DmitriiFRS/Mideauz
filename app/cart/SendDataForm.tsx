@@ -1,6 +1,4 @@
-import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 import { useState } from "react";
-import { db } from "../firebase/firebaseConfig";
 import { CartItemType } from "./Main";
 
 type GoodsListType = {
@@ -65,10 +63,10 @@ function SendDataForm({
             date.getMonth() + 1
          }.${date.getFullYear()} | ${date.getHours()}:${date.getMinutes()}`,
       };
-      const docRef = doc(db, "заявки", "2gtV71ouF5nxoPcxcwkl");
+      /*const docRef = doc(db, "заявки", "2gtV71ouF5nxoPcxcwkl");
       updateDoc(docRef, {
          dataArray: arrayUnion(data),
-      });
+      });*/
       setPhone("");
       setName("");
       setAcceptModalStatus(true);

@@ -1,7 +1,5 @@
 import { CartItemType } from "@/app/cart/Main";
-import { db } from "@/app/firebase/firebaseConfig";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getDoc, doc } from "firebase/firestore";
+import { createSlice } from "@reduxjs/toolkit";
 
 type initialStateType = {
    conditioners: ConditionerList | null;

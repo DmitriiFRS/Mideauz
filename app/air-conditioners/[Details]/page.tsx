@@ -46,12 +46,35 @@ export type ModelTypeInner = {
    };
 };
 
+type GenerateParams = {
+   conditionerField: {
+      name: string;
+   };
+};
+
+export async function generateStaticParams() {
+   const data = await fetchGraphqlData(`
+   {
+      conditioners(first: 999) {
+        nodes {
+          conditionerField {
+            name
+          }
+        }
+      }
+    }
+   `);
+   return data.data.conditioners.nodes.map((el: GenerateParams) => ({
+      Details: el.conditionerField.name.replace(/\s/g, "-"),
+   }));
+}
+
 async function Details({ params }: { params: { Details: string } }) {
    const data = await fetchGraphqlData(`
    {
       conditioners(first: 999) {
         nodes {
-         id
+          id
           conditionerField {
             name
             power
@@ -75,12 +98,12 @@ async function Details({ params }: { params: { Details: string } }) {
         }
       }
       currencyValues {
-         nodes {
-           dollarValue {
-             currencyValue
-           }
-         }
-       }
+        nodes {
+          dollarValue {
+            currencyValue
+          }
+        }
+      }
     }
    `);
    let flag = false;
