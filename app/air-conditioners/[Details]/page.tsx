@@ -126,9 +126,8 @@ async function Details({ params }: { params: { Details: string } }) {
                            <Image
                               src={el.conditionerField.image.node.sourceUrl}
                               alt={el.conditionerField.name}
-                              fill={true}
-                              priority={true}
-                              unoptimized
+                              fill
+                              priority
                               objectFit="contain"
                            />
                         </div>
