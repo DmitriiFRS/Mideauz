@@ -128,6 +128,8 @@ async function Details({ params }: { params: { Details: string } }) {
                               alt={el.conditionerField.name}
                               fill={true}
                               priority={true}
+                              unoptimized
+                              objectFit="contain"
                            />
                         </div>
                         <div className="conditionerCard__main flex flex-col">

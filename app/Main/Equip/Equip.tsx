@@ -1,7 +1,7 @@
 import condition from "../../../public/img/Header/2.png";
 import casette from "../../../public/img/Header/casette.png";
 import column from "../../../public/img/Header/column-condition.png";
-import vrf from "/public/img/Header/V8.png";
+import vrf from "../../../public/img/Header/v8.png";
 import chiller from "../../../public/img/Header/chiller.png";
 import canal from "../../../public/img/Header/canal.png";
 import "./Equip.scss";

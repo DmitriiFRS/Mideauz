@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import "./air-conditioners.scss";
 import ConditionerBrandList from "./ConditionerBrandList";
-import { Data, DataInner } from "./page";
+import { DataInner } from "./page";
 import { ConditionerTypeInner } from "../Types/Col.type";
 
 const brands = ["Midea", "Welkin"];

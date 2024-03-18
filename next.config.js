@@ -5,8 +5,8 @@ const nextConfig = {
       unoptimized: true,
       remotePatterns: [
          {
-            protocol: "http",
-            hostname: "dmitrpjh.beget.tech",
+            protocol: "https",
+            hostname: "midea-uzb.uz",
          },
       ],
    },

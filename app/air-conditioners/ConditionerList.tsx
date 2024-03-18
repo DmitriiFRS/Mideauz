@@ -18,9 +18,10 @@ function ConditionerList({ conditionerList, currencyValue, isHide, brand }: any)
                         <Image
                            className="conditioners__img"
                            src={el.image.node.sourceUrl}
-                           alt={el.name}
+                           alt={el.name.toLowerCase()}
                            fill={true}
                            objectFit="contain"
+                           unoptimized
                         />
                      </div>
                      <div className="flex flex-col">

@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import Loader from "../Utilities/Loader";
 import "./air-conditioners.scss";
 import ConditionersList from ".";
