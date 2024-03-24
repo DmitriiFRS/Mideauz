@@ -52,23 +52,6 @@ type GenerateParams = {
    };
 };
 
-export async function generateStaticParams() {
-   const data = await fetchGraphqlData(`
-   {
-      conditioners(first: 999) {
-        nodes {
-          conditionerField {
-            name
-          }
-        }
-      }
-    }
-   `);
-   return data.data.conditioners.nodes.map((el: GenerateParams) => ({
-      Details: el.conditionerField.name.replace(/\s/g, "-"),
-   }));
-}
-
 async function Details({ params }: { params: { Details: string } }) {
    const data = await fetchGraphqlData(`
    {
@@ -117,19 +100,11 @@ async function Details({ params }: { params: { Details: string } }) {
                      <h2 className="conditionerCard__mainBody__title text-slate-700">Кондиционер настенного типа</h2>
                      <div
                         className={`conditionerCard__img_optionsContainer ${
-                           el.conditionerField.company[0] === "Midea"
-                              ? "conditionerCard__midea"
-                              : "conditionerCard__welkin"
+                           el.conditionerField.company[0] === "Midea" ? "conditionerCard__midea" : "conditionerCard__welkin"
                         }`}
                      >
                         <div className="conditionerCard__img relative">
-                           <Image
-                              src={el.conditionerField.image.node.sourceUrl}
-                              alt={el.conditionerField.name}
-                              fill
-                              priority
-                              objectFit="contain"
-                           />
+                           <Image src={el.conditionerField.image.node.sourceUrl} alt={el.conditionerField.name} fill priority objectFit="contain" />
                         </div>
                         <div className="conditionerCard__main flex flex-col">
                            <h3 className="conditionerCard__modelTitle text-5xl">{el.conditionerField.name}</h3>

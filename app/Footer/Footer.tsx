@@ -45,19 +45,19 @@ function Footer() {
                <div className="footer__iconsBody flex">
                   <Link className="flex items-center" href="https://t.me/midea_welkin_climat">
                      {" "}
-                     <Image className="footer__icon1" src={tel} width={50} height={50} alt="tel" />{" "}
+                     <Image className="footer__icon1" src={tel} width={30} height={30} alt="tel" />{" "}
                   </Link>
                   <Link className="flex items-center" href="https://t.me/midea_welkin_climat">
                      {" "}
-                     <Image className="footer__icon2" src={inst} width={50} height={50} alt="inst" />{" "}
+                     <Image className="footer__icon2" src={inst} width={30} height={30} alt="inst" />{" "}
                   </Link>
                   <Link className="flex items-center" href="https://t.me/midea_welkin_climat">
                      {" "}
-                     <Image className="footer__icon3" src={fb} width={50} height={50} alt="fb" />{" "}
+                     <Image className="footer__icon3" src={fb} width={30} height={30} alt="fb" />{" "}
                   </Link>
                   <Link className="flex items-center" href="https://t.me/midea_welkin_climat">
                      {" "}
-                     <Image className="footer__icon4" src={youtube} width={50} height={50} alt="youtube" />{" "}
+                     <Image className="footer__icon4" src={youtube} width={30} height={30} alt="youtube" />{" "}
                   </Link>
                </div>
             </div>

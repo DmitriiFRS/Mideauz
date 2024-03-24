@@ -56,12 +56,7 @@ async function AirConditiones() {
    `);
    return (
       <section className="flex-auto">
-         <Suspense fallback={<Loader />}>
-            <ConditionersList
-               data={data.data.conditioners.nodes}
-               currencyValue={data.data.currencyValues.nodes[0].dollarValue.currencyValue}
-            />
-         </Suspense>
+         <ConditionersList data={data.data.conditioners.nodes} currencyValue={data.data.currencyValues.nodes[0].dollarValue.currencyValue} />
       </section>
    );
 }
