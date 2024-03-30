@@ -1,7 +1,9 @@
+@import "../variables.scss";
+
 .conditioners {
    padding: 50px 10px;
    &__brandTitle {
-      font-size: 40px;
+      font-size: $fontSize2;
       @media (max-width: 670px) {
          font-size: 36px;
       }

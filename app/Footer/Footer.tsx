@@ -41,7 +41,7 @@ function Footer() {
                })}
             </div>
             <div className="flex justify-between items-center text-center mt-20 py-6">
-               <div className="footer__bottom">© Midea - Официальный представитель в Узбекистане 2023</div>
+               <div className="footer__bottom">© Midea - Официальный представитель в Узбекистане 2024</div>
                <div className="footer__iconsBody flex">
                   <Link className="flex items-center" href="https://t.me/midea_welkin_climat">
                      {" "}
