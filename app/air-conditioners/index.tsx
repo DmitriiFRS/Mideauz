@@ -5,6 +5,7 @@ import "./air-conditioners.scss";
 import ConditionerBrandList from "./ConditionerBrandList";
 import { DataInner } from "./page";
 import { ConditionerTypeInner } from "../Types/Col.type";
+import Breadcrumbs from "../Utilities/Breadcrumbs";
 
 const brands = ["Midea", "Welkin"];
 type DataParams = {
@@ -44,10 +45,11 @@ function ConditionersList({ data, currencyValue }: { data: Array<ConditionerType
       }
    }, [data]);
    return (
-      <>
+      <div className="container">
+         <Breadcrumbs />
          <ConditionerBrandList brand={brands[0]} conditionerList={mideaData} currencyValue={currencyValue} />
          <ConditionerBrandList brand={brands[1]} conditionerList={welkinData} currencyValue={currencyValue} />
-      </>
+      </div>
    );
 }
 export default ConditionersList;

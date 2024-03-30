@@ -3,11 +3,13 @@ import Image from "next/image";
 import midea from "../../public/logos/midea.svg";
 import welkin from "../../public/logos/welkin.svg";
 import testlogo from "../../public/img/About/testImg.jpg";
+import Breadcrumbs from "../Utilities/Breadcrumbs";
 
 function About() {
    return (
       <div className="about pb-3">
          <div className="container">
+            <Breadcrumbs />
             <h2 className="about__title text-center text-4xl font-semibold text-slate-500">Общая информация о нашей компании</h2>
             <div className="about__companyBody flex flex-col">
                <div className="about__company flex flex-col items-center">

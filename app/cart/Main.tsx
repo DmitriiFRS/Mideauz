@@ -1,15 +1,14 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../Redux/store";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../Redux/store";
 import { setClientValData } from "../Redux/Slices/main.slice";
 import CartSkeleton from "../Utilities/CartSkeleton";
 import SendDataForm from "./SendDataForm";
 import CartModal from "./CartModal";
 import { PiTrashBold } from "react-icons/pi";
 import { BsQuestionCircle } from "react-icons/bs";
-import { MdDone } from "react-icons/md";
 import AnimateAcceptSVG from "../Utilities/AnimateAcceptSVG";
 export type CartItemType = {
    model: string;
@@ -89,9 +88,7 @@ function Main({
                                  <div className="cart__imgBody relative">
                                     <Image src={el.img} alt="condishn" fill objectFit="contain" />
                                  </div>
-                                 <h3 className="cart__desc__model text-4xl">{`Midea ${el.model} ${el.power} BTU ${
-                                    el.type ? el.type : ""
-                                 }`}</h3>
+                                 <h3 className="cart__desc__model text-4xl">{`Midea ${el.model} ${el.power} BTU ${el.type ? el.type : ""}`}</h3>
                                  <div className="cart__desc__countBody flex flex-col items-center">
                                     <span className="cart__desc__count text-2xl">Количество</span>
                                     <span className="cart__desc__count text-3xl mt-4">{el.count}</span>
@@ -100,9 +97,7 @@ function Main({
                                     <div className="flex flex-col">
                                        <span className="cart__desc__title text-2xl">Общая стоимость</span>
                                        {currencyValue && (
-                                          <span className="cart__desc__price text-3xl mt-4">
-                                             {(el.price * currencyValue * el.count).toLocaleString()} UZS
-                                          </span>
+                                          <span className="cart__desc__price text-3xl mt-4">{(el.price * currencyValue * el.count).toLocaleString()} UZS</span>
                                        )}
                                     </div>
                                     <button id={el.id} onClick={(e) => deleteItem(e)} className="cart__desc__trash">
@@ -115,17 +110,13 @@ function Main({
                      </ul>
                      <div className="my-10 mx-9 text-xl  flex flex-col items-end">
                         Итоговая стоимость:{" "}
-                        <span className="cart__totalPrice flex items-end text-3xl font-semibold mt-4">
-                           {total.toLocaleString() + " UZS"}
-                        </span>
+                        <span className="cart__totalPrice flex items-end text-3xl font-semibold mt-4">{total.toLocaleString() + " UZS"}</span>
                      </div>
                   </>
                )}
                <CartModal isModalOpen={isClearModalOpen} closeModal={closeModal}>
                   <BsQuestionCircle style={{ color: "rgb(82 82 91)" }} size={60} />
-                  <h3 className="text-2xl text-center font-medium mt-14 text-zinc-600">
-                     Вы действительно хотите удалить все товары из корзины?
-                  </h3>
+                  <h3 className="text-2xl text-center font-medium mt-14 text-zinc-600">Вы действительно хотите удалить все товары из корзины?</h3>
                   <div className="cart__modal__btns flex justify-around w-full mt-14">
                      <button onClick={clearCart} className="cart__modal__btn">
                         Да

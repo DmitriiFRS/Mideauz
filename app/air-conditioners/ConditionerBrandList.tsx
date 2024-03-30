@@ -9,7 +9,7 @@ function ConditionerBrandList({ brand, conditionerList, currencyValue }: { brand
       setHide(!isHide);
    }
    return (
-      <div className="conditioners container">
+      <div className="conditioners">
          <div className="flex items-center justify-center">
             <h2 className="conditioners__brandTitle text-center font-bold text-slate-600">Настенные кондиционеры {brand}</h2>
             <button onClick={toggleBlock} className={` conditioners__hideBtn ${isHide ? "conditioners__hide" : ""}`}>

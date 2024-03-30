@@ -4,6 +4,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import Main from "./Main";
 import "./cart.scss";
 import { useRouter } from "next/navigation";
+import Breadcrumbs from "../Utilities/Breadcrumbs";
 
 function MainContainer({ currencyValue }: { currencyValue: number }) {
    const [value, setValue] = useLocalStorage("item", []);
@@ -23,6 +24,9 @@ function MainContainer({ currencyValue }: { currencyValue: number }) {
    }
    return (
       <div className="cart mt-14 ">
+         <div className="container">
+            <Breadcrumbs />
+         </div>
          <div className="cart__header container flex items-center">
             <h2 className="text-4xl font-medium flex-auto">Корзина товаров</h2>
             <div className="flex">
