@@ -21,12 +21,6 @@ export type ModelType = {
    mode?: Array<string>;
 };
 
-type GenerateParams = {
-   col: {
-      name: string;
-   };
-};
-
 async function Details({ params }: { params: { Details: string } }) {
    const data: ColFetchData = await fetchGraphqlData(`
    query {

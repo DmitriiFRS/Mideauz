@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-import Loader from "../Utilities/Loader";
 import "./air-conditioners.scss";
 import ConditionersList from ".";
 import fetchGraphqlData from "../Utilities/FetchGraphql";
