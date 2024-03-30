@@ -3,11 +3,13 @@ import "./Catalog.scss";
 import midea from "../../public/logos/midea.svg";
 import welkin from "../../public/logos/welkin.svg";
 import Link from "next/link";
+import Breadcrumbs from "../Utilities/Breadcrumbs";
 
 function Catalog() {
    return (
       <div className="catalog flex-auto pb-3 mt-14">
          <div className="container">
+            <Breadcrumbs />
             <h2 className="text-center text-4xl font-semibold text-slate-500">Каталоги Midea & Welkin</h2>
             <div className="catalog__body flex gap-10 items-center justify-center">
                <div className="catalog__body flex flex-col items-center justify-center w-full">

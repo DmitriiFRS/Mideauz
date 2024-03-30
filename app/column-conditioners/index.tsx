@@ -1,5 +1,6 @@
 import { ColListInner } from "./page";
 import ItemList from "./ItemList";
+import Breadcrumbs from "../Utilities/Breadcrumbs";
 
 type ConditionersList = {
    conditionerList: Array<ColListInner>;
@@ -12,6 +13,7 @@ type ConditionersList = {
 function ConditionersList({ conditionerList, currencyValue, urlParam, itemsType, imgStyle }: ConditionersList) {
    return (
       <div className="col-conditioners container">
+         <Breadcrumbs />
          <h2 className="col-conditioners__brandTitle text-center font-bold text-slate-600">{itemsType} Midea и Welkin</h2>
          <ul className="col-conditioners__listItem grid grid-cols-2 gap-12 mt-14">
             <ItemList urlParam={urlParam} conditionerList={conditionerList} currencyValue={currencyValue} imgStyle={imgStyle} />

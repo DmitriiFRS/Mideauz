@@ -11,7 +11,7 @@ function Breadcrumbs() {
       <div className={styles.bc}>
          {paths.split("/").map((el, index) => {
             let href = `/${pathNames.slice(0, index).join("/")}`;
-            if (el === "catalog") titleRouter.push("Каталог");
+            if (el === "catalog") titleRouter.push("Каталоги");
             else if (el === "about") titleRouter.push("О компании");
             else if (el === "coordinates") titleRouter.push("Координаты");
             else if (el === "air-conditioners") titleRouter.push("Настенные кондиционеры");

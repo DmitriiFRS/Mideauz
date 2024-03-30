@@ -7,6 +7,7 @@ import atom from "../../public/img/Equip/vrf/atom.png";
 import V6 from "../../public/img/Equip/vrf/vrf-6.png";
 import V8 from "../../public/img/Equip/vrf/V8-main.png";
 import miniVRF from "../../public/img/Equip/vrf/mini-vrf.png";
+import Breadcrumbs from "../Utilities/Breadcrumbs";
 
 const vrfs = [
    {
@@ -57,13 +58,12 @@ const vrfs = [
 function Vrf() {
    return (
       <section className="vrf flex-auto container px-2">
+         <Breadcrumbs />
          <h2 className="vrf__title mt-20 text-center font-semibold text-7xl">VRF Система</h2>
          <div className="vrf__content1 bg-slate-100 py-16 pl-16 mt-10">
             <div className="vrf__content1__body flex gap-11 justify-between mt-16 text-5xl items-center font-medium">
                <div className="">
-                  <p className="vrf__content1__sub text-slate-500">
-                     Идеальное решение для частных домов, больших офисов, бизнес-центров
-                  </p>
+                  <p className="vrf__content1__sub text-slate-500">Идеальное решение для частных домов, больших офисов, бизнес-центров</p>
                   <div className="vrf__content1__contects flex justify-center gap-10 mt-12">
                      <button className="btn-blue vrf__btns">
                         <span className="btn-blue-inner">+79271184766</span>
@@ -79,21 +79,16 @@ function Vrf() {
             </div>
          </div>
          <div className="mt-28">
-            <h2 className="vrf__secondTitle text-center text-6xl font-medium tracking-wide text-blue-950">
-               Помещений много — система одна
-            </h2>
+            <h2 className="vrf__secondTitle text-center text-6xl font-medium tracking-wide text-blue-950">Помещений много — система одна</h2>
             <p className="vrf__secondSub mt-10 text-center text-3xl leading-10 text-slate-500">
-               Системы VRF — это центральные интеллектуальные системы, предназначенные для кондиционирования большого
-               количества помещений. Название «VRF» переводится как «переменный расход хладагента», тем самым отражая
-               принцип работы этой системы с использованием инверторной технологии. К одному наружному инверторному
-               блоку можно присоединить несколько десятков внутренних блоков различных типов. Температура в каждом
-               помещении регулируется индивидуально и с высокой точностью.
+               Системы VRF — это центральные интеллектуальные системы, предназначенные для кондиционирования большого количества помещений. Название «VRF»
+               переводится как «переменный расход хладагента», тем самым отражая принцип работы этой системы с использованием инверторной технологии. К одному
+               наружному инверторному блоку можно присоединить несколько десятков внутренних блоков различных типов. Температура в каждом помещении регулируется
+               индивидуально и с высокой точностью.
             </p>
          </div>
          <div className="">
-            <h2 className="vrf__typeTitle text-center mt-36 text-6xl font-medium text-blue-950">
-               Виды VRF систем Midea
-            </h2>
+            <h2 className="vrf__typeTitle text-center mt-36 text-6xl font-medium text-blue-950">Виды VRF систем Midea</h2>
             {vrfs.map((el, index) => {
                return <ContentBlock key={index} content={el} />;
             })}

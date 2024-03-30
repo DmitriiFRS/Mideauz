@@ -9,6 +9,7 @@ import highEfficient from "../../public/img/Equip/chillers/high-efficient.png";
 import monoblock from "../../public/img/Equip/chillers/monoblock.png";
 import centrifuge from "../../public/img/Equip/chillers/centrifugal.png";
 import screw from "../../public/img/Equip/chillers/screw.png";
+import Breadcrumbs from "../Utilities/Breadcrumbs";
 
 const chillers = {
    air: [
@@ -50,13 +51,12 @@ const chillers = {
 function Chillers() {
    return (
       <section className="chiller flex-auto container">
+         <Breadcrumbs />
          <h2 className="chiller__title mt-20 text-center font-semibold text-7xl">Чиллеры</h2>
          <div className="chiller__content1 bg-slate-100 p-16 mt-10">
             <div className="chiller__content1__body flex gap-10 justify-between text-5xl items-center font-medium">
                <div className="">
-                  <p className="chiller__content1__sub text-slate-500">
-                     Идеальное решение для больших и очень больших объектов.
-                  </p>
+                  <p className="chiller__content1__sub text-slate-500">Идеальное решение для больших и очень больших объектов.</p>
                   <div className="chiller__content1__contects flex justify-center gap-10 mt-12">
                      <button className="btn-blue chiller__btns">
                         <span className="btn-blue-inner">+79271184766</span>
@@ -76,21 +76,17 @@ function Chillers() {
                Ведущий производитель климатического оборудования
             </h2>
             <p className="chiller__secondSub mt-10 text-center text-3xl leading-10 text-slate-500">
-               Сегодня Midea делает многомиллионные инвестиции в развитие производства чиллеров. С 1999 года компания
-               сфокусировалась на исследованиях и разработках и конкурирует за счет самых передовых технологий.
+               Сегодня Midea делает многомиллионные инвестиции в развитие производства чиллеров. С 1999 года компания сфокусировалась на исследованиях и
+               разработках и конкурирует за счет самых передовых технологий.
             </p>
          </div>
          <div className="flex flex-col">
-            <h3 className="chiller__secondTitle text-center mt-36 text-6xl font-medium text-blue-950">
-               Чиллеры с воздушным охлаждением конденсатора
-            </h3>
+            <h3 className="chiller__secondTitle text-center mt-36 text-6xl font-medium text-blue-950">Чиллеры с воздушным охлаждением конденсатора</h3>
             {chillers.air.map((el, index) => {
                return <ContentBlock key={index} content={el} />;
             })}
 
-            <h3 className="chiller__secondTitle text-center mt-20 text-6xl font-medium text-blue-950">
-               Чиллеры с водяным охлаждением конденсатора
-            </h3>
+            <h3 className="chiller__secondTitle text-center mt-20 text-6xl font-medium text-blue-950">Чиллеры с водяным охлаждением конденсатора</h3>
             {chillers.water.map((el, index) => {
                return <ContentBlock key={index} content={el} />;
             })}
