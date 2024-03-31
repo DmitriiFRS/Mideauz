@@ -75,15 +75,12 @@ function HeaderNav() {
             {nav.map((el, idx) => {
                return el.href ? (
                   <li className="header__navItem cursor-pointer" key={idx}>
-                     <Link href={el.href}>{el.title}</Link>
+                     <Link className="flex items-center h-full" href={el.href}>
+                        {el.title}
+                     </Link>
                   </li>
                ) : (
-                  <li
-                     onMouseEnter={displayBar}
-                     onMouseLeave={hideBar}
-                     className="header__navItem flex cursor-pointer"
-                     key={idx}
-                  >
+                  <li onMouseEnter={displayBar} onMouseLeave={hideBar} className="header__navItem flex cursor-pointer" key={idx}>
                      <span>{el.title}</span>
                      <Image
                         style={{

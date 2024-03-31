@@ -7,6 +7,7 @@ import AddToCart from "./AddToCart";
 import "../air-conditioners.scss";
 import Description from "./Description";
 import About from "./About";
+import Breadcrumbs from "@/app/Utilities/Breadcrumbs";
 
 export type ModelsType = {
    details: Array<string>;
@@ -92,6 +93,7 @@ async function Details({ params }: { params: { Details: string } }) {
    let flag = false;
    return (
       <div className="conditionerCard container">
+         <Breadcrumbs />
          {data.data.conditioners.nodes.map((el: ModelTypeInner, index: number) => {
             if (el.conditionerField.name.replace(/\s/g, "-") === params.Details && !flag) {
                flag = true;

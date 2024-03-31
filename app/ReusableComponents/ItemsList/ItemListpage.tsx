@@ -3,6 +3,7 @@ import SelectPowerInput from "./SelectPowerInput";
 import "../../column-conditioners/column-conditioners.scss";
 import { ColModelTypeInner } from "@/app/Types/Col.type";
 import ModelParams from "./ModelParams";
+import Breadcrumbs from "@/app/Utilities/Breadcrumbs";
 type ModelsType = {
    id: number;
    mode?: Array<string>;
@@ -42,18 +43,14 @@ function ItemListpage({
                flag = true;
                return (
                   <div key={index} className="colConditionerCard container flex flex-col flex-auto">
+                     <Breadcrumbs />
                      <div className="colConditionerCard__body grid">
                         <h2 className="colConditionerCard__title text-4xl font-semibold text-center">
                            {itemType} {el.col.name} {el.col.company}
                         </h2>
                         <div className="colConditionerCard__mainBody flex justify-between">
                            <div className={`colConditionerCard__imgBody ${imgStyle} relative mt-14`}>
-                              <Image
-                                 src={el.col.image.node.sourceUrl}
-                                 alt={el.col.name}
-                                 fill
-                                 objectFit="contain"
-                              ></Image>
+                              <Image src={el.col.image.node.sourceUrl} alt={el.col.name} fill objectFit="contain"></Image>
                            </div>
                            <div className="colConditionerCard__select flex flex-col mt-14">
                               <SelectPowerInput currencyValue={currencyValue} items={items} hrefName={hrefName} />
