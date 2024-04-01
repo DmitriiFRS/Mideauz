@@ -16,12 +16,12 @@ const footerData = [
    },
    {
       title: "Наши контакты",
-      el1: "+998 71 113 13 30",
+      el1: "+998 90 995 80 60",
       el2: "+998 93 123 66 06",
    },
    {
       title: "Сервисный центр",
-      el1: "+998 93 123 66 06",
+      el1: "+998 90 027 3003",
    },
 ];
 
@@ -54,9 +54,17 @@ function Footer() {
                <div className="footer__iconsBody flex">
                   <Link className="flex items-center" href="https://t.me/midea_welkin_climat">
                      {" "}
-                     <Image className="footer__icon1" src={tel} width={30} height={30} alt="tel" />{" "}
+                     <Image className="footer__icon1" src={tel} width={40} height={40} alt="tel" />{" "}
                   </Link>
-                  <Link className="flex items-center" href="https://t.me/midea_welkin_climat">
+               </div>
+            </div>
+         </div>
+      </footer>
+   );
+}
+export default Footer;
+/*
+<Link className="flex items-center" href="https://t.me/midea_welkin_climat">
                      {" "}
                      <Image className="footer__icon2" src={inst} width={30} height={30} alt="inst" />{" "}
                   </Link>
@@ -68,10 +76,4 @@ function Footer() {
                      {" "}
                      <Image className="footer__icon4" src={youtube} width={30} height={30} alt="youtube" />{" "}
                   </Link>
-               </div>
-            </div>
-         </div>
-      </footer>
-   );
-}
-export default Footer;
+                  */

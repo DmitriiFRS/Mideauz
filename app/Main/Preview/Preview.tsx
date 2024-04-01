@@ -1,6 +1,4 @@
 import "./Preview.scss";
-import Image from "next/image";
-import bg from "../../../public/img/Preview-bg.jpeg";
 
 function Preview() {
    return (
@@ -12,12 +10,14 @@ function Preview() {
          </div>
          <div className="container flex flex-col items-center justify-center relative h-full text-white">
             <h1 className="preview__title text-center">Страница официального представителя Midea в Узбекистане</h1>
-            <h2 className="preview__subtitle text-4xl font-medium mt-11 text-center">
-               По всем вопросам обращайтесь к нашим специалистам
-            </h2>
+            <h2 className="preview__subtitle text-4xl font-medium mt-11 text-center">По всем вопросам обращайтесь к нашим специалистам</h2>
             <div className="preview__phones-container flex justify-around text-3xl italic">
-               <div className="preview__phones font-semibold">+998 71 113 13 30</div>
-               <div className="preview__phones font-semibold">+998 93 123 66 06</div>
+               <a className="preview__phones font-semibold" href={"tel://" + +998931236606}>
+                  +998 93 123 66 06
+               </a>
+               <a className="preview__phones font-semibold" href={"tel://" + +998909958060}>
+                  +998 90 995 80 60
+               </a>
             </div>
          </div>
       </section>
