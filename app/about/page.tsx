@@ -2,7 +2,8 @@ import "./About.scss";
 import Image from "next/image";
 import midea from "../../public/logos/midea.svg";
 import welkin from "../../public/logos/welkin.svg";
-import testlogo from "../../public/img/About/testImg.jpg";
+import mideaIMG from "../../public/img/About/midea.jpg";
+import welkinIMG from "../../public/img/About/welkin.jpg";
 import Breadcrumbs from "../Utilities/Breadcrumbs";
 
 function About() {
@@ -20,7 +21,7 @@ function About() {
                   <div className="about__line mt-6"></div>
                   <div className="about__content-body flex gap-10 items-center">
                      <div className="about__imgBody">
-                        <Image src={testlogo} alt="о компании midea" fill />
+                        <Image src={mideaIMG} alt="о компании midea" fill style={{ objectFit: "contain" }} />
                      </div>
                      <div className="about__titles mt-6 text-2xl text-slate-700">
                         <p>Midea – бренд №1 в мире по количеству производимого климатического оборудования.</p>
@@ -44,7 +45,7 @@ function About() {
                         <p>Наша команда занимается кондиционированием и вентиляцией любой сложности и масштаба с 2008 года.</p>
                      </div>
                      <div className="about__imgBody">
-                        <Image src={testlogo} alt="о компании welkin" fill />
+                        <Image src={welkinIMG} alt="о компании welkin" fill style={{ objectFit: "contain" }} />
                      </div>
                   </div>
                </div>

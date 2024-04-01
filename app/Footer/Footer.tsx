@@ -1,6 +1,7 @@
 import "../globals.scss";
 import "./Footer.scss";
-import midea from "../../public/logos/midea-footer.png";
+import midea from "../../public/logos/midea-white.svg";
+import welkin from "../../public/logos/welkin.svg";
 import Image from "next/image";
 import inst from "../../public/icons/Footer/instagram.svg";
 import tel from "../../public/icons/Footer/telegram.svg";
@@ -29,7 +30,15 @@ function Footer() {
       <footer className="footer">
          <div className="container text-white">
             <div className="footer__top grid py-10 px-2">
-               <Image src={midea} alt="midea" width={204} height={80} />
+               <Link href={"/"} className="footer__logos-body">
+                  <div className="footer__logoBody">
+                     <Image src={midea} alt="midea" fill />
+                  </div>
+                  <span>&</span>
+                  <div className="footer__logoBody">
+                     <Image src={welkin} alt="midea" fill />
+                  </div>
+               </Link>
                {footerData.map((el, idx) => {
                   return (
                      <div key={idx}>
@@ -40,7 +49,7 @@ function Footer() {
                   );
                })}
             </div>
-            <div className="flex justify-between items-center text-center mt-20 py-6">
+            <div className="flex justify-between items-center text-center py-4">
                <div className="footer__bottom">© Midea - Официальный представитель в Узбекистане 2024</div>
                <div className="footer__iconsBody flex">
                   <Link className="flex items-center" href="https://t.me/midea_welkin_climat">
