@@ -19,7 +19,7 @@ function Catalog() {
                   <div className="catalog__logoContainer relative mt-16">
                      <Image src={midea} alt="midea logo" fill />
                   </div>
-                  <a href="/pdf/midea-catalog.pdf" download className="flex items-center justify-center catalog__btnBody font-semibold mt-24">
+                  <a href="#" download className="flex items-center justify-center catalog__btnBody font-semibold mt-24">
                      <span className="catalog__btn relative z-10">Скачать каталог Midea</span>
                   </a>
                </div>
@@ -27,7 +27,7 @@ function Catalog() {
                   <div className="catalog__logoContainer relative mt-16">
                      <Image src={welkin} alt="midea logo" fill />
                   </div>
-                  <a href="/pdf/welkin-catalog.pdf" download className="flex items-center justify-center catalog__btnBody font-semibold mt-24">
+                  <a href="#" download className="flex items-center justify-center catalog__btnBody font-semibold mt-24">
                      <span className="catalog__btn relative z-10">Скачать каталог Welkin</span>
                   </a>
                </div>
