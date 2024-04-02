@@ -76,10 +76,10 @@ function Chillers() {
                <div className="">
                   <p className="chiller__content1__sub text-slate-500">Идеальное решение для больших и очень больших объектов.</p>
                   <div className="chiller__content1__contects flex justify-center gap-10 mt-12">
-                     <button className="btn-blue chiller__btns">
+                     <a href={"tel://" + +998931236606} className="btn-blue chiller__btns">
                         <span className="btn-blue-inner">+998 93 123 66 06</span>
-                     </button>
-                     <Link className="btn-blue chiller__btns" href={"#"}>
+                     </a>
+                     <Link className="btn-blue chiller__btns" href={"https://t.me/Midea_Welkin_uzb_1"} target="_blank">
                         <span className="btn-blue-inner">Telegram</span>
                      </Link>
                   </div>
