@@ -28,7 +28,7 @@ const footerData = [
 function Footer() {
    return (
       <footer className="footer">
-         <div className="container text-white">
+         <div className="container text-slate-900 font-medium">
             <div className="footer__top grid py-10 px-2">
                <Link href={"/"} className="footer__logos-body">
                   <div className="footer__logoBody">
@@ -42,7 +42,7 @@ function Footer() {
                {footerData.map((el, idx) => {
                   return (
                      <div key={idx}>
-                        <h4 className="text-xl">{el.title}</h4>
+                        <div className="text-xl">{el.title}</div>
                         <p className="mt-4 text-lg">{el.el1}</p>
                         {el.el2 ? <p className="text-lg">{el.el2}</p> : ""}
                      </div>

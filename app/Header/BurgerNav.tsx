@@ -22,7 +22,7 @@ function BurgerNav({ isMenuOpen, setMenuOpen }: { isMenuOpen: boolean; setMenuOp
    return (
       <div className={`header__burgerMenu ${isMenuOpen ? "header__burgerMenu__active" : ""} absolute left-0 top-0 h-screen w-full bg-white`}>
          <div className="header__burgerBody relative w-full h-full">
-            <button onClick={closeMenu} className="header__burgerCloseBody absolute right-2 top-2">
+            <button aria-label="Закрыть меню" onClick={closeMenu} className="header__burgerCloseBody absolute right-2 top-2">
                <IoCloseSharp style={{ width: "100%", height: "100%" }} />
             </button>
             <button
