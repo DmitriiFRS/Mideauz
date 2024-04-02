@@ -4,7 +4,7 @@ function BurgerIcon({ setMenuOpen }: { setMenuOpen: (e: boolean) => void }) {
       document.body.style.overflow = "hidden";
    }
    return (
-      <button onClick={openMenu} className="header__burgerBtn">
+      <button aria-label="Меню" onClick={openMenu} className="header__burgerBtn">
          <span></span>
          <span></span>
          <span></span>

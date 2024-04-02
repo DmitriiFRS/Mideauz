@@ -22,7 +22,7 @@ function Cart() {
       }
    }, [clientValue, dispatch]);
    return (
-      <Link href={"/cart"} className="header__cart flex items-center p-3">
+      <Link aria-label="Перейти в корзину" href={"/cart"} className="header__cart flex items-center p-3">
          <span className="header__cart__title text-xl font-medium">Корзина</span>
          <div className="relative">
             <div
