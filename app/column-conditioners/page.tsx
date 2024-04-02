@@ -1,6 +1,13 @@
 import "./column-conditioners.scss";
 import fetchGraphqlData from "../Utilities/FetchGraphql";
 import ConditionersList from ".";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+   title: "Колонные кондиционеры",
+   description: "Каталог колонных бытовых и полупромышленных кондиционеров Midea & Welkin",
+   keywords: ["Колонный кондер", "Колонник", "Колонный кондиционер", "Колонка"],
+};
 
 export type ColListInner = {
    col: {

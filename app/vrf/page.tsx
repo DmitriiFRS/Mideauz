@@ -8,6 +8,13 @@ import V6 from "../../public/img/Equip/vrf/vrf-6.png";
 import V8 from "../../public/img/Equip/vrf/V8-main.png";
 import miniVRF from "../../public/img/Equip/vrf/mini-vrf.png";
 import Breadcrumbs from "../Utilities/Breadcrumbs";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+   title: "VRF-Системы",
+   description: "Обзор VRF-систем и мини VRF Midea",
+   keywords: ["VRF", "Mini-vrf", "Atom", "V8", "V6"],
+};
 
 const vrfs = [
    {
@@ -66,7 +73,7 @@ function Vrf() {
                   <p className="vrf__content1__sub text-slate-500">Идеальное решение для частных домов, больших офисов, бизнес-центров</p>
                   <div className="vrf__content1__contects flex justify-center gap-10 mt-12">
                      <button className="btn-blue vrf__btns">
-                        <span className="btn-blue-inner">+79271184766</span>
+                        <span className="btn-blue-inner">+998 93 123 66 06</span>
                      </button>
                      <Link className="btn-blue vrf__btns" href={"#"}>
                         <span className="btn-blue-inner">Telegram</span>

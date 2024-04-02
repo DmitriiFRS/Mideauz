@@ -1,6 +1,13 @@
 import fetchGraphqlData from "../Utilities/FetchGraphql";
 import "../column-conditioners/column-conditioners.scss";
 import ConditionersList from "../column-conditioners/index";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+   title: "Кассетные кондиционеры",
+   description: "Каталог кассетных полупромышленных кондиционеров MIdea & Welkin",
+   keywords: ["Полупромышленное", "Кассетный", "Кассета", "Купить кассету", "Кассетный кондиционер"],
+};
 
 const urlParam = "casette-conditioners";
 const itemsType = "Кассетные кондиционеры";

@@ -5,6 +5,13 @@ import welkin from "../../public/logos/welkin.svg";
 import mideaIMG from "../../public/img/About/midea.jpg";
 import welkinIMG from "../../public/img/About/welkin.jpg";
 import Breadcrumbs from "../Utilities/Breadcrumbs";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+   title: "О компании",
+   description: "Информация о нашей компании",
+   keywords: ["about", "О компании", "Бренд"],
+};
 
 function About() {
    return (

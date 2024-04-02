@@ -2,6 +2,13 @@ import "./air-conditioners.scss";
 import ConditionersList from ".";
 import fetchGraphqlData from "../Utilities/FetchGraphql";
 import { ConditionersFetchData } from "../Types/Col.type";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+   title: "Настенные кондиционеры",
+   description: "Каталог настенных бытовых кондиционеров Midea & Welkin",
+   keywords: ["Настенные кондиионеры", "Бытовые кондиционеры", "Кондёр", "conditsioner", "conditioner", "Кандер"],
+};
 
 export type DataInner = {
    conditionerField: {

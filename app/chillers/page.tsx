@@ -10,6 +10,24 @@ import monoblock from "../../public/img/Equip/chillers/monoblock.png";
 import centrifuge from "../../public/img/Equip/chillers/centrifugal.png";
 import screw from "../../public/img/Equip/chillers/screw.png";
 import Breadcrumbs from "../Utilities/Breadcrumbs";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+   title: "Чиллеры",
+   description: "Обзор Мини-чиллеров, Модульных, Высокопроизводительных, Моноблочных, Центробежных, и Винтовых чиллеров Midea",
+   keywords: [
+      "Magboost",
+      "Mini-chiller",
+      "chiller",
+      "Модульный чиллер",
+      "Высокопроизводительный чиллер",
+      "Моноблочный чиллер",
+      "Центробежный чиллер",
+      "Винтовой чиллер",
+      "Чиллер с водяным охлаждением конденсатора",
+      "Чиллер с воздушным охлаждением конденсатора",
+   ],
+};
 
 const chillers = {
    air: [
@@ -59,7 +77,7 @@ function Chillers() {
                   <p className="chiller__content1__sub text-slate-500">Идеальное решение для больших и очень больших объектов.</p>
                   <div className="chiller__content1__contects flex justify-center gap-10 mt-12">
                      <button className="btn-blue chiller__btns">
-                        <span className="btn-blue-inner">+79271184766</span>
+                        <span className="btn-blue-inner">+998 93 123 66 06</span>
                      </button>
                      <Link className="btn-blue chiller__btns" href={"#"}>
                         <span className="btn-blue-inner">Telegram</span>

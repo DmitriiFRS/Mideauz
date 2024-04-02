@@ -1,6 +1,13 @@
 import Breadcrumbs from "../Utilities/Breadcrumbs";
 import "./Coordinates.scss";
 import YandexMap from "./YandexMap";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+   title: "Координаты",
+   description: "Как нас можно найти",
+   keywords: ["Координаты", "Поиск", "yandex", "maps", "Карта"],
+};
 
 function Coordinates() {
    return (
@@ -18,7 +25,7 @@ function Coordinates() {
                   <div className="coordinates__line mt-12"></div>
                   <div className="mt-12">
                      <h4 className="coordinates__titles text-5xl font-medium">Контакты</h4>
-                     <p className="coordinates__subtitles text-3xl mt-3">+998 99 443 06 66</p>
+                     <p className="coordinates__subtitles text-3xl mt-3">+998 93 123 66 06</p>
                   </div>
                </div>
                <YandexMap />

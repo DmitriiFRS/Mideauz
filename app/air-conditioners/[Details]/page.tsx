@@ -47,11 +47,12 @@ export type ModelTypeInner = {
    };
 };
 
-type GenerateParams = {
-   conditionerField: {
-      name: string;
+export async function generateMetadata({ params }: { params: { Details: string } }) {
+   return {
+      title: "Кондиционер" + " " + params.Details,
+      Description: `Настенный бытовой кондиционер ${params.Details}`,
    };
-};
+}
 
 async function Details({ params }: { params: { Details: string } }) {
    const data = await fetchGraphqlData(`

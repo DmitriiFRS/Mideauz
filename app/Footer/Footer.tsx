@@ -52,7 +52,7 @@ function Footer() {
             <div className="flex justify-between items-center text-center py-4">
                <div className="footer__bottom">© Midea - Официальный представитель в Узбекистане 2024</div>
                <div className="footer__iconsBody flex">
-                  <Link className="flex items-center" href="https://t.me/midea_welkin_climat">
+                  <Link className="flex items-center" href="https://t.me/Midea_Welkin_uzb_1" target="_blank">
                      {" "}
                      <Image className="footer__icon1" src={tel} width={40} height={40} alt="tel" />{" "}
                   </Link>

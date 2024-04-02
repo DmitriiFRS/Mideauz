@@ -4,6 +4,13 @@ import midea from "../../public/logos/midea.svg";
 import welkin from "../../public/logos/welkin.svg";
 import Breadcrumbs from "../Utilities/Breadcrumbs";
 import catalogBG from "../../public/img/catalog_bg.jpg";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+   title: "Каталоги",
+   description: "Каталоги с подробными характеристиками и параметрами оборудования",
+   keywords: ["Каталоги", "Каталог", "Информация", "Скачать", "pdf"],
+};
 
 function Catalog() {
    return (

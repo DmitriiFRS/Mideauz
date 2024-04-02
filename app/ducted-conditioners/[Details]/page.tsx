@@ -20,11 +20,12 @@ export type ModelType = {
    mode?: Array<string>;
 };
 
-type GenerateParams = {
-   col: {
-      name: string;
+export async function generateMetadata({ params }: { params: { Details: string } }) {
+   return {
+      title: "Канальный кондиционер" + " " + params.Details,
+      Description: `Канальный полупромышленный кондиционер ${params.Details}`,
    };
-};
+}
 
 async function Details({ params }: { params: { Details: string } }) {
    const data: DuctFetchData = await fetchGraphqlData(`
