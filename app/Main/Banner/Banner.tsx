@@ -1,8 +1,7 @@
 import Image from "next/image";
-import banner from "../../../public/img/banner-april.jpg";
+import banner from "../../../public/img/banner-may.jpg";
 import "./Banner.scss";
 import Link from "next/link";
-import fetchGraphqlData from "@/app/Utilities/FetchGraphql";
 
 function Banner() {
    return (
