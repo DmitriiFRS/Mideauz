@@ -21,7 +21,7 @@
       overflow: hidden;
       transition: 0.4s;
       max-height: 2800px;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 40px 40px;
       @media (max-width: 1200px) {
          grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -43,11 +43,12 @@
       background: linear-gradient(90deg, rgba(55, 156, 208, 0.3) 0%, rgba(254, 195, 0, 0.3) 100%);
       border-radius: 8px;
       padding: 5px 5px 10px 5px;
+      border: 1px solid #000;
       &__midea {
-         background: rgba(55, 156, 208, 0.3);
+         background: rgb(228, 246, 255);
       }
       &__welkin {
-         background: rgba(254, 195, 0, 0.3);
+         background: rgb(255, 244, 208);
       }
       &:hover .conditioners__img {
          transform: scale(1.2);
@@ -62,7 +63,8 @@
    &__img-container {
       max-width: 250px;
       width: 100%;
-      aspect-ratio: 1/1;
+      height: 200px;
+      aspect-ratio: 3/2;
       @media (max-width: 1200px) {
          max-width: 200px !important;
       }
